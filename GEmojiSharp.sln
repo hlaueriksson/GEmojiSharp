@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.156
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GEmojiSharp", "src\GEmojiSharp\GEmojiSharp.csproj", "{7F2242FD-E5E1-4930-977B-D82FD0AAC77A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{08210849-A04E-459A-907D-980E559710E6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GEmojiSharp.TagHelpers", "src\GEmojiSharp.TagHelpers\GEmojiSharp.TagHelpers.csproj", "{77ED5ECB-6240-4E39-A0A7-4AFA1A9660EF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{01434E7A-C27D-4094-A3E9-0C322136EFF7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GEmojiSharp.Tests", "tests\GEmojiSharp.Tests\GEmojiSharp.Tests.csproj", "{08C6883A-5344-4A40-95A5-E89072CE8FFA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{6938AF53-C5C7-478A-9554-6E7A02509432}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F2242FD-E5E1-4930-977B-D82FD0AAC77A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F2242FD-E5E1-4930-977B-D82FD0AAC77A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F2242FD-E5E1-4930-977B-D82FD0AAC77A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F2242FD-E5E1-4930-977B-D82FD0AAC77A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77ED5ECB-6240-4E39-A0A7-4AFA1A9660EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77ED5ECB-6240-4E39-A0A7-4AFA1A9660EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77ED5ECB-6240-4E39-A0A7-4AFA1A9660EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77ED5ECB-6240-4E39-A0A7-4AFA1A9660EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08C6883A-5344-4A40-95A5-E89072CE8FFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08C6883A-5344-4A40-95A5-E89072CE8FFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08C6883A-5344-4A40-95A5-E89072CE8FFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08C6883A-5344-4A40-95A5-E89072CE8FFA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7F2242FD-E5E1-4930-977B-D82FD0AAC77A} = {08210849-A04E-459A-907D-980E559710E6}
+		{77ED5ECB-6240-4E39-A0A7-4AFA1A9660EF} = {08210849-A04E-459A-907D-980E559710E6}
+		{08C6883A-5344-4A40-95A5-E89072CE8FFA} = {01434E7A-C27D-4094-A3E9-0C322136EFF7}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4EE2F45B-9E7D-46BE-A6C1-A1ACC12A0DCA}
+	EndGlobalSection
+EndGlobal
