@@ -8,10 +8,10 @@ namespace GEmojiSharp.Tests
         [Test]
         public void HasEmoji()
         {
-            Emoji.Get(":grinning:").HasEmoji.Should().Be(true);
-            Emoji.Get(":octocat:").HasEmoji.Should().Be(false);
-            Emoji.Get(":fail:").HasEmoji.Should().Be(false);
-            GEmoji.Empty.HasEmoji.Should().Be(false);
+            Emoji.Get(":grinning:").IsCustom.Should().Be(false);
+            Emoji.Get(":octocat:").IsCustom.Should().Be(true);
+            Emoji.Get(":fail:").IsCustom.Should().Be(true);
+            GEmoji.Empty.IsCustom.Should().Be(true);
         }
     }
 }

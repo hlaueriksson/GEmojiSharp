@@ -1,17 +1,29 @@
 ﻿namespace GEmojiSharp
 {
+    /// <summary>
+    /// Represents an emoji.
+    /// </summary>
     public class GEmoji
     {
-        public static readonly GEmoji Empty = new GEmoji { Emoji = string.Empty };
+        /// <summary>Represents an empty emoji. This field is read-only.</summary>
+        public static readonly GEmoji Empty = new GEmoji { Raw = string.Empty };
 
-        public string Emoji { get; set; }
+        /// <summary>Raw Unicode <c>string</c> of the emoji. An empty <c>string</c> if the emoji is non-standard.</summary>
+        public string Raw { get; set; }
+        /// <summary>The description text.</summary>
         public string Description { get; set; }
+        /// <summary>The category for the emoji as per Apple's character palette.</summary>
         public string Category { get; set; }
+        /// <summary>A list of names uniquely referring to the emoji.</summary>
         public string[] Aliases { get; set; }
+        /// <summary>A list of tags associated with the emoji. Multiple emojis can share the same tags.</summary>
         public string[] Tags { get; set; }
+        /// <summary>The Unicode spec version where the emoji first debuted.</summary>
         public string UnicodeVersion { get; set; }
+        /// <summary>The iOS version where the emoji first debuted.</summary>
         public string IosVersion { get; set; }
 
-        public bool HasEmoji => Emoji != Empty.Emoji;
+        /// <summary>True if the emoji is not a standard emoji character.</summary>
+        public bool IsCustom => Raw == Empty.Raw;
     }
 }

@@ -16,7 +16,7 @@ namespace GEmojiSharp.Tests
 
             var octocat = Emoji.Get(":octocat:");
             octocat.Should().NotBe(GEmoji.Empty);
-            octocat.Emoji.Should().BeEmpty();
+            octocat.Raw.Should().BeEmpty();
         }
 
         [Test]
