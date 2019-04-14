@@ -1,0 +1,8 @@
+version: "1.0.0.{build}"
+image: Visual Studio 2017
+
+before_build:
+  - ps: "dotnet restore"
+build:
+  project: GEmojiSharp.sln
+  verbosity: minimal
