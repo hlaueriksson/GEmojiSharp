@@ -1,0 +1,35 @@
+﻿@page
+@model AllModel
+@{
+    ViewData["Title"] = "All";
+}
+
+<div class="text-center">
+    <h1 class="display-4">All</h1>
+
+    @foreach (var category in Model.Categories)
+    {
+        <h2>@(string.IsNullOrEmpty(category.Key) ? "Uncategorized" : category.Key)</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Emoji</th>
+                    <th>Aliases</th>
+                    <th>Description</th>
+                    <th>Tags</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var emoji in category)
+                {
+                    <tr>
+                        <td emoji="@emoji.Aliases.First()"></td>
+                        <td><code>@Html.Raw(string.Join("<br />", emoji.Aliases.Select(x => $":{x}:")))</code></td>
+                        <td>@emoji.Description</td>
+                        <td>@string.Join(", ", emoji.Tags ?? new string[0])</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

@@ -1,0 +1,28 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://github.com/hlaueriksson/GEmojiSharp">GEmojiSharp</a> on GitHub.</p>
+    <p>A list of <a asp-page="/All">All</a> GitHub Emojis.</p>
+
+    <hr />
+
+    <p><code>&lt;emoji&gt;:octopus: :heavy_plus_sign: :cat2: ⩵ :heart:&lt;/emoji&gt;</code></p>
+    <p><emoji>:octopus: :heavy_plus_sign: :cat2: ⩵ :heart:</emoji></p>
+
+    <hr />
+
+    <span emoji=":grinning:"></span>
+    <span emoji=":octocat:" />
+    <code emoji=":fail:"></code>
+
+    <hr />
+
+    <div><emoji>@Model.Content</emoji></div>
+    <div><span emoji="@Model.Emoji" /></div>
+
+</div>
