@@ -1,0 +1,29 @@
+﻿@page
+@using GEmojiSharp.TagHelpers
+@using Microsoft.AspNetCore.Mvc.Razor.TagHelpers
+@inject ITagHelperComponentManager manager;
+@model GEmojiSharp.Sample.Web.Pages.ComponentModel
+@{
+    ViewData["Title"] = "Component";
+    manager.Components.Add(new BodyTagHelperComponent());
+}
+
+<div class="text-center">
+    <h1 class="display-4">Component :package:</h1>
+
+    <hr />
+
+    <p>:octopus: :heavy_plus_sign: :cat2: ⩵ :heart:</p>
+
+    <hr />
+
+    :grinning:
+    :octocat:
+    :fail:
+
+    <hr />
+
+    <div>@Model.Content</div>
+    <div>@Model.Emoji</div>
+
+</div>
