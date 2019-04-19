@@ -36,7 +36,7 @@ namespace GEmojiSharp.Tests
 
                 result.Append("            ");
                 result.Append("new GEmoji { ");
-                result.Append($"Markup = \"{e}\"");
+                result.Append($"Raw = \"{e}\"");
                 if (d != null) result.Append($", Description = \"{d}\"");
                 if (c != null) result.Append($", Category = \"{c}\"");
                 if (a.Any()) result.Append($", Aliases = new[] {{ {string.Join(", ", a.Select(x => "\"" + x + "\""))} }}");
