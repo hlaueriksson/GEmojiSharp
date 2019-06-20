@@ -49,10 +49,19 @@ namespace GEmojiSharp.TagHelpers
         {
             MatchEvaluator evaluator = EmojiMatchEvaluator;
 
-            return Regex.Replace(content, @":([\w+-]+):", evaluator, RegexOptions.Compiled);
+            return Regex.Replace(content, @"(:[\w+-]+:)", evaluator, RegexOptions.Compiled);
 
             string EmojiMatchEvaluator(Match match)
             {
+                var tagRegex = new Regex("<[^>]*>", RegexOptions.RightToLeft | RegexOptions.Compiled);
+                var tagMatch = tagRegex.Match(content, 0, match.Index);
+
+                if (!tagMatch.Success) return match.Value.Raw();
+
+                var tag = tagMatch.Value;
+
+                if (tag.Contains("textarea") || tag.Contains("input")) return match.Value.Raw();
+
                 return match.Value.Markup();
             }
         }
@@ -64,6 +73,13 @@ namespace GEmojiSharp.TagHelpers
             return emoji.IsCustom ?
                 emoji.Alias() :
                 string.Join("-", emoji.Raw.ToCodePoints().Select(x => x.ToString("x4")).Where(x => x != "fe0f" && x != "200d"));
+        }
+
+        private static string Raw(this string alias)
+        {
+            var emoji = Emoji.Get(alias);
+
+            return emoji != GEmoji.Empty ? emoji.Raw : alias;
         }
 
         private static string Alias(this GEmoji emoji)

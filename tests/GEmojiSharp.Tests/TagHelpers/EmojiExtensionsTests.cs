@@ -24,8 +24,16 @@ namespace GEmojiSharp.Tests.TagHelpers
         [Test]
         public void MarkupContent()
         {
-            "Hello, :earth_africa:".MarkupContent().Should().Be(@"Hello, <g-emoji class=""g-emoji"" alias=""earth_africa"" fallback-src=""https://github.githubassets.com/images/icons/emoji/unicode/1f30d.png"">🌍</g-emoji>");
+            "Hello, :earth_africa:".MarkupContent().Should().Be(@"Hello, 🌍");
             "Hello, :fail:".MarkupContent().Should().Be("Hello, :fail:");
+
+            "<p>Hello, :earth_africa:</p>".MarkupContent().Should().Be(@"<p>Hello, <g-emoji class=""g-emoji"" alias=""earth_africa"" fallback-src=""https://github.githubassets.com/images/icons/emoji/unicode/1f30d.png"">🌍</g-emoji></p>");
+            "<p>Hello, :fail:</p>".MarkupContent().Should().Be(@"<p>Hello, :fail:</p>");
+
+            "<textarea>Hello, :earth_africa:</textarea>".MarkupContent().Should().Be(@"<textarea>Hello, 🌍</textarea>");
+            @"<input type=""text"" value=""Hello, :earth_africa:"">".MarkupContent().Should().Be(@"<input type=""text"" value=""Hello, 🌍"">");
+
+            "<body><form><div>:book: :pencil2:<br /><textarea>:heart: :+1:</textarea></div></form></body>".MarkupContent().Should().Be(@"<body><form><div><g-emoji class=""g-emoji"" alias=""book"" fallback-src=""https://github.githubassets.com/images/icons/emoji/unicode/1f4d6.png"">📖</g-emoji> <g-emoji class=""g-emoji"" alias=""pencil2"" fallback-src=""https://github.githubassets.com/images/icons/emoji/unicode/270f.png"">✏️</g-emoji><br /><textarea>❤️ 👍</textarea></div></form></body>");
         }
 
         [Test]
