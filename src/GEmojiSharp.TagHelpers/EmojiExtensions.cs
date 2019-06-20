@@ -14,6 +14,9 @@ namespace GEmojiSharp.TagHelpers
     /// </summary>
     public static class EmojiExtensions
     {
+        private static readonly Regex EmojiRegex = new Regex(@"(:[\w+-]+:)", RegexOptions.Compiled);
+        private static readonly Regex TagRegex = new Regex("<[^>]*>?", RegexOptions.RightToLeft | RegexOptions.Compiled);
+
         /// <summary>
         /// Gets the markup for the emoji associated with the alias.
         /// </summary>
@@ -49,18 +52,17 @@ namespace GEmojiSharp.TagHelpers
         {
             MatchEvaluator evaluator = EmojiMatchEvaluator;
 
-            return Regex.Replace(content, @"(:[\w+-]+:)", evaluator, RegexOptions.Compiled);
+            return EmojiRegex.Replace(content, evaluator);
 
             string EmojiMatchEvaluator(Match match)
             {
-                var tagRegex = new Regex("<[^>]*>", RegexOptions.RightToLeft | RegexOptions.Compiled);
-                var tagMatch = tagRegex.Match(content, 0, match.Index);
+                var tagMatch = TagRegex.Match(content, 0, match.Index);
 
-                if (!tagMatch.Success) return match.Value.Raw();
+                if (!tagMatch.Success) return match.Value.Markup();
 
                 var tag = tagMatch.Value;
 
-                if (tag.Contains("textarea") || tag.Contains("input")) return match.Value.Raw();
+                if (tag.StartsWith("<textarea", StringComparison.OrdinalIgnoreCase) || tag.StartsWith("<input", StringComparison.OrdinalIgnoreCase)) return match.Value.Raw();
 
                 return match.Value.Markup();
             }

@@ -24,9 +24,6 @@ namespace GEmojiSharp.Tests.TagHelpers
         [Test]
         public void MarkupContent()
         {
-            "Hello, :earth_africa:".MarkupContent().Should().Be(@"Hello, 🌍");
-            "Hello, :fail:".MarkupContent().Should().Be("Hello, :fail:");
-
             "<p>Hello, :earth_africa:</p>".MarkupContent().Should().Be(@"<p>Hello, <g-emoji class=""g-emoji"" alias=""earth_africa"" fallback-src=""https://github.githubassets.com/images/icons/emoji/unicode/1f30d.png"">🌍</g-emoji></p>");
             "<p>Hello, :fail:</p>".MarkupContent().Should().Be(@"<p>Hello, :fail:</p>");
 
