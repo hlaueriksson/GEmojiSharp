@@ -9,8 +9,8 @@
     <PackageReference Include="GEmojiSharp.TagHelpers" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
-    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="1.0.172" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.0.96" />
   </ItemGroup>
 
 </Project>
