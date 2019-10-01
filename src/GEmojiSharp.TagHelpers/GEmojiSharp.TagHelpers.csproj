@@ -18,7 +18,7 @@
     </Description>
     <PackageId>GEmojiSharp.TagHelpers</PackageId>
     <PackageProjectUrl>https://github.com/hlaueriksson/GEmojiSharp</PackageProjectUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/hlaueriksson/GEmojiSharp/master/icon.png</PackageIconUrl>
+    <PackageIcon>icon.png</PackageIcon>
     <PackageTags>emoji;gemoji;aspnetcore;aspnetcoremvc;taghelper;taghelpers</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/hlaueriksson/GEmojiSharp.git</RepositoryUrl>
@@ -36,5 +36,9 @@
   <PropertyGroup>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\icon.png" Link="icon.png" Pack="true" PackagePath="\"/>
+  </ItemGroup>
 
 </Project>
