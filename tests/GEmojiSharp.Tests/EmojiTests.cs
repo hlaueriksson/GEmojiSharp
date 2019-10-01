@@ -23,6 +23,7 @@ namespace GEmojiSharp.Tests
         public void Raw_should_return_the_emoji_character()
         {
             Emoji.Raw(":grinning:").Should().Be("😀");
+            Emoji.Raw(":blonde_woman:").Should().Be("👱‍♀");
             Emoji.Raw(":fail:").Should().BeEmpty();
         }
 

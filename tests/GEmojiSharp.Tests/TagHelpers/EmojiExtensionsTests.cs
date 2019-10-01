@@ -32,14 +32,5 @@ namespace GEmojiSharp.Tests.TagHelpers
 
             "<body><form><div>:book: :pencil2:<br /><textarea>:heart: :+1:</textarea></div></form></body>".MarkupContent().Should().Be(@"<body><form><div><g-emoji class=""g-emoji"" alias=""book"" fallback-src=""https://github.githubassets.com/images/icons/emoji/unicode/1f4d6.png"">📖</g-emoji> <g-emoji class=""g-emoji"" alias=""pencil2"" fallback-src=""https://github.githubassets.com/images/icons/emoji/unicode/270f.png"">✏️</g-emoji><br /><textarea>❤️ 👍</textarea></div></form></body>");
         }
-
-        [Test]
-        public void Filename()
-        {
-            ":grinning:".GetEmoji().Filename().Should().Be("1f600");
-            ":octocat:".GetEmoji().Filename().Should().Be("octocat");
-            ":one:".GetEmoji().Filename().Should().Be("0031-20e3");
-            ":fail:".GetEmoji().Filename().Should().BeNull();
-        }
     }
 }

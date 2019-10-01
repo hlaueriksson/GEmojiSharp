@@ -23,6 +23,9 @@
         /// <summary>The iOS version where the emoji first debuted.</summary>
         public string IosVersion { get; set; }
 
+        /// <summary>GitHub fallback image filename</summary>
+        public string Filename { get; set; }
+
         /// <summary>True if the emoji is not a standard emoji character.</summary>
         public bool IsCustom => Raw == Empty.Raw;
     }

@@ -39,8 +39,8 @@ namespace GEmojiSharp.TagHelpers
             if (emoji == GEmoji.Empty) return string.Empty;
 
             return emoji.IsCustom ?
-                $@"<img class=""emoji"" title="":{emoji.Alias()}:"" alt="":{emoji.Alias()}:"" src=""https://github.githubassets.com/images/icons/emoji/{emoji.Filename()}.png"" height=""20"" width=""20"" align=""absmiddle"">" :
-                $@"<g-emoji class=""g-emoji"" alias=""{emoji.Alias()}"" fallback-src=""https://github.githubassets.com/images/icons/emoji/unicode/{emoji.Filename()}.png"">{emoji.Raw}</g-emoji>";
+                $@"<img class=""emoji"" title="":{emoji.Alias()}:"" alt="":{emoji.Alias()}:"" src=""https://github.githubassets.com/images/icons/emoji/{emoji.Filename}.png"" height=""20"" width=""20"" align=""absmiddle"">" :
+                $@"<g-emoji class=""g-emoji"" alias=""{emoji.Alias()}"" fallback-src=""https://github.githubassets.com/images/icons/emoji/unicode/{emoji.Filename}.png"">{emoji.Raw}</g-emoji>";
         }
 
         /// <summary>
@@ -66,15 +66,6 @@ namespace GEmojiSharp.TagHelpers
 
                 return match.Value.Markup();
             }
-        }
-
-        internal static string Filename(this GEmoji emoji)
-        {
-            if (emoji == GEmoji.Empty) return null;
-
-            return emoji.IsCustom ?
-                emoji.Alias() :
-                string.Join("-", emoji.Raw.ToCodePoints().Select(x => x.ToString("x4")).Where(x => x != "fe0f" && x != "200d"));
         }
 
         private static string Raw(this string alias)
