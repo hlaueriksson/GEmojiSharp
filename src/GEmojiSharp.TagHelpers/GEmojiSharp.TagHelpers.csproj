@@ -21,9 +21,12 @@
     <PackageIcon>icon.png</PackageIcon>
     <PackageTags>emoji;gemoji;aspnetcore;aspnetcoremvc;taghelper;taghelpers</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/hlaueriksson/GEmojiSharp.git</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\icon.png" Link="icon.png" Pack="true" PackagePath="\"/>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Razor" Version="2.2.0" />
@@ -31,14 +34,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GEmojiSharp\GEmojiSharp.csproj" />
-  </ItemGroup>
-
-  <PropertyGroup>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <None Include="..\..\icon.png" Link="icon.png" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
 </Project>
