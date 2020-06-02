@@ -16,12 +16,15 @@
 ❤️ :heart:
 ```
 
-## Content
+# Content
 
+- [GEmojiSharp](#gemojisharp)
+- [Content](#content)
 - [Introduction](#introduction)
 - [Emoji](#emoji)
+- [Blazor](#blazor)
 - [Tag Helpers](#tag-helpers)
-- [Sample](#sample)
+- [Samples](#samples)
 - [Attribution](#attribution)
 
 # Introduction
@@ -60,6 +63,46 @@ Extension methods:
 ":tada:".RawEmoji(); // 🎉
 ":tada: initial commit".Emojify(); // 🎉 initial commit
 "party popper".FindEmojis().First().Raw; // 🎉
+```
+
+# Blazor
+
+[![NuGet](https://buildstats.info/nuget/GEmojiSharp.Blazor)](https://www.nuget.org/packages/GEmojiSharp.Blazor/)
+
+> GitHub Emoji for Blazor
+
+Update `Pages/_Host.cshtml` (Blazor Server), or `wwwroot/index.html` (Blazor WebAssembly):
+
+```html
+<link href="_content/GEmojiSharp.Blazor/style.css" rel="stylesheet" />
+```
+
+```html
+<script src="_content/GEmojiSharp.Blazor/script.js"></script>
+```
+
+Import the `GEmojiSharp.Blazor` namespace in `razor` files:
+
+```cshtml
+@using GEmojiSharp.Blazor
+```
+
+Use the `<Emoji>` component to render emojis:
+
+```html
+<Emoji>:tada: initial commit</Emoji>
+```
+
+Standard emoji characters are rendered like this:
+
+```html
+<g-emoji class="g-emoji" alias="tada" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png">🎉</g-emoji>
+```
+
+Custom GitHub emojis are rendered as images:
+
+```html
+<img class="emoji" title=":octocat:" alt=":octocat:" src="https://github.githubassets.com/images/icons/emoji/octocat.png" height="20" width="20" align="absmiddle">
 ```
 
 # Tag Helpers
@@ -145,7 +188,7 @@ Use any tag to render emojis:
 ```cs
 public void ConfigureServices(IServiceCollection services)
 {
-    services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+    services.AddRazorPages();
 
     services.AddTransient<ITagHelperComponent, BodyTagHelperComponent>();
 }
@@ -184,11 +227,18 @@ public class IndexModel : PageModel
 }
 ```
 
-# Sample
+# Samples
 
-The [`samples`](/samples) folder contains `GEmojiSharp.Sample.Web`, a ASP.NET Core web site:
+The [`samples`](/samples) folder contains...
 
-![GEmojiSharp.Sample.Web](sample.png)
+* `GEmojiSharp.Sample.BlazorServer`, a Blazor Server app
+* `GEmojiSharp.Sample.BlazorWebAssembly`, a Blazor WebAssembly app
+
+![GEmojiSharp.Sample.BlazorWebAssembly](GEmojiSharp.Sample.BlazorWebAssembly.png)
+
+* `GEmojiSharp.Sample.Web`, a ASP.NET Core web site
+
+![GEmojiSharp.Sample.Web](GEmojiSharp.Sample.Web.png)
 
 # Attribution
 
