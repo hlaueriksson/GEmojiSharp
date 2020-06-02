@@ -30,7 +30,7 @@
 }
 
 @code {
-    public IEnumerable<IGrouping<string, GEmoji>> Categories { get; set; }
+    IEnumerable<IGrouping<string, GEmoji>> Categories { get; set; }
 
     protected override void OnInitialized()
     {

@@ -30,16 +30,16 @@
 
 <hr />
 
-<Emoji>@text</Emoji>
-<Emoji>@emoji</Emoji>
+<Emoji>@_text</Emoji>
+<Emoji>@_emoji</Emoji>
 
 @code {
-    private string emoji;
-    private string text;
+    string _emoji;
+    string _text;
 
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
-        emoji = ":open_umbrella:";
-        text = "it's raining :cat:s and :dog:s!";
+        _emoji = ":open_umbrella:";
+        _text = "it's raining :cat:s and :dog:s!";
     }
 }
