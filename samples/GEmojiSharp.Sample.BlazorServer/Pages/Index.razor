@@ -1,7 +1,45 @@
 ﻿@page "/"
+@using GEmojiSharp.Blazor
 
-<h1>Hello, world!</h1>
+<h1>Welcome</h1>
+<p>Learn about <a href="https://github.com/hlaueriksson/GEmojiSharp">GEmojiSharp</a> on GitHub.</p>
+<p>A list of <NavLink href="all">All</NavLink> GitHub Emojis.</p>
 
-Welcome to your new app.
+<hr />
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<p><code>&lt;Emoji&gt;:octopus: :heavy_plus_sign: :cat2: ⩵ :heart:&lt;/Emoji&gt;</code></p>
+<p><Emoji>:octopus: :heavy_plus_sign: :cat2: ⩵ :heart:</Emoji></p>
+
+<hr />
+
+<p>
+    <code>
+        &lt;Emoji&gt;<br />
+        &lt;span&gt;:grinning:&lt;/span&gt;<br />
+        &lt;span&gt;:octocat:&lt;/span&gt;<br />
+        &lt;code&gt;:fail:&lt;/code&gt;<br />
+        &lt;/Emoji&gt;
+    </code>
+</p>
+
+<Emoji>
+    <span>:grinning:</span>
+    <span>:octocat:</span>
+    <code>:fail:</code>
+</Emoji>
+
+<hr />
+
+<Emoji>@text</Emoji>
+<Emoji>@emoji</Emoji>
+
+@code {
+    private string emoji;
+    private string text;
+
+    protected override async Task OnInitializedAsync()
+    {
+        emoji = ":open_umbrella:";
+        text = "it's raining :cat:s and :dog:s!";
+    }
+}
