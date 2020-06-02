@@ -87,6 +87,12 @@ namespace GEmojiSharp.Tests
             {
                 foreach (var alias in emoji.Aliases)
                 {
+                    if (emoji.IsCustom)
+                    {
+                        Console.WriteLine($"Skipping :{alias}:");
+                        continue;
+                    }
+
                     var token = json[alias];
 
                     token.Should().NotBeNull($":{alias}:");
