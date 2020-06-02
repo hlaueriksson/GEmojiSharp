@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\GEmojiSharp.Blazor\GEmojiSharp.Blazor.csproj" />
+    <PackageReference Include="GEmojiSharp.Blazor" Version="1.0.0" />
   </ItemGroup>
 
 </Project>
