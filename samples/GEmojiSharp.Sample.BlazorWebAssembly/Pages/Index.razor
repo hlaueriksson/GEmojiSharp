@@ -1,0 +1,45 @@
+﻿@page "/"
+@using GEmojiSharp.Blazor
+
+<h1>Welcome</h1>
+<p>Learn about <a href="https://github.com/hlaueriksson/GEmojiSharp">GEmojiSharp</a> on GitHub.</p>
+<p>A list of <NavLink href="all">All</NavLink> GitHub Emojis.</p>
+
+<hr />
+
+<p><code>&lt;Emoji&gt;:octopus: :heavy_plus_sign: :cat2: ⩵ :heart:&lt;/Emoji&gt;</code></p>
+<p><Emoji>:octopus: :heavy_plus_sign: :cat2: ⩵ :heart:</Emoji></p>
+
+<hr />
+
+<p>
+    <code>
+        &lt;Emoji&gt;<br />
+        &lt;span&gt;:grinning:&lt;/span&gt;<br />
+        &lt;span&gt;:octocat:&lt;/span&gt;<br />
+        &lt;code&gt;:fail:&lt;/code&gt;<br />
+        &lt;/Emoji&gt;
+    </code>
+</p>
+
+<Emoji>
+    <span>:grinning:</span>
+    <span>:octocat:</span>
+    <code>:fail:</code>
+</Emoji>
+
+<hr />
+
+<Emoji>@_text</Emoji>
+<Emoji>@_emoji</Emoji>
+
+@code {
+    string _emoji;
+    string _text;
+
+    protected override void OnInitialized()
+    {
+        _emoji = ":open_umbrella:";
+        _text = "it's raining :cat:s and :dog:s!";
+    }
+}
