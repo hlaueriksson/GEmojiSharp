@@ -6,5 +6,5 @@ before_build:
 build:
   project: GEmojiSharp.sln
   verbosity: minimal
-  test_script:
-    - ps: "dotnet test .\\tests\\GEmojiSharp.Tests\\GEmojiSharp.Tests.csproj"
+test_script:
+  - ps: "dotnet test .\\tests\\GEmojiSharp.Tests\\GEmojiSharp.Tests.csproj"
