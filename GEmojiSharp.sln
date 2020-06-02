@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GEmojiSharp.Blazor", "src\G
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GEmojiSharp.Sample.BlazorWebAssembly", "samples\GEmojiSharp.Sample.BlazorWebAssembly\GEmojiSharp.Sample.BlazorWebAssembly.csproj", "{1BF0F93F-AEEC-4F49-84C8-CD88FA7E8239}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GEmojiSharp.Sample.BlazorServer", "samples\GEmojiSharp.Sample.BlazorServer\GEmojiSharp.Sample.BlazorServer.csproj", "{BD90A65E-9F61-48BF-8885-3505B8C0D299}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{1BF0F93F-AEEC-4F49-84C8-CD88FA7E8239}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BF0F93F-AEEC-4F49-84C8-CD88FA7E8239}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BF0F93F-AEEC-4F49-84C8-CD88FA7E8239}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD90A65E-9F61-48BF-8885-3505B8C0D299}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD90A65E-9F61-48BF-8885-3505B8C0D299}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD90A65E-9F61-48BF-8885-3505B8C0D299}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD90A65E-9F61-48BF-8885-3505B8C0D299}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{FBC5D0FB-ECAE-471C-9447-91DB023D0B0E} = {6938AF53-C5C7-478A-9554-6E7A02509432}
 		{748078D9-2705-44E7-A6D9-30976F03D102} = {08210849-A04E-459A-907D-980E559710E6}
 		{1BF0F93F-AEEC-4F49-84C8-CD88FA7E8239} = {6938AF53-C5C7-478A-9554-6E7A02509432}
+		{BD90A65E-9F61-48BF-8885-3505B8C0D299} = {6938AF53-C5C7-478A-9554-6E7A02509432}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4EE2F45B-9E7D-46BE-A6C1-A1ACC12A0DCA}
