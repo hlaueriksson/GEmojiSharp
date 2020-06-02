@@ -1,0 +1,39 @@
+@page "/all"
+@using GEmojiSharp.Blazor
+
+<h1>All</h1>
+
+@foreach (var category in Categories)
+{
+    <h2>@(string.IsNullOrEmpty(category.Key) ? "Uncategorized" : category.Key)</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Emoji</th>
+                <th>Aliases</th>
+                <th>Description</th>
+                <th>Tags</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var emoji in category)
+            {
+                <tr>
+                    <td><Emoji>@($":{emoji.Aliases.First()}:")</Emoji></td>
+                    <td><code>@((MarkupString) string.Join("<br />", emoji.Aliases.Select(x => $":{x}:")))</code></td>
+                    <td>@emoji.Description</td>
+                    <td>@string.Join(", ", emoji.Tags ?? new string[0])</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    public IEnumerable<IGrouping<string, GEmoji>> Categories { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Categories = GEmojiSharp.Emoji.All.GroupBy(x => x.Category);
+    }
+}
