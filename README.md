@@ -4,6 +4,7 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/hlaueriksson/gemojisharp/badge)](https://www.codefactor.io/repository/github/hlaueriksson/gemojisharp)
 
 [![GEmojiSharp](https://img.shields.io/nuget/v/GEmojiSharp.svg?label=GEmojiSharp)](https://www.nuget.org/packages/GEmojiSharp)
+[![GEmojiSharp.Blazor](https://img.shields.io/nuget/v/GEmojiSharp.Blazor.svg?label=GEmojiSharp.Blazor)](https://www.nuget.org/packages/GEmojiSharp.Blazor)
 [![GEmojiSharp.TagHelpers](https://img.shields.io/nuget/v/GEmojiSharp.TagHelpers.svg?label=GEmojiSharp.TagHelpers)](https://www.nuget.org/packages/GEmojiSharp.TagHelpers)
 
 > GitHub Emoji for C# and ASP.NET Core
@@ -21,9 +22,9 @@
 - [GEmojiSharp](#gemojisharp)
 - [Content](#content)
 - [Introduction](#introduction)
-- [Emoji](#emoji)
-- [Blazor](#blazor)
-- [Tag Helpers](#tag-helpers)
+- [`GEmojiSharp` 📦](#gemojisharp-)
+- [`GEmojiSharp.Blazor` 📦](#gemojisharpblazor-)
+- [`GEmojiSharp.TagHelpers` 📦](#gemojisharptaghelpers-)
 - [Samples](#samples)
 - [Attribution](#attribution)
 
@@ -35,13 +36,13 @@
 
 :+1: This PR looks great - it's ready to merge! :shipit:
 
-`GEmojiSharp` and `GEmojiSharp.TagHelpers` are two libraries to make this possible in C# and ASP.NET Core.
+`GEmojiSharp`, `GEmojiSharp.Blazor` and `GEmojiSharp.TagHelpers` are three libraries to make this possible in C#, Blazor and ASP.NET Core.
 
 A list of all GitHub Emojis:
 
 * https://github.com/hlaueriksson/github-emoji
 
-# Emoji
+# `GEmojiSharp` 📦
 
 [![NuGet](https://buildstats.info/nuget/GEmojiSharp)](https://www.nuget.org/packages/GEmojiSharp/)
 
@@ -65,7 +66,7 @@ Extension methods:
 "party popper".FindEmojis().First().Raw; // 🎉
 ```
 
-# Blazor
+# `GEmojiSharp.Blazor` 📦
 
 [![NuGet](https://buildstats.info/nuget/GEmojiSharp.Blazor)](https://www.nuget.org/packages/GEmojiSharp.Blazor/)
 
@@ -105,7 +106,7 @@ Custom GitHub emojis are rendered as images:
 <img class="emoji" title=":octocat:" alt=":octocat:" src="https://github.githubassets.com/images/icons/emoji/octocat.png" height="20" width="20" align="absmiddle">
 ```
 
-# Tag Helpers
+# `GEmojiSharp.TagHelpers` 📦
 
 [![NuGet](https://buildstats.info/nuget/GEmojiSharp.TagHelpers)](https://www.nuget.org/packages/GEmojiSharp.TagHelpers/)
 
@@ -234,7 +235,9 @@ The [`samples`](/samples) folder contains...
 * `GEmojiSharp.Sample.BlazorServer`, a Blazor Server app
 * `GEmojiSharp.Sample.BlazorWebAssembly`, a Blazor WebAssembly app
 
-![GEmojiSharp.Sample.BlazorWebAssembly](GEmojiSharp.Sample.BlazorWebAssembly.png)
+The Blazor WebAssembly app is showcased here: https://hlaueriksson.github.io/GEmojiSharp/
+
+[![GEmojiSharp.Sample.BlazorWebAssembly](GEmojiSharp.Sample.BlazorWebAssembly.png)](https://hlaueriksson.github.io/GEmojiSharp/)
 
 * `GEmojiSharp.Sample.Web`, a ASP.NET Core web site
 
