@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace GEmojiSharp.TagHelpers
@@ -75,16 +73,6 @@ namespace GEmojiSharp.TagHelpers
         private static string Alias(this GEmoji emoji)
         {
             return emoji.Aliases.First();
-        }
-
-        private static IEnumerable<int> ToCodePoints(this string emoji)
-        {
-            var utf32Bytes = Encoding.UTF32.GetBytes(emoji);
-            var bytesPerCharInUtf32 = 4;
-            for (var i = 0; i < utf32Bytes.Length; i += bytesPerCharInUtf32)
-            {
-                yield return BitConverter.ToInt32(utf32Bytes, i);
-            }
         }
     }
 }
