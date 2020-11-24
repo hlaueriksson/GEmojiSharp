@@ -1761,7 +1761,7 @@
             new GEmoji { Raw = "", Aliases = new[] { "rage2" }, Filename = "rage2" },
             new GEmoji { Raw = "", Aliases = new[] { "rage3" }, Filename = "rage3" },
             new GEmoji { Raw = "", Aliases = new[] { "rage4" }, Filename = "rage4" },
-            new GEmoji { Raw = "", Aliases = new[] { "shipit", "squirrel" }, Filename = "shipit" },
+            new GEmoji { Raw = "", Aliases = new[] { "shipit" }, Filename = "shipit" },
             new GEmoji { Raw = "", Aliases = new[] { "suspect" }, Filename = "suspect" },
             new GEmoji { Raw = "", Aliases = new[] { "trollface" }, Filename = "trollface" }
         };
