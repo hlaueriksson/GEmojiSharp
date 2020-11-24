@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Newtonsoft.Json.Linq;
@@ -87,12 +88,6 @@ namespace GEmojiSharp.Tests
             {
                 foreach (var alias in emoji.Aliases)
                 {
-                    if (emoji.IsCustom)
-                    {
-                        Console.WriteLine($"Skipping :{alias}:");
-                        continue;
-                    }
-
                     var token = json[alias];
 
                     token.Should().NotBeNull($":{alias}:");
@@ -109,11 +104,11 @@ namespace GEmojiSharp.Tests
             var content = await response.Content.ReadAsStringAsync();
             var json = JObject.Parse(content);
 
-            foreach (var value in json.PropertyValues())
+            foreach (var token in json.PropertyValues())
             {
-                var emoji = Emoji.Get(value.Path);
+                var emoji = Emoji.Get(token.Path);
 
-                if (emoji == GEmoji.Empty) Console.WriteLine($":{value.Path}:");
+                emoji.Should().NotBe(GEmoji.Empty, $":{token.Path}:");
             }
         }
 
@@ -128,13 +123,39 @@ namespace GEmojiSharp.Tests
 
             foreach (var emoji in Emoji.All)
             {
-                var token = json[emoji.Aliases.First()];
-                var filename = token.Value<string>()
-                    .Replace("https://github.githubassets.com/images/icons/emoji/unicode/", string.Empty)
-                    .Replace("https://github.githubassets.com/images/icons/emoji/", string.Empty)
-                    .Replace(".png?v8", string.Empty);
+                foreach (var alias in emoji.Aliases)
+                {
+                    var token = json[alias];
+                    var filename = token.Value<string>()
+                        .Replace("https://github.githubassets.com/images/icons/emoji/unicode/", string.Empty)
+                        .Replace("https://github.githubassets.com/images/icons/emoji/", string.Empty)
+                        .Replace(".png?v8", string.Empty);
 
-                emoji.Filename.Should().Be(filename);
+                    emoji.Filename.Should().Be(filename);
+                }
+            }
+        }
+
+        [Test, Explicit]
+        public async Task Raw_vs_Available()
+        {
+            var client = new HttpClient();
+            var response = await client.GetAsync("https://github.com/hlaueriksson/github-emoji/blob/master/available.md");
+            var content = await response.Content.ReadAsStringAsync();
+
+            foreach (var emoji in Emoji.All.Where(x => !x.IsCustom))
+            {
+                foreach (var alias in emoji.Aliases)
+                {
+                    var regex = new Regex($"<tr>\n<td><g-emoji.*>(.*)</g-emoji></td>\n<td><code>:{Regex.Escape(alias)}:</code></td>\n</tr>");
+                    var match = regex.Match(content);
+
+                    match.Success.Should().BeTrue($":{alias}:");
+
+                    var raw = match.Groups[1].Value;
+
+                    emoji.Raw.Should().Be(raw, $":{alias}:");
+                }
             }
         }
     }
