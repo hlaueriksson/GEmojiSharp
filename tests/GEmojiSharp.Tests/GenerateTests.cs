@@ -32,7 +32,7 @@ namespace GEmojiSharp.Tests
 
             foreach (var emoji in emojis)
             {
-                var e = emoji.Value<string>("emoji") ?? string.Empty;
+                var e = emoji.Value<string>("emoji");
                 var d = emoji.Value<string>("description");
                 var c = emoji.Value<string>("category");
                 var a = emoji["aliases"].Values<string>();
@@ -40,8 +40,10 @@ namespace GEmojiSharp.Tests
                 var uv = emoji.Value<string>("unicode_version");
                 var iv = emoji.Value<string>("ios_version");
 
-                a = a.Where(x => supportedEmojis[x] != null);
+                a = a.Where(x => supportedEmojis[x] != null).ToList();
                 if (!a.Any()) continue;
+
+                FixRaw();
 
                 var url = supportedEmojis[a.First()].Value<string>();
                 var filename = url
@@ -59,6 +61,17 @@ namespace GEmojiSharp.Tests
                 if (iv != null) result.Append($", IosVersion = \"{iv}\"");
                 result.Append($", Filename = \"{filename}\"");
                 result.AppendLine(" },");
+
+                void FixRaw()
+                {
+                    e = a.First() switch
+                    {
+                        "beetle" => "🐞",
+                        "man_in_tuxedo" => "🤵",
+                        "bride_with_veil" => "👰",
+                        _ => e
+                    };
+                }
             }
 
             Console.WriteLine(result.ToString());
