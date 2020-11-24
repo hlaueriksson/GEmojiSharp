@@ -588,7 +588,7 @@
             new GEmoji { Raw = "🐛", Description = "bug", Category = "Animals & Nature", Aliases = new[] { "bug" }, UnicodeVersion = "6.0", IosVersion = "6.0", Filename = "1f41b" },
             new GEmoji { Raw = "🐜", Description = "ant", Category = "Animals & Nature", Aliases = new[] { "ant" }, UnicodeVersion = "6.0", IosVersion = "6.0", Filename = "1f41c" },
             new GEmoji { Raw = "🐝", Description = "honeybee", Category = "Animals & Nature", Aliases = new[] { "bee", "honeybee" }, UnicodeVersion = "6.0", IosVersion = "6.0", Filename = "1f41d" },
-            new GEmoji { Raw = "🪲", Description = "beetle", Category = "Animals & Nature", Aliases = new[] { "beetle" }, UnicodeVersion = "13.0", IosVersion = "14.0", Filename = "1f41e" },
+            new GEmoji { Raw = "🐞", Description = "beetle", Category = "Animals & Nature", Aliases = new[] { "beetle" }, UnicodeVersion = "13.0", IosVersion = "14.0", Filename = "1f41e" },
             new GEmoji { Raw = "🦗", Description = "cricket", Category = "Animals & Nature", Aliases = new[] { "cricket" }, UnicodeVersion = "11.0", IosVersion = "12.1", Filename = "1f997" },
             new GEmoji { Raw = "🕷️", Description = "spider", Category = "Animals & Nature", Aliases = new[] { "spider" }, UnicodeVersion = "7.0", IosVersion = "9.1", Filename = "1f577" },
             new GEmoji { Raw = "🕸️", Description = "spider web", Category = "Animals & Nature", Aliases = new[] { "spider_web" }, UnicodeVersion = "7.0", IosVersion = "9.1", Filename = "1f578" },
