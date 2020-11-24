@@ -25,6 +25,11 @@ namespace GEmojiSharp.Tests
             Emoji.Raw(":grinning:").Should().Be("😀");
             Emoji.Raw(":blonde_woman:").Should().Be("👱‍♀️");
             Emoji.Raw(":fail:").Should().BeEmpty();
+
+            // Regressions
+            Emoji.Raw(":beetle:").Should().Be("🐞");
+            Emoji.Raw(":man_in_tuxedo:").Should().Be("🤵");
+            Emoji.Raw(":bride_with_veil:").Should().Be("👰");
         }
 
         [Test]
