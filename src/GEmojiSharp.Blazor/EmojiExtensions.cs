@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -31,7 +31,7 @@ namespace GEmojiSharp.Blazor
         /// <returns>An HTML <c>string</c>.</returns>
         public static string Markup(this GEmoji emoji)
         {
-            if (emoji == GEmoji.Empty) return string.Empty;
+            if (emoji is null || emoji == GEmoji.Empty) return string.Empty;
 
             return emoji.IsCustom ?
                 $@"<img class=""emoji"" title="":{emoji.Alias()}:"" alt="":{emoji.Alias()}:"" src=""https://github.githubassets.com/images/icons/emoji/{emoji.Filename}.png"" height=""20"" width=""20"" align=""absmiddle"">" :

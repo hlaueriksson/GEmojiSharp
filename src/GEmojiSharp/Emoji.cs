@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -29,6 +30,8 @@ namespace GEmojiSharp
         /// <returns>The emoji.</returns>
         public static GEmoji Get(string alias)
         {
+            if (alias is null) throw new ArgumentNullException(nameof(alias));
+
             var key = alias.TrimAlias();
 
             return Dictionary.ContainsKey(key) ? Dictionary[key] : GEmoji.Empty;

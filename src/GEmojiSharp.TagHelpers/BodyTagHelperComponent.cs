@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace GEmojiSharp.TagHelpers
@@ -16,7 +17,9 @@ namespace GEmojiSharp.TagHelpers
         /// <returns>A <see cref="Task"/> that on completion updates the <c>output</c>.</returns>
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
-            var content = await output.GetChildContentAsync();
+            if (output is null) throw new ArgumentNullException(nameof(output));
+
+            var content = await output.GetChildContentAsync().ConfigureAwait(false);
 
             output.Content.SetHtmlContent(content.GetContent().MarkupContent());
         }

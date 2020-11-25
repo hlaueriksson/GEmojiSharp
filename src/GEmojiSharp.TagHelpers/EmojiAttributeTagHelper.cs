@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Razor.TagHelpers;
+using System;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace GEmojiSharp.TagHelpers
 {
@@ -15,6 +16,8 @@ namespace GEmojiSharp.TagHelpers
         /// <param name="output">A stateful HTML element used to generate an HTML tag.</param>
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
+            if (output is null) throw new ArgumentNullException(nameof(output));
+
             var alias = output.Attributes["emoji"]?.Value?.ToString();
 
             output.Attributes.RemoveAll("emoji");
