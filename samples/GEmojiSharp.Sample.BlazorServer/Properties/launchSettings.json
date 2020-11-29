@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:59401",
-      "sslPort": 44358
+      "applicationUrl": "http://localhost:59657",
+      "sslPort": 44368
     }
   },
   "profiles": {
@@ -17,6 +17,7 @@
     },
     "GEmojiSharp.Sample.BlazorServer": {
       "commandName": "Project",
+      "dotnetRunMessages": "true",
       "launchBrowser": true,
       "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
