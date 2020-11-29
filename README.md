@@ -1,6 +1,6 @@
 # GEmojiSharp
 
-[![Build status](https://ci.appveyor.com/api/projects/status/0fau2qdcv54sb7k0?svg=true)](https://ci.appveyor.com/project/hlaueriksson/gemojisharp)
+[![Build status](https://github.com/hlaueriksson/GEmojiSharp/workflows/build/badge.svg)](https://github.com/hlaueriksson/GEmojiSharp/actions?query=workflow%3Abuild)
 [![CodeFactor](https://www.codefactor.io/repository/github/hlaueriksson/gemojisharp/badge)](https://www.codefactor.io/repository/github/hlaueriksson/gemojisharp)
 
 [![GEmojiSharp](https://img.shields.io/nuget/v/GEmojiSharp.svg?label=GEmojiSharp)](https://www.nuget.org/packages/GEmojiSharp)
