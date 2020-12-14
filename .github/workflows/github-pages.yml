@@ -1,0 +1,27 @@
+name: GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build_and_deploy_job:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.100
+    - name: Build
+      run: dotnet publish ./samples/GEmojiSharp.Sample.BlazorWebAssembly/ --configuration Release --output build
+    - name: Fix index.html
+      run: sed -i 's/<base href="\/" \/>/<base href="\/GEmojiSharp\/" \/>/g' /build/wwwroot/index.html
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@3.7.1
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: build/wwwroot
+        CLEAN: true
