@@ -17,11 +17,11 @@ jobs:
     - name: Build
       run: dotnet publish ./samples/GEmojiSharp.Sample.BlazorWebAssembly/ --configuration Release --output build
     - name: Fix index.html
-      run: sed -i 's/<base href="\/" \/>/<base href="\/GEmojiSharp\/" \/>/g' /build/wwwroot/index.html
+      run: sed -i 's/<base href="\/" \/>/<base href="\/GEmojiSharp\/" \/>/g' ./build/wwwroot/index.html
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@3.7.1
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BRANCH: gh-pages
-        FOLDER: build/wwwroot
+        FOLDER: ./build/wwwroot
         CLEAN: true
