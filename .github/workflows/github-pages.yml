@@ -18,6 +18,8 @@ jobs:
       run: dotnet publish ./samples/GEmojiSharp.Sample.BlazorWebAssembly/ --configuration Release --output build
     - name: Fix index.html
       run: sed -i 's/<base href="\/" \/>/<base href="\/GEmojiSharp\/" \/>/g' ./build/wwwroot/index.html
+    - name: Add .nojekyll
+      run: touch ./build/wwwroot/.nojekyll
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@3.7.1
       with:
