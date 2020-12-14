@@ -234,14 +234,14 @@ The [`samples`](/samples) folder contains...
 
 * `GEmojiSharp.Sample.BlazorServer`, a Blazor Server app
 * `GEmojiSharp.Sample.BlazorWebAssembly`, a Blazor WebAssembly app
-
-The Blazor WebAssembly app is showcased here: https://purple-mushroom-05c6bad10.azurestaticapps.net
-
-[![GEmojiSharp.Sample.BlazorWebAssembly](GEmojiSharp.Sample.BlazorWebAssembly.png)](https://purple-mushroom-05c6bad10.azurestaticapps.net)
-
 * `GEmojiSharp.Sample.Web`, a ASP.NET Core web site
 
-![GEmojiSharp.Sample.Web](GEmojiSharp.Sample.Web.png)
+The Blazor WebAssembly app is showcased here:
+
+* https://hlaueriksson.github.io/GEmojiSharp/ (GitHub Pages)
+* https://purple-mushroom-05c6bad10.azurestaticapps.net (Azure Static Web Apps)
+
+[![GEmojiSharp.Sample.BlazorWebAssembly](GEmojiSharp.Sample.BlazorWebAssembly.png)](https://hlaueriksson.github.io/GEmojiSharp/)
 
 # Attribution
 
