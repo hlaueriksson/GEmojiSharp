@@ -13,7 +13,7 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 5.0.100
+        dotnet-version: 6.0.x
     - name: Build
       run: dotnet publish ./samples/GEmojiSharp.Sample.BlazorWebAssembly/ --configuration Release --output build
     - name: Fix index.html
@@ -21,9 +21,8 @@ jobs:
     - name: Add .nojekyll
       run: touch ./build/wwwroot/.nojekyll
     - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@3.7.1
+      uses: JamesIves/github-pages-deploy-action@4.1.7
       with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: ./build/wwwroot
-        CLEAN: true
+        branch: gh-pages
+        folder: ./build/wwwroot
+        clean: true
