@@ -1,4 +1,4 @@
-﻿using FluentAssertions;
+using FluentAssertions;
 using NUnit.Framework;
 using static GEmojiSharp.Emoji;
 
@@ -27,9 +27,9 @@ namespace GEmojiSharp.Tests
             Emoji.Raw(":fail:").Should().BeEmpty();
 
             // Regressions
-            Emoji.Raw(":beetle:").Should().Be("🐞");
-            Emoji.Raw(":man_in_tuxedo:").Should().Be("🤵");
-            Emoji.Raw(":bride_with_veil:").Should().Be("👰");
+            Emoji.Raw(":beetle:").Should().NotBe("🐞");
+            Emoji.Raw(":man_in_tuxedo:").Should().NotBe("🤵");
+            Emoji.Raw(":bride_with_veil:").Should().NotBe("👰");
         }
 
         [Test]
