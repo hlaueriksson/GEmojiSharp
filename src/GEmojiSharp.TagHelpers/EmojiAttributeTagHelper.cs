@@ -21,7 +21,7 @@ namespace GEmojiSharp.TagHelpers
             var alias = output.Attributes["emoji"]?.Value?.ToString();
 
             output.Attributes.RemoveAll("emoji");
-            output.Content.SetHtmlContent(alias.Markup());
+            output.Content.SetHtmlContent(alias?.Markup());
             output.TagMode = TagMode.StartTagAndEndTag;
         }
     }
