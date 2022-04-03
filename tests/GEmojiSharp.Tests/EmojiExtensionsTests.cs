@@ -7,6 +7,7 @@ namespace GEmojiSharp.Tests
     public class EmojiExtensionsTests
     {
         private const string NullString = null;
+        private const GEmoji NullGEmoji = null;
 
         [Test]
         public void GetEmoji()
@@ -76,7 +77,7 @@ namespace GEmojiSharp.Tests
             "😀".GetEmoji().Alias().Should().Be(":grinning:");
             ":atom:".GetEmoji().Alias().Should().Be(":atom:");
             GEmoji.Empty.Alias().Should().BeEmpty();
-            ((GEmoji)null).Alias().Should().BeEmpty();
+            NullGEmoji.Alias().Should().BeEmpty();
         }
     }
 }

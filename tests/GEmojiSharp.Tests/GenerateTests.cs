@@ -186,7 +186,7 @@ namespace GEmojiSharp.Tests
         }
 
         [Test, Explicit]
-        public async Task RegexPattern_vs_Emoji_All()
+        public void RegexPattern_vs_Emoji_All()
         {
             var regex = new Regex(Emoji.RegexPattern, RegexOptions.Compiled);
 
@@ -203,7 +203,7 @@ namespace GEmojiSharp.Tests
         }
 
         [Test, Explicit]
-        public async Task Demojify_vs_Emoji_All()
+        public void Demojify_vs_Emoji_All()
         {
             foreach (var emoji in Emoji.All.Where(x => !x.IsCustom))
             {
