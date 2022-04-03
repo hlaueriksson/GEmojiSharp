@@ -125,7 +125,7 @@ namespace GEmojiSharp
             return All.Where(emoji => emoji.Description?.Contains(value) == true ||
                                       emoji.Category?.Contains(value) == true ||
                                       emoji.Aliases?.Any(x => x.Contains(value)) == true ||
-                                      emoji.Tags?.Any(x => x.Contains(value)) == true);
+                                      emoji.Tags?.Any(x => x.Contains(value)) == true).ToArray();
         }
     }
 }
