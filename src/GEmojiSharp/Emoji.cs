@@ -10,7 +10,8 @@ namespace GEmojiSharp
     /// </summary>
     public static partial class Emoji
     {
-        private static readonly Dictionary<string, GEmoji> Dictionary = new Dictionary<string, GEmoji>();
+        private static readonly Dictionary<string, GEmoji> AliasToGEmoji = new();
+        private static readonly Dictionary<string, GEmoji> RawToGEmoji = new();
 
         static Emoji()
         {
@@ -18,23 +19,32 @@ namespace GEmojiSharp
             {
                 foreach (var alias in emoji.Aliases)
                 {
-                    Dictionary.Add(alias, emoji);
+                    AliasToGEmoji.Add(alias, emoji);
+                }
+
+                if (!emoji.IsCustom)
+                {
+                    RawToGEmoji.Add(emoji.Raw, emoji);
                 }
             }
         }
 
         /// <summary>
-        /// Gets the emoji associated with the alias, or <see cref="GEmoji.Empty"/> if the alias is not found.
+        /// Gets the emoji associated with the alias or raw Unicode <c>string</c>.
+        /// If no match is found, then <see cref="GEmoji.Empty"/> is returned.
         /// </summary>
-        /// <param name="alias">The name uniquely referring to an emoji.</param>
+        /// <param name="value">The emoji alias or raw Unicode <c>string</c>.</param>
         /// <returns>The emoji.</returns>
-        public static GEmoji Get(string alias)
+        public static GEmoji Get(string value)
         {
-            if (alias is null) throw new ArgumentNullException(nameof(alias));
+            if (value is null) throw new ArgumentNullException(nameof(value));
 
-            var key = alias.TrimAlias();
+            var key = value.TrimAlias();
 
-            return Dictionary.ContainsKey(key) ? Dictionary[key] : GEmoji.Empty;
+            return
+                AliasToGEmoji.ContainsKey(key) ? AliasToGEmoji[key] :
+                RawToGEmoji.ContainsKey(key) ? RawToGEmoji[key] :
+                GEmoji.Empty;
         }
 
         /// <summary>
@@ -45,6 +55,16 @@ namespace GEmojiSharp
         public static string Raw(string alias)
         {
             return Get(alias).Raw;
+        }
+
+        /// <summary>
+        /// Gets the alias of the emoji represented by the raw Unicode <c>string</c>.
+        /// </summary>
+        /// <param name="raw">The raw Unicode <c>string</c> of the emoji.</param>
+        /// <returns>The name uniquely referring to the emoji.</returns>
+        public static string Alias(string raw)
+        {
+            return Get(raw).Alias();
         }
 
         /// <summary>
@@ -68,6 +88,30 @@ namespace GEmojiSharp
                 var emoji = Get(match.Value);
 
                 return emoji.IsCustom ? match.Value : emoji.Raw;
+            }
+        }
+
+        /// <summary>
+        /// Replaces raw Unicode strings with emoji aliases.
+        /// </summary>
+        /// <param name="text">A text with raw Unicode strings.</param>
+        /// <returns>The demojified text.</returns>
+        /// <example>
+        /// <code>
+        /// Emoji.Demojify("it's raining 🐱s and 🐶s!"); // "it's raining :cat:s and :dog:s!"
+        /// </code>
+        /// </example>
+        public static string Demojify(string text)
+        {
+            MatchEvaluator evaluator = EmojiMatchEvaluator;
+
+            return Regex.Replace(text, RegexPattern, evaluator, RegexOptions.Compiled);
+
+            string EmojiMatchEvaluator(Match match)
+            {
+                var emoji = Get(match.Value);
+
+                return emoji.IsCustom ? match.Value : emoji.Alias();
             }
         }
 

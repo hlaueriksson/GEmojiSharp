@@ -17,6 +17,10 @@ namespace GEmojiSharp.Tests
             var octocat = Emoji.Get(":octocat:");
             octocat.Should().NotBe(GEmoji.Empty);
             octocat.Raw.Should().BeEmpty();
+
+            Emoji.Get("😀").Should().NotBe(GEmoji.Empty);
+            Emoji.Get("字").Should().Be(GEmoji.Empty);
+            Emoji.Get("😀").Should().Be(Emoji.Get(":grinning:"));
         }
 
         [Test]
@@ -33,10 +37,26 @@ namespace GEmojiSharp.Tests
         }
 
         [Test]
+        public void Alias_should_return_the_name_uniquely_referring_to_the_emoji()
+        {
+            Emoji.Alias("😀").Should().Be(":grinning:");
+            Emoji.Alias("👱‍♀️").Should().Be(":blond_haired_woman:");
+            Emoji.Alias("字").Should().BeEmpty();
+        }
+
+        [Test]
         public void Emojify()
         {
             Emoji.Emojify("Hello, :earth_africa:").Should().Be("Hello, 🌍");
             Emoji.Emojify("Hello, :fail:").Should().Be("Hello, :fail:");
+        }
+
+        [Test]
+        public void Demojify()
+        {
+            Emoji.Demojify("Hello, 🌍").Should().Be("Hello, :earth_africa:");
+            Emoji.Demojify("Hello, 👱‍♀️").Should().Be("Hello, :blond_haired_woman:");
+            Emoji.Demojify("Hello, 字").Should().Be("Hello, 字");
         }
 
         [Test]

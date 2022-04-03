@@ -1,4 +1,4 @@
-﻿using FluentAssertions;
+using FluentAssertions;
 using NUnit.Framework;
 
 namespace GEmojiSharp.Tests
@@ -6,7 +6,7 @@ namespace GEmojiSharp.Tests
     public class GEmojiTests
     {
         [Test]
-        public void HasEmoji()
+        public void IsCustom()
         {
             Emoji.Get(":grinning:").IsCustom.Should().Be(false);
             Emoji.Get(":octocat:").IsCustom.Should().Be(true);

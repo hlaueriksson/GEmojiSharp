@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Net.Http;
@@ -60,6 +61,31 @@ namespace GEmojiSharp.Tests
                 result.Append($", Filename = \"{filename}\"");
                 result.AppendLine(" },");
             }
+
+            Console.WriteLine(result.ToString());
+        }
+
+        [Test, Explicit]
+        public void Demojify()
+        {
+            var codes = new List<string>();
+
+            foreach (var emoji in Emoji.All)
+            {
+                if (emoji.IsCustom) continue;
+                var chars = emoji.Raw.Select(c => $@"\u{(ushort)c:x4}");
+                codes.Add(string.Join(string.Empty, chars));
+            }
+
+            var result = new StringBuilder();
+
+            foreach (var code in codes.OrderByDescending(x => x.Length))
+            {
+                if (result.Length > 0) result.Append("|");
+                result.Append(code);
+            }
+            result.Insert(0, "(");
+            result.Append(")");
 
             Console.WriteLine(result.ToString());
         }
@@ -157,6 +183,38 @@ namespace GEmojiSharp.Tests
                     emoji.Raw.Should().Be(raw, $":{alias}:");
                 }
             }
+        }
+
+        [Test, Explicit]
+        public async Task RegexPattern_vs_Emoji_All()
+        {
+            var regex = new Regex(Emoji.RegexPattern, RegexOptions.Compiled);
+
+            foreach (var emoji in Emoji.All.Where(x => !x.IsCustom))
+            {
+                var match = regex.Match(emoji.Raw);
+
+                match.Success.Should().BeTrue($":{emoji.Aliases.First()}:");
+
+                var raw = match.Groups[1].Value;
+
+                emoji.Raw.Should().Be(raw, $":{emoji.Aliases.First()}:");
+            }
+        }
+
+        [Test, Explicit]
+        public async Task Demojify_vs_Emoji_All()
+        {
+            foreach (var emoji in Emoji.All.Where(x => !x.IsCustom))
+            {
+                emoji.Raw.Demojify().Should().Be($":{emoji.Aliases.First()}:");
+            }
+
+            var shuffledEmojis = Emoji.All.Where(x => !x.IsCustom).OrderBy(a => Guid.NewGuid()).ToList();
+            var text = string.Join(string.Empty, shuffledEmojis.Select(x => x.Raw));
+            var result = text.Demojify();
+            var expected = string.Join(string.Empty, shuffledEmojis.Select(x => $":{x.Aliases.First()}:"));
+            result.Should().Be(expected);
         }
     }
 }

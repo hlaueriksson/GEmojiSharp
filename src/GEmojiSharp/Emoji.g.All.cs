@@ -1,5 +1,8 @@
 namespace GEmojiSharp
 {
+    /// <summary>
+    /// Contains auto-generated array of all emojis.
+    /// </summary>
     public static partial class Emoji
     {
         /// <summary>
