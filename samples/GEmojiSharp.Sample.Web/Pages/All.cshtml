@@ -7,7 +7,7 @@
 <div class="text-center">
     <h1 class="display-4">All</h1>
 
-    @foreach (var category in Model.Categories)
+    @foreach (var category in Model.Categories!)
     {
         <h2>@(string.IsNullOrEmpty(category.Key) ? "Uncategorized" : category.Key)</h2>
         <table class="table">

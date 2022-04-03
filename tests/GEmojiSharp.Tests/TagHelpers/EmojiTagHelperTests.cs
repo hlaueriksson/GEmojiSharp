@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using FluentAssertions;
 using GEmojiSharp.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
@@ -14,11 +14,11 @@ namespace GEmojiSharp.Tests.TagHelpers
             var subject = new EmojiTagHelper();
 
             var output = GetTagHelperOutput(":grinning:");
-            await subject.ProcessAsync(null, output);
+            await subject.ProcessAsync(null!, output);
             output.Content.GetContent().Should().Be(":grinning:".Markup());
 
             output = GetTagHelperOutput(":fail:");
-            await subject.ProcessAsync(null, output);
+            await subject.ProcessAsync(null!, output);
             output.Content.GetContent().Should().Be(":fail:");
 
             TagHelperOutput GetTagHelperOutput(string content)
