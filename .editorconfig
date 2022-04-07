@@ -180,3 +180,7 @@ dotnet_diagnostic.SA1501.severity = none
 dotnet_diagnostic.SA1503.severity = none
 dotnet_diagnostic.SA1623.severity = none
 dotnet_diagnostic.SA1633.severity = none
+
+[src/GEmojiSharp/Emoji.g.All.cs]
+dotnet_diagnostic.SA1122.severity = none # Use string.Empty for empty strings
+dotnet_diagnostic.SA1413.severity = none # Use trailing comma in multi-line initializers

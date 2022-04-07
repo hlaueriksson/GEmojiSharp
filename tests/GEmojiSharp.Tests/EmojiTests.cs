@@ -1,3 +1,4 @@
+using System;
 using FluentAssertions;
 using NUnit.Framework;
 using static GEmojiSharp.Emoji;
@@ -6,6 +7,8 @@ namespace GEmojiSharp.Tests
 {
     public class EmojiTests
     {
+        private const string NullString = null;
+
         [Test]
         public void Get()
         {
@@ -17,6 +20,13 @@ namespace GEmojiSharp.Tests
             var octocat = Emoji.Get(":octocat:");
             octocat.Should().NotBe(GEmoji.Empty);
             octocat.Raw.Should().BeEmpty();
+
+            Emoji.Get("😀").Should().NotBe(GEmoji.Empty);
+            Emoji.Get("字").Should().Be(GEmoji.Empty);
+            Emoji.Get("😀").Should().Be(Emoji.Get(":grinning:"));
+
+            Action act = () => Emoji.Get(NullString);
+            act.Should().Throw<ArgumentNullException>();
         }
 
         [Test]
@@ -30,6 +40,20 @@ namespace GEmojiSharp.Tests
             Emoji.Raw(":beetle:").Should().NotBe("🐞");
             Emoji.Raw(":man_in_tuxedo:").Should().NotBe("🤵");
             Emoji.Raw(":bride_with_veil:").Should().NotBe("👰");
+
+            Action act = () => Emoji.Raw(NullString);
+            act.Should().Throw<ArgumentNullException>();
+        }
+
+        [Test]
+        public void Alias_should_return_the_name_uniquely_referring_to_the_emoji()
+        {
+            Emoji.Alias("😀").Should().Be(":grinning:");
+            Emoji.Alias("👱‍♀️").Should().Be(":blond_haired_woman:");
+            Emoji.Alias("字").Should().BeEmpty();
+
+            Action act = () => Emoji.Alias(NullString);
+            act.Should().Throw<ArgumentNullException>();
         }
 
         [Test]
@@ -37,6 +61,20 @@ namespace GEmojiSharp.Tests
         {
             Emoji.Emojify("Hello, :earth_africa:").Should().Be("Hello, 🌍");
             Emoji.Emojify("Hello, :fail:").Should().Be("Hello, :fail:");
+
+            Action act = () => Emoji.Emojify(NullString);
+            act.Should().Throw<ArgumentNullException>();
+        }
+
+        [Test]
+        public void Demojify()
+        {
+            Emoji.Demojify("Hello, 🌍").Should().Be("Hello, :earth_africa:");
+            Emoji.Demojify("Hello, 👱‍♀️").Should().Be("Hello, :blond_haired_woman:");
+            Emoji.Demojify("Hello, 字").Should().Be("Hello, 字");
+
+            Action act = () => Emoji.Demojify(NullString);
+            act.Should().Throw<ArgumentNullException>();
         }
 
         [Test]
@@ -44,6 +82,9 @@ namespace GEmojiSharp.Tests
         {
             Emoji.Find("face").Should().NotBeEmpty();
             Emoji.Find("fail").Should().BeEmpty();
+
+            Action act = () => Emoji.Find(NullString);
+            act.Should().Throw<ArgumentNullException>();
         }
 
         [Test]
