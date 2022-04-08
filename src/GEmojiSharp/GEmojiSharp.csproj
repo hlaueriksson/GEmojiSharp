@@ -38,6 +38,7 @@ Updated:
   </ItemGroup>
 
   <ItemGroup>
+    <InternalsVisibleTo Include="GEmojiSharp.DotnetTool" />
     <InternalsVisibleTo Include="GEmojiSharp.Tests" />
   </ItemGroup>
 
