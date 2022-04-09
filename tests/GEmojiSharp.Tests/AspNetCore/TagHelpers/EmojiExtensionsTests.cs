@@ -1,8 +1,8 @@
-﻿using FluentAssertions;
-using GEmojiSharp.TagHelpers;
+using FluentAssertions;
+using GEmojiSharp.AspNetCore.TagHelpers;
 using NUnit.Framework;
 
-namespace GEmojiSharp.Tests.TagHelpers
+namespace GEmojiSharp.Tests.AspNetCore.TagHelpers
 {
     public class EmojiExtensionsTests
     {

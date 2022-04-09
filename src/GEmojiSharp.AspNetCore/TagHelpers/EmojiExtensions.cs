@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace GEmojiSharp.TagHelpers
+namespace GEmojiSharp.AspNetCore.TagHelpers
 {
     /// <summary>
     /// Extension methods for working with emoji markup.

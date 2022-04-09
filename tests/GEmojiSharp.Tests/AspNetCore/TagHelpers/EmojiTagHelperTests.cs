@@ -1,17 +1,17 @@
 using System.Threading.Tasks;
 using FluentAssertions;
-using GEmojiSharp.TagHelpers;
+using GEmojiSharp.AspNetCore.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using NUnit.Framework;
 
-namespace GEmojiSharp.Tests.TagHelpers
+namespace GEmojiSharp.Tests.AspNetCore.TagHelpers
 {
-    public class BodyTagHelperComponentTests
+    public class EmojiTagHelperTests
     {
         [Test]
         public async Task ProcessAsync()
         {
-            var subject = new BodyTagHelperComponent();
+            var subject = new EmojiTagHelper();
 
             var output = GetTagHelperOutput(":grinning:");
             await subject.ProcessAsync(null!, output);
@@ -23,7 +23,7 @@ namespace GEmojiSharp.Tests.TagHelpers
 
             TagHelperOutput GetTagHelperOutput(string content)
             {
-                return new TagHelperOutput("body", new TagHelperAttributeList(), (flag, encoder) =>
+                return new TagHelperOutput("emoji", new TagHelperAttributeList(), (flag, encoder) =>
                 {
                     var tagHelperContent = new DefaultTagHelperContent();
                     tagHelperContent.SetContent(content);
