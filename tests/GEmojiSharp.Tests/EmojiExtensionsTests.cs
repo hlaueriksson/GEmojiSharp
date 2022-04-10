@@ -79,5 +79,19 @@ namespace GEmojiSharp.Tests
             GEmoji.Empty.Alias().Should().BeEmpty();
             NullGEmoji.Alias().Should().BeEmpty();
         }
+
+        [Test]
+        public void TrimAlias()
+        {
+            ":foo:".TrimAlias().Should().Be("foo");
+            ":foo:bar:".TrimAlias().Should().Be("foo:bar");
+        }
+
+        [Test]
+        public void PadAlias()
+        {
+            "foo".PadAlias().Should().Be(":foo:");
+            ":bar:".PadAlias().Should().Be(":bar:");
+        }
     }
 }

@@ -122,10 +122,14 @@ namespace GEmojiSharp
         /// <returns>A list of emojis.</returns>
         public static IEnumerable<GEmoji> Find(string value)
         {
-            return All.Where(emoji => emoji.Description?.Contains(value) == true ||
-                                      emoji.Category?.Contains(value) == true ||
-                                      emoji.Aliases?.Any(x => x.Contains(value)) == true ||
-                                      emoji.Tags?.Any(x => x.Contains(value)) == true).ToArray();
+            if (value is null) throw new ArgumentNullException(nameof(value));
+
+            var text = value.TrimAlias();
+
+            return All.Where(emoji => emoji.Description?.Contains(text) == true ||
+                                      emoji.Category?.Contains(text) == true ||
+                                      emoji.Aliases?.Any(x => x.Contains(text)) == true ||
+                                      emoji.Tags?.Any(x => x.Contains(text)) == true).ToArray();
         }
     }
 }
