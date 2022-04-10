@@ -33,4 +33,9 @@
     <div><emoji>@Model.Text</emoji></div>
     <div><span emoji="@Model.Emoji" /></div>
 
+    <hr />
+
+    <div>@Html.Emoji(":octopus: :heavy_plus_sign: :cat2: ⩵ :heart:")</div>
+    <div>@Html.Emoji(x => x.Text)</div>
+
 </div>

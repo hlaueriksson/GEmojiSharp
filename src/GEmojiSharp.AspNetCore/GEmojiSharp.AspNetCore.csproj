@@ -15,10 +15,10 @@
 ⩵
 ❤️ :heart:
     </Description>
-    <PackageId>GEmojiSharp.TagHelpers</PackageId>
+    <PackageId>GEmojiSharp.AspNetCore</PackageId>
     <PackageProjectUrl>https://github.com/hlaueriksson/GEmojiSharp</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
-    <PackageTags>emoji;gemoji;aspnetcore;aspnetcoremvc;taghelper;taghelpers</PackageTags>
+    <PackageTags>emoji;gemoji;aspnetcore;aspnetcoremvc;taghelper;taghelpers;htmlhelper;htmlhelpers</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
@@ -30,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Razor" Version="2.2.0" />
   </ItemGroup>
 
