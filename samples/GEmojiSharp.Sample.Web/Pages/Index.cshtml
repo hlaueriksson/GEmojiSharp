@@ -36,6 +36,14 @@
     <hr />
 
     <div>@Html.Emoji(":octopus: :heavy_plus_sign: :cat2: ⩵ :heart:")</div>
-    <div>@Html.Emoji(x => x.Text)</div>
+    <div>@Html.Emoji(x => x.Text!)</div>
+
+    <hr />
+
+    <form method="post">
+        <input asp-for="Input" />
+        <input type="submit" />
+    </form>
+    <div>@Model.Output</div>
 
 </div>

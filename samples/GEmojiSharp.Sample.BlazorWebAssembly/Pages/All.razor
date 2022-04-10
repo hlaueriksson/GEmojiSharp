@@ -31,10 +31,10 @@
 }
 
 @code {
-    IEnumerable<IGrouping<string, GEmoji>> Categories { get; set; }
+    IEnumerable<IGrouping<string, GEmoji>> Categories { get; set; } = Enumerable.Empty<IGrouping<string, GEmoji>>();
 
     protected override void OnInitialized()
     {
-        Categories = GEmojiSharp.Emoji.All.GroupBy(x => x.Category);
+        Categories = GEmojiSharp.Emoji.All.GroupBy(x => x.Category!);
     }
 }
