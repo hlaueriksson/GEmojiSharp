@@ -1,8 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <RazorLangVersion>3.0</RazorLangVersion>
+    <TargetFramework>net6.0</TargetFramework>
     <Version>1.5.0</Version>
     <PackageReleaseNotes>
 👽 Update to https://github.com/github/gemoji/releases/tag/v4.0.0.rc3
@@ -19,10 +18,14 @@
     <PackageId>GEmojiSharp.Blazor</PackageId>
     <PackageProjectUrl>https://github.com/hlaueriksson/GEmojiSharp</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
-    <PackageTags>emoji;gemoji;blazor;blazor-component</PackageTags>
+    <PackageTags>emoji;gemoji;blazor;component;rcl</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
 
   <Import Project="../../Analyzers.props" />
 
@@ -31,8 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components" Version="3.1.4" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="3.1.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.3" />
   </ItemGroup>
 
   <ItemGroup>
