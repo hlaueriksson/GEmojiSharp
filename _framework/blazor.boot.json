@@ -7,9 +7,9 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "GEmojiSharp.Blazor.dll": "sha256-jfc1sG+uT5kNg8GFGQZhtEfs3q1Pfchv4ZbvJbWdV6I=",
-      "GEmojiSharp.dll": "sha256-y0Hht8MWOFtdx7z9Xf3EjExlSCm9JjGgJeO2yPLtbAU=",
-      "GEmojiSharp.Sample.BlazorWebAssembly.dll": "sha256-X3Y5Jh4UMXfhuFoiewWeo0LXKc3q2YvsU2DQaTaNnpk=",
+      "GEmojiSharp.Blazor.dll": "sha256-IhaVdBI9EMJ9UFFknTt9oRyzElFFaJFjTmEmpuQmpOo=",
+      "GEmojiSharp.dll": "sha256-IF\/pOOwACOmPo\/G9N4quz70jLTqyNgIxUU3CWKv5A6w=",
+      "GEmojiSharp.Sample.BlazorWebAssembly.dll": "sha256-N\/tjGr1OZ33vxyKnSq1iZEEQJa6taCoFFOW9sv+jsnA=",
       "Microsoft.AspNetCore.Components.dll": "sha256-O4G2oD3Co++c\/27vRCmEqJpIT8YEbZDbpGRmdgGSd00=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-J56CIqNtJKqXm6dWMAhvRI23W5p7RnErlWEDZVcwjV0=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-Izlw\/SnIKXEmOa2P51s8rKqkVBfJ+MDvJMUpyP5lHkk=",
