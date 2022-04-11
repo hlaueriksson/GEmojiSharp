@@ -13,6 +13,7 @@ namespace GEmojiSharp.Tests
             WriteLine(Emoji.Get(":tada:").Raw); // 🎉
             WriteLine(Emoji.Get("🎉").Alias()); // :tada:
             WriteLine(Emoji.Raw(":tada:")); // 🎉
+            WriteLine(Emoji.Alias("🎉")); // :tada:
             WriteLine(Emoji.Emojify(":tada: initial commit")); // 🎉 initial commit
             WriteLine(Emoji.Demojify("🎉 initial commit")); // :tada: initial commit
             WriteLine(Emoji.Find("party popper").First().Raw); // 🎉

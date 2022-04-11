@@ -1,8 +1,8 @@
 @page
-@using GEmojiSharp.AspNetCore
-@using Microsoft.AspNetCore.Mvc.Razor.TagHelpers
-@inject ITagHelperComponentManager manager;
 @model GEmojiSharp.Sample.Web.Pages.ComponentModel
+@using Microsoft.AspNetCore.Mvc.Razor.TagHelpers
+@using GEmojiSharp.AspNetCore
+@inject ITagHelperComponentManager manager;
 @{
     ViewData["Title"] = "Component";
     manager.Components.Add(new BodyTagHelperComponent());
