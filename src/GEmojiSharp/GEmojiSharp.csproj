@@ -29,4 +29,8 @@
     <None Include="..\..\icon.png" Link="icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="GEmojiSharp.Tests" />
+  </ItemGroup>
+
 </Project>

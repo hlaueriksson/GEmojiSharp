@@ -1,7 +1,6 @@
 @namespace GEmojiSharp.Blazor
-
-@using Microsoft.JSInterop
-@inject IJSRuntime JSRuntime
+@implements IAsyncDisposable
+@inject IJSRuntime JS
 
 <div @ref="element">
     @ChildContent
@@ -11,19 +10,30 @@
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
+    private ElementReference element;
+
+    private IJSObjectReference? module;
+
     [JSInvokable]
     public static Task<string> MarkupContent(string content)
     {
         return Task.FromResult(content.MarkupContent());
     }
 
-    private ElementReference element;
-
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            await JSRuntime.InvokeVoidAsync("emojify", element);
+            module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/GEmojiSharp.Blazor/Emoji.razor.js");
+            await module.InvokeVoidAsync("emojify", element);
+        }
+    }
+
+    async ValueTask IAsyncDisposable.DisposeAsync()
+    {
+        if (module is not null)
+        {
+            await module.DisposeAsync();
         }
     }
 }

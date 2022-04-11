@@ -56,7 +56,7 @@ namespace GEmojiSharp.Tests
                 if (c != null) result.Append($", Category = \"{c}\"");
                 if (a.Any()) result.Append($", Aliases = new[] {{ {string.Join(", ", a.Select(x => "\"" + x + "\""))} }}");
                 if (t.Any()) result.Append($", Tags = new[] {{ {string.Join(", ", t.Select(x => "\"" + x + "\""))} }}");
-                if (uv != null) result.Append($", UnicodeVersion = \"{uv}\"");
+                if (!string.IsNullOrEmpty(uv)) result.Append($", UnicodeVersion = \"{uv}\"");
                 if (iv != null) result.Append($", IosVersion = \"{iv}\"");
                 result.Append($", Filename = \"{filename}\"");
                 result.AppendLine(" },");

@@ -8,12 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GEmojiSharp.TagHelpers" Version="1.5.0" />
     <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.6.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.161" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\GEmojiSharp.AspNetCore\GEmojiSharp.AspNetCore.csproj" />
   </ItemGroup>
 
 </Project>

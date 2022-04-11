@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
-namespace GEmojiSharp.TagHelpers
+namespace GEmojiSharp.AspNetCore
 {
     /// <summary>
     /// <see cref="ITagHelper"/> implementation targeting <![CDATA[<body>]]> elements.

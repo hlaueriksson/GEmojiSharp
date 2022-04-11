@@ -34,13 +34,27 @@
 <Emoji>@_text</Emoji>
 <Emoji>@_emoji</Emoji>
 
+<hr />
+
+<input @bind="_input" />
+<button @onclick="Demojify">Submit</button>
+<div>@_output</div>
+
 @code {
-    string _emoji;
-    string _text;
+    string _emoji = string.Empty;
+    string _text = string.Empty;
+    string _input = string.Empty;
+    string _output = string.Empty;
 
     protected override void OnInitialized()
     {
         _emoji = ":open_umbrella:";
         _text = "it's raining :cat:s and :dog:s!";
+        _input = "Hello, 🌍!";
+    }
+
+    private void Demojify()
+    {
+        _output = _input.Demojify();
     }
 }

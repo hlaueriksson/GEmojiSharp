@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GEmojiSharp", "src\GEmojiSh
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{08210849-A04E-459A-907D-980E559710E6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GEmojiSharp.TagHelpers", "src\GEmojiSharp.TagHelpers\GEmojiSharp.TagHelpers.csproj", "{77ED5ECB-6240-4E39-A0A7-4AFA1A9660EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GEmojiSharp.AspNetCore", "src\GEmojiSharp.AspNetCore\GEmojiSharp.AspNetCore.csproj", "{77ED5ECB-6240-4E39-A0A7-4AFA1A9660EF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{01434E7A-C27D-4094-A3E9-0C322136EFF7}"
 EndProject

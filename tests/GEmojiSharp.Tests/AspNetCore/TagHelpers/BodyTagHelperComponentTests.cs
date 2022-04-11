@@ -1,10 +1,10 @@
 using System.Threading.Tasks;
 using FluentAssertions;
-using GEmojiSharp.TagHelpers;
+using GEmojiSharp.AspNetCore;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using NUnit.Framework;
 
-namespace GEmojiSharp.Tests.TagHelpers
+namespace GEmojiSharp.Tests.AspNetCore.TagHelpers
 {
     public class BodyTagHelperComponentTests
     {

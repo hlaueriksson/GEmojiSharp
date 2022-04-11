@@ -8,6 +8,8 @@ namespace GEmojiSharp
     /// </summary>
     public static class EmojiExtensions
     {
+        private const char Colon = ':';
+
         /// <summary>
         /// Gets the emoji associated with the alias, or <see cref="GEmoji.Empty"/> if the alias is not found.
         /// </summary>
@@ -90,18 +92,14 @@ namespace GEmojiSharp
 
         internal static string TrimAlias(this string alias)
         {
-            const string colon = ":";
-
-            return alias.Replace(colon, string.Empty);
+            return alias.TrimStart(Colon).TrimEnd(Colon);
         }
 
         internal static string PadAlias(this string alias)
         {
             if (string.IsNullOrEmpty(alias)) return string.Empty;
 
-            const string colon = ":";
-
-            return colon + alias + colon;
+            return Colon + alias.TrimAlias() + Colon;
         }
     }
 }

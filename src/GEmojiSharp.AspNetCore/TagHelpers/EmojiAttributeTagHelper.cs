@@ -1,7 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
-namespace GEmojiSharp.TagHelpers
+namespace GEmojiSharp.AspNetCore
 {
     /// <summary>
     /// <see cref="ITagHelper"/> implementation targeting elements with an <c>emoji</c> attribute.
