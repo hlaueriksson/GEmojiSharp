@@ -9,8 +9,8 @@ namespace GEmojiSharp.Blazor
     /// </summary>
     public static class EmojiExtensions
     {
-        private static readonly Regex EmojiRegex = new Regex(@"(:[\w+-]+:)", RegexOptions.Compiled);
-        private static readonly Regex TagRegex = new Regex("<[^>]*>?", RegexOptions.RightToLeft | RegexOptions.Compiled);
+        private static readonly Regex EmojiRegex = new(@"(:[\w+-]+:)", RegexOptions.Compiled);
+        private static readonly Regex TagRegex = new("<[^>]*>?", RegexOptions.RightToLeft | RegexOptions.Compiled);
 
         /// <summary>
         /// Gets the markup for the emoji associated with the alias.

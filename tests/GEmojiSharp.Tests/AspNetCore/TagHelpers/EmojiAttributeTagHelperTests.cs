@@ -21,7 +21,7 @@ namespace GEmojiSharp.Tests.AspNetCore.TagHelpers
             subject.Process(null!, output);
             output.Content.GetContent().Should().Be(":fail:");
 
-            TagHelperOutput GetTagHelperOutput(string attribute)
+            static TagHelperOutput GetTagHelperOutput(string attribute)
             {
                 return new TagHelperOutput("span", new TagHelperAttributeList { { "emoji", attribute } }, (flag, encoder) =>
                  {

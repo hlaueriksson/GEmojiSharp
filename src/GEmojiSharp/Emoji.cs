@@ -83,7 +83,7 @@ namespace GEmojiSharp
 
             return Regex.Replace(text, @":([\w+-]+):", evaluator, RegexOptions.Compiled);
 
-            string EmojiMatchEvaluator(Match match)
+            static string EmojiMatchEvaluator(Match match)
             {
                 var emoji = Get(match.Value);
 
@@ -107,7 +107,7 @@ namespace GEmojiSharp
 
             return Regex.Replace(text, RegexPattern, evaluator, RegexOptions.Compiled);
 
-            string EmojiMatchEvaluator(Match match)
+            static string EmojiMatchEvaluator(Match match)
             {
                 var emoji = Get(match.Value);
 
