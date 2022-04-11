@@ -19,6 +19,7 @@
     <PackageId>GEmojiSharp.AspNetCore</PackageId>
     <PackageProjectUrl>https://github.com/hlaueriksson/GEmojiSharp</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>GEmojiSharp.AspNetCore.md</PackageReadmeFile>
     <PackageTags>emoji;gemoji;aspnetcore;aspnetcoremvc;taghelper;taghelpers;htmlhelper;htmlhelpers</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -28,6 +29,7 @@
 
   <ItemGroup>
     <None Include="..\..\icon.png" Link="icon.png" Pack="true" PackagePath="\" />
+    <None Include="..\..\GEmojiSharp.AspNetCore.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>
