@@ -26,6 +26,7 @@
   - [HtmlHelpers](#htmlhelpers)
 - [`GEmojiSharp.Blazor` 📦](#gemojisharpblazor-)
 - [Samples](#samples)
+- [Upgrading](#upgrading)
 - [Attribution](#attribution)
 
 ## Introduction
@@ -278,6 +279,45 @@ The Blazor WebAssembly app is showcased here:
 - https://purple-mushroom-05c6bad10.azurestaticapps.net (Azure Static Web Apps)
 
 [![GEmojiSharp.Sample.BlazorWebAssembly](GEmojiSharp.Sample.BlazorWebAssembly.png)](https://hlaueriksson.github.io/GEmojiSharp/)
+
+## Upgrading
+
+> ⬆️ Upgrading from version `1.5.0` to `2.0.0`
+
+Upgrade `GEmojiSharp.TagHelpers`:
+
+- Uninstall `GEmojiSharp.TagHelpers`
+- Install `GEmojiSharp.AspNetCore`
+- Replace references to ~~`GEmojiSharp.TagHelpers`~~ with `GEmojiSharp.AspNetCore`:
+
+  ```diff
+  - @addTagHelper *, GEmojiSharp.TagHelpers
+  + @addTagHelper *, GEmojiSharp.AspNetCore
+  ```
+
+  ```diff
+  - @using GEmojiSharp.TagHelpers
+  + @using GEmojiSharp.AspNetCore
+  ```
+
+  ```diff
+  - using GEmojiSharp.TagHelpers;
+  + using GEmojiSharp.AspNetCore;
+  ```
+
+Upgrade `GEmojiSharp.Blazor`:
+
+- Remove reference to the `css` file:
+
+  ```diff
+  - <link href="_content/GEmojiSharp.Blazor/style.css" rel="stylesheet" />
+  ```
+
+- Remove reference to the `js` file:
+
+  ```diff
+  - <script src="_content/GEmojiSharp.Blazor/script.js"></script>
+  ```
 
 ## Attribution
 
