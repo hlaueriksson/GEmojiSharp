@@ -180,3 +180,6 @@ dotnet_diagnostic.SA1501.severity = none
 dotnet_diagnostic.SA1503.severity = none
 dotnet_diagnostic.SA1623.severity = none
 dotnet_diagnostic.SA1633.severity = none
+
+[src/GEmojiSharp.DotnetTool/Program.cs]
+dotnet_diagnostic.CA1812.severity = none
