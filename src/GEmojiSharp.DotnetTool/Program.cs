@@ -64,7 +64,7 @@ aliasCommand.SetHandler(
 // emojify
 var emojifyArgument = new Argument<string[]>("args", "A text with emoji aliases");
 
-var emojifyCommand = new Command("emojify", "Replaces aliases with raw emojis")
+var emojifyCommand = new Command("emojify", "Replace aliases in text with raw emojis")
 {
     emojifyArgument,
     copyOption,
@@ -88,7 +88,7 @@ emojifyCommand.SetHandler(
 // demojify
 var demojifyArgument = new Argument<string[]>("args", "A text with raw emojis");
 
-var demojifyCommand = new Command("demojify", "Replaces raw emojis with aliases")
+var demojifyCommand = new Command("demojify", "Replace raw emojis in text with aliases")
 {
     demojifyArgument,
     copyOption,
@@ -165,6 +165,8 @@ var rootCommand = new RootCommand()
     exportCommand,
 };
 
-rootCommand.Description = "GEmoji dotnet tool";
+rootCommand.Name = "gemojisharp";
+
+rootCommand.Description = "GitHub Emoji dotnet tool";
 
 return rootCommand.Invoke(args);

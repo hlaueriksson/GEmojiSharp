@@ -77,7 +77,7 @@ namespace GEmojiSharp.Tests.DotnetTool
             ClipboardService.GetText().Should().Be("🎉");
 
             Run("e -h").StandardOutput.Should()
-                .Contain("Replaces aliases with raw emojis")
+                .Contain("Replace aliases in text with raw emojis")
                 .And.Contain("A text with emoji aliases");
         }
 
@@ -94,7 +94,7 @@ namespace GEmojiSharp.Tests.DotnetTool
             ClipboardService.GetText().Should().Be(":tada:");
 
             Run("d -h").StandardOutput.Should()
-                .Contain("Replaces raw emojis with aliases")
+                .Contain("Replace raw emojis in text with aliases")
                 .And.Contain("A text with raw emojis");
         }
 
