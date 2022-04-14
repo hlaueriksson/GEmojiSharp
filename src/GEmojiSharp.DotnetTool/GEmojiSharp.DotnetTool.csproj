@@ -5,10 +5,41 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>gemojisharp</ToolCommandName>
+    <Version>0.0.0</Version>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <Authors>Henrik Lau Eriksson</Authors>
+    <Description>GitHub Emoji dotnet tool
+
+🔎 Find emojis via description, category, alias or tag
+ 🍣 Get raw emojis
+ 🏷️ Get emoji aliases
+🔀 Replace aliases in text with raw emojis
+🔀 Replace raw emojis in text with aliases
+🖨️ Export emoji data to &lt;json|toml|xml|yaml&gt;
+
+🐙 :octopus:
+➕ :heavy_plus_sign:
+🐈 :cat2:
+⩵
+❤️ :heart:
+    </Description>
+    <PackageId>GEmojiSharp.DotnetTool</PackageId>
+    <PackageProjectUrl>https://github.com/hlaueriksson/GEmojiSharp</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>GEmojiSharp.DotnetTool.md</PackageReadmeFile>
+    <PackageTags>emoji;gemoji</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <Import Project="../../Analyzers.props" />
+
+  <ItemGroup>
+    <None Include="..\..\icon.png" Link="icon.png" Pack="true" PackagePath="\" />
+    <None Include="..\..\GEmojiSharp.DotnetTool.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
