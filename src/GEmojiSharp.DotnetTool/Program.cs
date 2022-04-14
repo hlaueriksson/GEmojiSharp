@@ -112,7 +112,7 @@ demojifyCommand.SetHandler(
 // export
 var formatOption = new Option<string>(new[] { "-f", "--format" }, "Format the data as <json|toml|xml|yaml>");
 
-var exportCommand = new Command("export", "Export emoji data")
+var exportCommand = new Command("export", "Export emoji data to <json|toml|xml|yaml>")
 {
     argument,
     formatOption,
