@@ -12,9 +12,10 @@ using NUnit.Framework;
 
 namespace GEmojiSharp.Tests
 {
+    [Explicit]
     public class GenerateTests
     {
-        [Test, Explicit]
+        [Test]
         public async Task Write()
         {
             var client = new HttpClient();
@@ -65,7 +66,7 @@ namespace GEmojiSharp.Tests
             Console.WriteLine(result.ToString());
         }
 
-        [Test, Explicit]
+        [Test]
         public void Demojify()
         {
             var codes = new List<string>();
@@ -90,7 +91,7 @@ namespace GEmojiSharp.Tests
             Console.WriteLine(result.ToString());
         }
 
-        [Test, Explicit]
+        [Test]
         public void Versions()
         {
             var versions = Emoji.All.Select(x => x.UnicodeVersion).Distinct().Where(x => !string.IsNullOrEmpty(x)).Select(x => Convert.ToDouble(x, CultureInfo.InvariantCulture)).OrderBy(x => x);
@@ -101,7 +102,7 @@ namespace GEmojiSharp.Tests
             }
         }
 
-        [Test, Explicit]
+        [Test, Category("Integration")]
         public async Task Emoji_All_vs_Api()
         {
             var client = new HttpClient();
@@ -121,7 +122,7 @@ namespace GEmojiSharp.Tests
             }
         }
 
-        [Test, Explicit]
+        [Test, Category("Integration")]
         public async Task Api_vs_Emoji_All()
         {
             var client = new HttpClient();
@@ -138,7 +139,7 @@ namespace GEmojiSharp.Tests
             }
         }
 
-        [Test, Explicit]
+        [Test, Category("Integration")]
         public async Task Filename_vs_Api()
         {
             var client = new HttpClient();
@@ -162,7 +163,7 @@ namespace GEmojiSharp.Tests
             }
         }
 
-        [Test, Explicit]
+        [Test, Category("Integration")]
         public async Task Raw_vs_Available()
         {
             var client = new HttpClient();
@@ -185,7 +186,7 @@ namespace GEmojiSharp.Tests
             }
         }
 
-        [Test, Explicit]
+        [Test, Category("Integration")]
         public void RegexPattern_vs_Emoji_All()
         {
             var regex = new Regex(Emoji.RegexPattern, RegexOptions.Compiled);
@@ -202,7 +203,7 @@ namespace GEmojiSharp.Tests
             }
         }
 
-        [Test, Explicit]
+        [Test, Category("Integration")]
         public void Demojify_vs_Emoji_All()
         {
             foreach (var emoji in Emoji.All.Where(x => !x.IsCustom))
