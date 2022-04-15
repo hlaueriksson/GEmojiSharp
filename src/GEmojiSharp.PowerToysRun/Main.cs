@@ -64,7 +64,7 @@ namespace GEmojiSharp.PowerToysRun
                         IcoPath = IconPath,
                         Title = result,
                         SubTitle = "Replace aliases in text with raw emojis",
-                        ToolTipData = new ToolTipData("Emojify", $"{value}:\n{result}"),
+                        ToolTipData = new ToolTipData("Emojify", $"{value}\n{result}"),
                         Action = _ => CopyToClipboard(result),
                         ContextData = new EmojifiedString(result),
                     });
@@ -81,7 +81,7 @@ namespace GEmojiSharp.PowerToysRun
                         IcoPath = IconPath,
                         Title = result,
                         SubTitle = "Replace raw emojis in text with aliases",
-                        ToolTipData = new ToolTipData("Demojify", $"{value}:\n{result}"),
+                        ToolTipData = new ToolTipData("Demojify", $"{value}\n{result}"),
                         Action = _ => CopyToClipboard(result),
                         ContextData = new DemojifiedString(result),
                     });
