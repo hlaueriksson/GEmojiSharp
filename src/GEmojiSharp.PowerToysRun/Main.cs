@@ -6,14 +6,30 @@ using Wox.Plugin;
 
 namespace GEmojiSharp.PowerToysRun
 {
+    /// <summary>
+    /// Main class of this plugin that implement all used interfaces.
+    /// </summary>
     public class Main : IPlugin, IContextMenu
     {
-        private string IconPath { get; set; }
-        private PluginInitContext Context { get; set; }
-
+        /// <summary>
+        /// Name of the plugin.
+        /// </summary>
         public string Name => "GEmoji";
+
+        /// <summary>
+        /// Description of the plugin.
+        /// </summary>
         public string Description => "GitHub Emoji";
 
+        private string? IconPath { get; set; }
+
+        private PluginInitContext? Context { get; set; }
+
+        /// <summary>
+        /// Return a filtered list, based on the given query.
+        /// </summary>
+        /// <param name="query">The query to filter the list.</param>
+        /// <returns>A filtered list, can be empty when nothing was found.</returns>
         public List<Result> Query(Query query)
         {
             if (query?.Search is null)
@@ -53,6 +69,7 @@ namespace GEmojiSharp.PowerToysRun
                         ContextData = new EmojifiedString(result),
                     });
             }
+
             if (HasEmoji(value))
             {
                 var result = Emoji.Demojify(value);
@@ -94,6 +111,10 @@ namespace GEmojiSharp.PowerToysRun
             }
         }
 
+        /// <summary>
+        /// Initialize the plugin with the given <see cref="PluginInitContext"/>.
+        /// </summary>
+        /// <param name="context">The <see cref="PluginInitContext"/> for this plugin.</param>
         public void Init(PluginInitContext context)
         {
             Context = context;
@@ -101,6 +122,11 @@ namespace GEmojiSharp.PowerToysRun
             UpdateIconPath(Context.API.GetCurrentTheme());
         }
 
+        /// <summary>
+        /// Return a list context menu entries for a given <see cref="Result"/> (shown at the right side of the result).
+        /// </summary>
+        /// <param name="selectedResult">The <see cref="Result"/> for the list with context menu entries.</param>
+        /// <returns>A list context menu entries.</returns>
         public List<ContextMenuResult> LoadContextMenus(Result selectedResult)
         {
             if (selectedResult?.ContextData is GEmoji emoji)
