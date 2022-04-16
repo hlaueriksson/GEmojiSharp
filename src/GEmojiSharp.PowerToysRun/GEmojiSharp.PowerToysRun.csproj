@@ -54,7 +54,7 @@
     <PackageReference Include="ilmerge" Version="3.0.41" />
   </ItemGroup>
   <Target Name="ILMerge">
-    <Exec Command="$(ILMergeConsolePath) /out:bin\Release\net6.0-windows\GEmojiSharp.PowerToysRun.dll bin\Release\net6.0-windows\GEmojiSharp.PowerToysRun.dll bin\Release\net6.0-windows\GEmojiSharp.dll /lib:&quot;C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8&quot;" />
+    <Exec Command="$(ILMergeConsolePath) /out:bin\Release\net6.0-windows\GEmojiSharp.PowerToysRun.dll bin\Release\net6.0-windows\GEmojiSharp.PowerToysRun.dll bin\Release\net6.0-windows\GEmojiSharp.dll /lib:&quot;C:\Program Files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\6.0.3\ref\net6.0&quot;" />
   </Target>
 
 </Project>
