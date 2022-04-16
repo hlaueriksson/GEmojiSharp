@@ -9,7 +9,7 @@ namespace GEmojiSharp.PowerToysRun
     /// <summary>
     /// Main class of this plugin that implement all used interfaces.
     /// </summary>
-    public class Main : IPlugin, IContextMenu
+    public class Main : IPlugin, IContextMenu, IDisposable
     {
         /// <summary>
         /// Name of the plugin.
@@ -21,9 +21,11 @@ namespace GEmojiSharp.PowerToysRun
         /// </summary>
         public string Description => "GitHub Emoji";
 
+        private PluginInitContext? Context { get; set; }
+
         private string? IconPath { get; set; }
 
-        private PluginInitContext? Context { get; set; }
+        private bool Disposed { get; set; }
 
         /// <summary>
         /// Return a filtered list, based on the given query.
@@ -117,7 +119,7 @@ namespace GEmojiSharp.PowerToysRun
         /// <param name="context">The <see cref="PluginInitContext"/> for this plugin.</param>
         public void Init(PluginInitContext context)
         {
-            Context = context;
+            Context = context ?? throw new ArgumentNullException(nameof(context));
             Context.API.ThemeChanged += OnThemeChanged;
             UpdateIconPath(Context.API.GetCurrentTheme());
         }
@@ -190,28 +192,41 @@ namespace GEmojiSharp.PowerToysRun
             return new List<ContextMenuResult>(0);
         }
 
+        /// <inheritdoc/>
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// Wrapper method for <see cref="Dispose()"/> that dispose additional objects and events form the plugin itself.
+        /// </summary>
+        /// <param name="disposing">Indicate that the plugin is disposed.</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (Disposed || !disposing)
+            {
+                return;
+            }
+
+            if (Context != null && Context.API != null)
+            {
+                Context.API.ThemeChanged -= OnThemeChanged;
+            }
+
+            Disposed = true;
+        }
+
         private static bool CopyToClipboard(string value)
         {
             Clipboard.SetText(value);
             return true;
         }
 
-        private void UpdateIconPath(Theme theme)
-        {
-            if (theme == Theme.Light || theme == Theme.HighContrastWhite)
-            {
-                IconPath = "images/gemoji.light.png";
-            }
-            else
-            {
-                IconPath = "images/gemoji.dark.png";
-            }
-        }
+        private void UpdateIconPath(Theme theme) => IconPath = theme == Theme.Light || theme == Theme.HighContrastWhite ? "images/gemoji.light.png" : "images/gemoji.dark.png";
 
-        private void OnThemeChanged(Theme currentTheme, Theme newTheme)
-        {
-            UpdateIconPath(newTheme);
-        }
+        private void OnThemeChanged(Theme currentTheme, Theme newTheme) => UpdateIconPath(newTheme);
     }
 
     internal record EmojifiedString(string Value);
