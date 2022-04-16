@@ -4,9 +4,8 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
     <PackAsTool>true</PackAsTool>
-    <ToolCommandName>gemojisharp</ToolCommandName>
+    <ToolCommandName>emoji</ToolCommandName>
     <Version>0.0.0</Version>
     <PackageReleaseNotes></PackageReleaseNotes>
     <Authors>Henrik Lau Eriksson</Authors>

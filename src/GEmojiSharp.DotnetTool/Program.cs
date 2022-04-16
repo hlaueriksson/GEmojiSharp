@@ -165,7 +165,7 @@ var rootCommand = new RootCommand()
     exportCommand,
 };
 
-rootCommand.Name = "gemojisharp";
+rootCommand.Name = "emoji";
 
 rootCommand.Description = "GitHub Emoji dotnet tool";
 

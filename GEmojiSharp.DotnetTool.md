@@ -11,9 +11,9 @@ Get raw emojis:
 > Find emojis via description, category, alias or tag
 
 ```cmd
-gemojisharp raw "grinning cat"
-gemojisharp raw grinning cat
-gemojisharp r grinning cat
+emoji raw "grinning cat"
+emoji raw grinning cat
+emoji r grinning cat
 ```
 
 ```cmd
@@ -24,8 +24,8 @@ gemojisharp r grinning cat
 Copy to clipboard:
 
 ```cmd
-gemojisharp raw "grinning cat" --copy
-gemojisharp r grinning cat -c
+emoji raw "grinning cat" --copy
+emoji r grinning cat -c
 ```
 
 ```txt
@@ -39,9 +39,9 @@ Get emoji aliases:
 > Find emojis via description, category, alias or tag
 
 ```cmd
-gemojisharp alias "grinning cat"
-gemojisharp alias grinning cat
-gemojisharp a grinning cat
+emoji alias "grinning cat"
+emoji alias grinning cat
+emoji a grinning cat
 ```
 
 ```cmd
@@ -52,8 +52,8 @@ gemojisharp a grinning cat
 Copy to clipboard:
 
 ```cmd
-gemojisharp alias "grinning cat" --copy
-gemojisharp a grinning cat -c
+emoji alias "grinning cat" --copy
+emoji a grinning cat -c
 ```
 
 ```txt
@@ -65,9 +65,9 @@ gemojisharp a grinning cat -c
 Replace aliases in text with raw emojis:
 
 ```cmd
-gemojisharp emojify ":tada: initial commit"
-gemojisharp emojify :tada: initial commit
-gemojisharp e :tada: initial commit
+emoji emojify ":tada: initial commit"
+emoji emojify :tada: initial commit
+emoji e :tada: initial commit
 ```
 
 ```cmd
@@ -77,8 +77,8 @@ gemojisharp e :tada: initial commit
 Copy to clipboard:
 
 ```cmd
-gemojisharp emojify ":tada: initial commit" --copy
-gemojisharp e :tada: initial commit -c
+emoji emojify ":tada: initial commit" --copy
+emoji e :tada: initial commit -c
 ```
 
 ## Demojify
@@ -86,9 +86,9 @@ gemojisharp e :tada: initial commit -c
 Replace raw emojis in text with aliases:
 
 ```cmd
-gemojisharp demojify "🎉 initial commit"
-gemojisharp demojify 🎉 initial commit
-gemojisharp d 🎉 initial commit
+emoji demojify "🎉 initial commit"
+emoji demojify 🎉 initial commit
+emoji d 🎉 initial commit
 ```
 
 ```cmd
@@ -98,8 +98,8 @@ gemojisharp d 🎉 initial commit
 Copy to clipboard:
 
 ```cmd
-gemojisharp demojify "🎉 initial commit" --copy
-gemojisharp d 🎉 initial commit -c
+emoji demojify "🎉 initial commit" --copy
+emoji d 🎉 initial commit -c
 ```
 
 ## Export
@@ -107,10 +107,10 @@ gemojisharp d 🎉 initial commit -c
 Export emoji data to `json`:
 
 ```cmd
-gemojisharp export "grinning cat" --format json
-gemojisharp export grinning cat --format json
-gemojisharp export grinning cat -f json
-gemojisharp export grinning cat
+emoji export "grinning cat" --format json
+emoji export grinning cat --format json
+emoji export grinning cat -f json
+emoji export grinning cat
 ```
 
 ```json 
@@ -147,8 +147,8 @@ gemojisharp export grinning cat
 Copy to clipboard:
 
 ```cmd
-gemojisharp export "grinning cat" --format json --copy
-gemojisharp export "grinning cat" -c
+emoji export "grinning cat" --format json --copy
+emoji export "grinning cat" -c
 ```
 
 Formats:
@@ -161,7 +161,7 @@ Formats:
 ## Help
 
 ```cmd
-gemojisharp --help
+emoji --help
 ```
 
 ```cmd
@@ -169,7 +169,7 @@ Description:
   GitHub Emoji dotnet tool
 
 Usage:
-  gemojisharp [command] [options]
+  emoji [command] [options]
 
 Options:
   --version       Show version information
