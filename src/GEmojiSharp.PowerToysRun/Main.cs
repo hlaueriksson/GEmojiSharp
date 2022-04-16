@@ -14,12 +14,12 @@ namespace GEmojiSharp.PowerToysRun
         /// <summary>
         /// Name of the plugin.
         /// </summary>
-        public string Name => "GEmoji";
+        public string Name => "GEmojiSharp";
 
         /// <summary>
         /// Description of the plugin.
         /// </summary>
-        public string Description => "GitHub Emoji";
+        public string Description => "GitHub Emoji PowerToys Run plugin";
 
         private PluginInitContext? Context { get; set; }
 
