@@ -25,9 +25,6 @@
     <Reference Include="PowerToys.ManagedCommon">
       <HintPath>libs\PowerToys.ManagedCommon.dll</HintPath>
     </Reference>
-    <Reference Include="Wox.Infrastructure">
-      <HintPath>libs\Wox.Infrastructure.dll</HintPath>
-    </Reference>
     <Reference Include="Wox.Plugin">
       <HintPath>libs\Wox.Plugin.dll</HintPath>
     </Reference>
