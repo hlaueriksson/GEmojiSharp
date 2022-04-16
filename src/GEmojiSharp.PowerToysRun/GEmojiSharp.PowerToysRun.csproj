@@ -45,6 +45,10 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="GEmojiSharp.PowerToysRun.Tests" />
+  </ItemGroup>
+
   <!-- Pack -->
   <ItemGroup>
     <PackageReference Include="ilmerge" Version="3.0.41" />
