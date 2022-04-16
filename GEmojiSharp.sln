@@ -26,7 +26,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GEmojiSharp.DotnetTool", "src\GEmojiSharp.DotnetTool\GEmojiSharp.DotnetTool.csproj", "{D6294653-E1A0-4F02-B97D-9E3149D7A462}"
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GEmojiSharp.PowerToysRun", "src\GEmojiSharp.PowerToysRun\GEmojiSharp.PowerToysRun.csproj", "{F587ED51-27F6-47EE-AF43-70B82BC8D3ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GEmojiSharp.PowerToysRun.Tests", "tests\GEmojiSharp.PowerToysRun.Tests\GEmojiSharp.PowerToysRun.Tests.csproj", "{F7B52BE0-D70B-4859-84C5-464E009C1799}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GEmojiSharp.PowerToysRun.Tests", "tests\GEmojiSharp.PowerToysRun.Tests\GEmojiSharp.PowerToysRun.Tests.csproj", "{F7B52BE0-D70B-4859-84C5-464E009C1799}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GEmojiSharp.Benchmark", "tests\GEmojiSharp.Benchmark\GEmojiSharp.Benchmark.csproj", "{FDED188E-B80B-475D-9ECA-09A8A2BE091F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,6 +76,10 @@ Global
 		{F7B52BE0-D70B-4859-84C5-464E009C1799}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7B52BE0-D70B-4859-84C5-464E009C1799}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7B52BE0-D70B-4859-84C5-464E009C1799}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDED188E-B80B-475D-9ECA-09A8A2BE091F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDED188E-B80B-475D-9ECA-09A8A2BE091F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDED188E-B80B-475D-9ECA-09A8A2BE091F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDED188E-B80B-475D-9ECA-09A8A2BE091F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,6 +95,7 @@ Global
 		{D6294653-E1A0-4F02-B97D-9E3149D7A462} = {08210849-A04E-459A-907D-980E559710E6}
 		{F587ED51-27F6-47EE-AF43-70B82BC8D3ED} = {08210849-A04E-459A-907D-980E559710E6}
 		{F7B52BE0-D70B-4859-84C5-464E009C1799} = {01434E7A-C27D-4094-A3E9-0C322136EFF7}
+		{FDED188E-B80B-475D-9ECA-09A8A2BE091F} = {01434E7A-C27D-4094-A3E9-0C322136EFF7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4EE2F45B-9E7D-46BE-A6C1-A1ACC12A0DCA}

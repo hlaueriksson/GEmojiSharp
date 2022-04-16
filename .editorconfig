@@ -183,3 +183,6 @@ dotnet_diagnostic.SA1633.severity = none
 
 [src/GEmojiSharp.DotnetTool/Program.cs]
 dotnet_diagnostic.CA1812.severity = none
+
+[test/GEmojiSharp.Benchmark/*.cs]
+dotnet_diagnostic.CS8618.severity = none
