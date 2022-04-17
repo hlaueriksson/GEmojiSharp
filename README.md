@@ -348,7 +348,7 @@ Options:
 ```
 
 <details>
-<summary>💁 Examples:</summary>
+<summary>Examples 💁</summary>
 
 Get raw emojis:
 
@@ -398,7 +398,7 @@ Options:
 ```
 
 <details>
-<summary>💁 Examples:</summary>
+<summary>Examples 💁</summary>
 
 Get emoji aliases:
 
@@ -448,7 +448,7 @@ Options:
 ```
 
 <details>
-<summary>💁 Examples:</summary>
+<summary>Examples 💁</summary>
 
 Replace aliases in text with raw emojis:
 
@@ -493,7 +493,7 @@ Options:
 ```
 
 <details>
-<summary>💁 Examples:</summary>
+<summary>Examples 💁</summary>
 
 Replace raw emojis in text with aliases:
 
@@ -546,7 +546,7 @@ Formats:
 - `yaml`
 
 <details>
-<summary>💁 Examples:</summary>
+<summary>Examples 💁</summary>
 
 Export emoji data to `json`:
 

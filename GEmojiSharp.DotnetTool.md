@@ -113,7 +113,7 @@ emoji export grinning cat -f json
 emoji export grinning cat
 ```
 
-```json 
+```json
 [
   {
     "Raw": "😺",
