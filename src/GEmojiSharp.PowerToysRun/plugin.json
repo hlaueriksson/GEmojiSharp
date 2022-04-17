@@ -1,14 +1,13 @@
 {
   "ID": "583D1696DC9B40C6BD7DCA116268630E",
-  "Disabled": false,
   "ActionKeyword": "emoji",
+  "IsGlobal": false,
   "Name": "GEmojiSharp",
   "Author": "hlaueriksson",
   "Version": "0.0.0",
   "Language": "csharp",
   "Website": "https://github.com/hlaueriksson/GEmojiSharp",
   "ExecuteFileName": "GEmojiSharp.PowerToysRun.dll",
-  "IsGlobal": false,
-  "IcoPathDark": "images\\gemojisharp.dark.png",
-  "IcoPathLight": "images\\gemojisharp.light.png"
+  "IcoPathDark": "Images\\gemojisharp.dark.png",
+  "IcoPathLight": "Images\\gemojisharp.light.png"
 }

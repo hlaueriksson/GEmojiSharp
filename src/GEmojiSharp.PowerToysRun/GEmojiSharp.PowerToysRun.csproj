@@ -30,10 +30,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="images\gemojisharp.dark.png">
+    <None Update="Images\gemojisharp.dark.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="images\gemojisharp.light.png">
+    <None Update="Images\gemojisharp.light.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="plugin.json">

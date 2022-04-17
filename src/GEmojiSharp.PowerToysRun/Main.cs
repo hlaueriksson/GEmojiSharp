@@ -224,7 +224,7 @@ namespace GEmojiSharp.PowerToysRun
             return true;
         }
 
-        private void UpdateIconPath(Theme theme) => IconPath = theme == Theme.Light || theme == Theme.HighContrastWhite ? "images/gemojisharp.light.png" : "images/gemojisharp.dark.png";
+        private void UpdateIconPath(Theme theme) => IconPath = theme == Theme.Light || theme == Theme.HighContrastWhite ? "Images/gemojisharp.light.png" : "Images/gemojisharp.dark.png";
 
         private void OnThemeChanged(Theme currentTheme, Theme newTheme) => UpdateIconPath(newTheme);
     }
