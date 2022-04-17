@@ -39,6 +39,7 @@ Updated:
 
   <ItemGroup>
     <InternalsVisibleTo Include="GEmojiSharp.DotnetTool" />
+    <InternalsVisibleTo Include="GEmojiSharp.PowerToysRun" />
     <InternalsVisibleTo Include="GEmojiSharp.Tests" />
   </ItemGroup>
 
