@@ -6,8 +6,9 @@
 [![GEmojiSharp](https://img.shields.io/nuget/v/GEmojiSharp.svg?label=GEmojiSharp)](https://www.nuget.org/packages/GEmojiSharp)
 [![GEmojiSharp.AspNetCore](https://img.shields.io/nuget/v/GEmojiSharp.AspNetCore.svg?label=GEmojiSharp.AspNetCore)](https://www.nuget.org/packages/GEmojiSharp.AspNetCore)
 [![GEmojiSharp.Blazor](https://img.shields.io/nuget/v/GEmojiSharp.Blazor.svg?label=GEmojiSharp.Blazor)](https://www.nuget.org/packages/GEmojiSharp.Blazor)
+[![GEmojiSharp.DotnetTool](https://img.shields.io/nuget/v/GEmojiSharp.DotnetTool.svg?label=GEmojiSharp.DotnetTool)](https://www.nuget.org/packages/GEmojiSharp.DotnetTool)
 
-> GitHub Emoji for C#, ASP.NET Core and Blazor
+> GitHub Emoji for C#, ASP.NET Core and Blazor, dotnet tool for the terminal and PowerToys Run plugin
 
 ```txt
 🐙 :octopus:
@@ -25,6 +26,13 @@
   - [TagHelpers](#taghelpers)
   - [HtmlHelpers](#htmlhelpers)
 - [`GEmojiSharp.Blazor` 📦](#gemojisharpblazor-)
+- [`GEmojiSharp.DotnetTool` 🧰](#gemojisharpdotnettool-)
+  - [Installation](#installation)
+  - [Usage](#usage)
+- [`GEmojiSharp.PowerToysRun` 🧰](#gemojisharppowertoysrun-)
+  - [Installation](#installation-1)
+  - [Usage](#usage-1)
+  - [Configuration](#configuration)
 - [Samples](#samples)
 - [Upgrading](#upgrading)
 - [Attribution](#attribution)
@@ -265,6 +273,382 @@ Custom GitHub emojis are rendered as images:
 <img class="emoji" title=":octocat:" alt=":octocat:" src="https://github.githubassets.com/images/icons/emoji/octocat.png" height="20" width="20" align="absmiddle">
 ```
 
+## `GEmojiSharp.DotnetTool` 🧰
+
+[![NuGet](https://buildstats.info/nuget/GEmojiSharp.DotnetTool)](https://www.nuget.org/packages/GEmojiSharp.DotnetTool/)
+
+> GitHub Emoji dotnet tool
+
+![GEmojiSharp.DotnetTool](GEmojiSharp.DotnetTool.gif)
+
+### Installation
+
+Install:
+
+```cmd
+dotnet tool install -g GEmojiSharp.DotnetTool
+```
+
+Update:
+
+```cmd
+dotnet tool update -g GEmojiSharp.DotnetTool
+```
+
+Uninstall:
+
+```cmd
+dotnet tool uninstall -g GEmojiSharp.DotnetTool
+```
+
+### Usage
+
+```cmd
+emoji --help
+```
+
+```cmd
+Description:
+  GitHub Emoji dotnet tool
+
+Usage:
+  emoji [command] [options]
+
+Options:
+  --version       Show version information
+  -?, -h, --help  Show help and usage information
+
+Commands:
+  r, raw <args>       Get raw emojis
+  a, alias <args>     Get emoji aliases
+  e, emojify <args>   Replace aliases in text with raw emojis
+  d, demojify <args>  Replace raw emojis in text with aliases
+  export <args>       Export emoji data to <json|toml|xml|yaml>
+```
+
+#### Raw<!-- omit in toc -->
+
+```cmd
+emoji raw --help
+```
+
+```cmd
+Description:
+  Get raw emojis
+
+Usage:
+  emoji raw [<args>...] [options]
+
+Arguments:
+  <args>  Find emojis via description, category, alias or tag
+
+Options:
+  -c, --copy      Copy to clipboard
+  -?, -h, --help  Show help and usage information
+```
+
+<details>
+<summary>💁 Examples:</summary>
+
+Get raw emojis:
+
+```cmd
+emoji raw "grinning cat"
+emoji raw grinning cat
+emoji r grinning cat
+```
+
+```cmd
+😺
+😸
+```
+
+Copy to clipboard:
+
+```cmd
+emoji raw "grinning cat" --copy
+emoji r grinning cat -c
+```
+
+```txt
+😺😸
+```
+
+</details>
+
+#### Alias<!-- omit in toc -->
+
+```cmd
+emoji alias --help
+```
+
+```cmd
+Description:
+  Get emoji aliases
+
+Usage:
+  emoji alias [<args>...] [options]
+
+Arguments:
+  <args>  Find emojis via description, category, alias or tag
+
+Options:
+  -c, --copy      Copy to clipboard
+  -?, -h, --help  Show help and usage information
+```
+
+<details>
+<summary>💁 Examples:</summary>
+
+Get emoji aliases:
+
+```cmd
+emoji alias "grinning cat"
+emoji alias grinning cat
+emoji a grinning cat
+```
+
+```cmd
+:smiley_cat:
+:smile_cat:
+```
+
+Copy to clipboard:
+
+```cmd
+emoji alias "grinning cat" --copy
+emoji a grinning cat -c
+```
+
+```txt
+:smiley_cat::smile_cat:
+```
+
+</details>
+
+#### Emojify<!-- omit in toc -->
+
+```cmd
+emoji emojify --help
+```
+
+```cmd
+Description:
+  Replace aliases in text with raw emojis
+
+Usage:
+  emoji emojify [<args>...] [options]
+
+Arguments:
+  <args>  A text with emoji aliases
+
+Options:
+  -c, --copy      Copy to clipboard
+  -?, -h, --help  Show help and usage information
+```
+
+<details>
+<summary>💁 Examples:</summary>
+
+Replace aliases in text with raw emojis:
+
+```cmd
+emoji emojify ":tada: initial commit"
+emoji emojify :tada: initial commit
+emoji e :tada: initial commit
+```
+
+```cmd
+🎉 initial commit
+```
+
+Copy to clipboard:
+
+```cmd
+emoji emojify ":tada: initial commit" --copy
+emoji e :tada: initial commit -c
+```
+
+</details>
+
+#### Demojify<!-- omit in toc -->
+
+```cmd
+emoji demojify --help
+```
+
+```cmd
+Description:
+  Replace raw emojis in text with aliases
+
+Usage:
+  emoji demojify [<args>...] [options]
+
+Arguments:
+  <args>  A text with raw emojis
+
+Options:
+  -c, --copy      Copy to clipboard
+  -?, -h, --help  Show help and usage information
+```
+
+<details>
+<summary>💁 Examples:</summary>
+
+Replace raw emojis in text with aliases:
+
+```cmd
+emoji demojify "🎉 initial commit"
+emoji demojify 🎉 initial commit
+emoji d 🎉 initial commit
+```
+
+```cmd
+:tada: initial commit
+```
+
+Copy to clipboard:
+
+```cmd
+emoji demojify "🎉 initial commit" --copy
+emoji d 🎉 initial commit -c
+```
+
+</details>
+
+#### Export<!-- omit in toc -->
+
+```cmd
+emoji export --help
+```
+
+```cmd
+Description:
+  Export emoji data to <json|toml|xml|yaml>
+
+Usage:
+  emoji export [<args>...] [options]
+
+Arguments:
+  <args>  Find emojis via description, category, alias or tag
+
+Options:
+  -f, --format <format>  Format the data as <json|toml|xml|yaml>
+  -c, --copy             Copy to clipboard
+  -?, -h, --help         Show help and usage information
+```
+
+Formats:
+
+- `json`
+- `toml`
+- `xml`
+- `yaml`
+
+<details>
+<summary>💁 Examples:</summary>
+
+Export emoji data to `json`:
+
+```cmd
+emoji export "grinning cat" --format json
+emoji export grinning cat --format json
+emoji export grinning cat -f json
+emoji export grinning cat
+```
+
+```json
+[
+  {
+    "Raw": "😺",
+    "Description": "grinning cat",
+    "Category": "Smileys & Emotion",
+    "Aliases": [
+      "smiley_cat"
+    ],
+    "Tags": null,
+    "UnicodeVersion": "6.0",
+    "IosVersion": "6.0",
+    "Filename": "1f63a",
+    "IsCustom": false
+  },
+  {
+    "Raw": "😸",
+    "Description": "grinning cat with smiling eyes",
+    "Category": "Smileys & Emotion",
+    "Aliases": [
+      "smile_cat"
+    ],
+    "Tags": null,
+    "UnicodeVersion": "6.0",
+    "IosVersion": "6.0",
+    "Filename": "1f638",
+    "IsCustom": false
+  }
+]
+```
+
+Copy to clipboard:
+
+```cmd
+emoji export "grinning cat" --format json --copy
+emoji export "grinning cat" -c
+```
+
+</details>
+
+## `GEmojiSharp.PowerToysRun` 🧰
+
+[![GitHub](https://img.shields.io/github/downloads/hlaueriksson/GEmojiSharp/v1.0.0/GEmojiSharp.PowerToysRun.1.0.0.zip)](https://github.com/hlaueriksson/GEmojiSharp/releases/download/v1.0.0/GEmojiSharp.PowerToysRun.1.0.0.zip)
+
+> GitHub Emoji [PowerToys Run](https://docs.microsoft.com/en-us/windows/powertoys/run) plugin
+
+![GEmojiSharp.PowerToysRun](GEmojiSharp.PowerToysRun.gif)
+
+### Installation
+
+The plugin is developed and tested with `PowerToys` `v0.57.2`.
+
+Install:
+
+0. [Install PowerToys](https://docs.microsoft.com/en-us/windows/powertoys/install)
+1. Exit PowerToys
+2. Download [GEmojiSharp.PowerToysRun.1.0.0.zip](https://github.com/hlaueriksson/GEmojiSharp/releases/download/v1.0.0/GEmojiSharp.PowerToysRun.1.0.0.zip) and extract it to:
+   - `%ProgramFiles%\PowerToys\modules\launcher\Plugins`
+3. Start PowerToys
+
+![GEmojiSharp.PowerToysRun](GEmojiSharp.PowerToysRun.png)
+
+### Usage
+
+1. Open PowerToys Run with `alt + space`
+2. Type `emoji`
+   - A list of all emojis will be displayed
+3. Continue to type to find emojis via description, category, alias or tag
+4. Use ⬆️ and ⬇️ keys to select an emoji
+5. Press `Enter` to copy the selected raw emoji to clipboard
+6. Press `ctrl + c` to copy the selected emoji aliases to clipboard
+
+Emojify:
+
+- You can paste a text containing emoji aliases to replace them with raw emojis
+
+Demojify:
+
+- You can paste a text containing raw emojis to replace them with aliases
+
+### Configuration
+
+Change action keyword:
+
+1. Open PowerToys
+2. Select PowerToys Run
+3. Scroll down to Plugins
+4. Expand `GEmojiSharp`
+5. Change *Direct activation command*
+
+![GEmojiSharp.PowerToysRun](GEmojiSharp.PowerToysRun-Configuration.png)
+
 ## Samples
 
 The [`samples`](/samples) folder contains...
@@ -325,3 +709,5 @@ Repositories consulted when building this:
 
 - https://github.com/github/gemoji
 - https://github.com/github/g-emoji-element
+- https://github.com/dotnet/command-line-api
+- https://github.com/microsoft/PowerToys
