@@ -40,6 +40,8 @@ namespace GEmojiSharp.Tests
             Emoji.Raw(":beetle:").Should().NotBe("🐞");
             Emoji.Raw(":man_in_tuxedo:").Should().NotBe("🤵");
             Emoji.Raw(":bride_with_veil:").Should().NotBe("👰");
+            Emoji.Raw(":speaking_head:").Should().Be("🗣️");
+            Emoji.Raw(":exclamation:").Should().Be("❗");
 
             Action act = () => Emoji.Raw(NullString);
             act.Should().Throw<ArgumentNullException>();
