@@ -41,6 +41,7 @@ namespace GEmojiSharp.Tests
                 var t = emoji["tags"].Values<string>();
                 var uv = emoji.Value<string>("unicode_version");
                 var iv = emoji.Value<string>("ios_version");
+                var st = emoji.Value<bool?>("skin_tones");
 
                 a = a.Where(x => supportedEmojis[x] != null).ToList();
                 if (!a.Any()) continue;
@@ -59,6 +60,7 @@ namespace GEmojiSharp.Tests
                 if (t.Any()) result.Append($", Tags = new[] {{ {string.Join(", ", t.Select(x => "\"" + x + "\""))} }}");
                 if (!string.IsNullOrEmpty(uv)) result.Append($", UnicodeVersion = \"{uv}\"");
                 if (iv != null) result.Append($", IosVersion = \"{iv}\"");
+                if (st == true) result.Append($", HasSkinTones = true");
                 result.Append($", Filename = \"{filename}\"");
                 result.AppendLine(" },");
             }

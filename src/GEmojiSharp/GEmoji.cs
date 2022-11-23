@@ -29,6 +29,9 @@ namespace GEmojiSharp
         /// <summary>The iOS version where the emoji first debuted.</summary>
         public string? IosVersion { get; set; }
 
+        /// <summary>True if the emoji supports skin tone modifiers.</summary>
+        public bool HasSkinTones { get; set; }
+
         /// <summary>GitHub fallback image filename.</summary>
         public string Filename { get; set; } = string.Empty;
 
