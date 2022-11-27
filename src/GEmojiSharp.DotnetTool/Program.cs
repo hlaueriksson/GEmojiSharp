@@ -10,26 +10,40 @@ var argument = new Argument<string[]>("args", "Find emojis via description, cate
 var copyOption = new Option<bool>(new[] { "-c", "--copy" }, "Copy to clipboard");
 
 // raw
+var skinTonesOption = new Option<bool>(new[] { "-st", "--skin-tones" }, "Include skin tone variants");
+
 var rawCommand = new Command("raw", "Get raw emojis")
 {
     argument,
+    skinTonesOption,
     copyOption,
 };
 
 rawCommand.AddAlias("r");
 
 rawCommand.SetHandler(
-    (string[] args, bool copy) =>
+    (string[] args, bool skinTones, bool copy) =>
     {
         var value = string.Join(" ", args);
         var emojis = Emoji.Find(value);
 
         foreach (var e in emojis)
+        {
             Console.WriteLine(e.Raw);
+            if (skinTones && e.HasSkinTones)
+            {
+                foreach (var tone in e.RawSkinToneVariants())
+                {
+                    Console.WriteLine(tone);
+                }
+            }
+        }
+
         if (copy)
-            ClipboardService.SetText(string.Join(string.Empty, emojis.Select(x => x.Raw)));
+            ClipboardService.SetText(string.Join(string.Empty, emojis.Select(e => skinTones && e.HasSkinTones ? e.Raw + string.Join(string.Empty, e.RawSkinToneVariants()) : e.Raw)));
     },
     argument,
+    skinTonesOption,
     copyOption);
 
 // alias
