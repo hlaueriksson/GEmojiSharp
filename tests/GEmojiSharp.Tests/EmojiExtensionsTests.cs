@@ -103,5 +103,12 @@ namespace GEmojiSharp.Tests
             "foo".PadAlias().Should().Be(":foo:");
             ":bar:".PadAlias().Should().Be(":bar:");
         }
+
+        [Test]
+        public void TrimSkinToneVariants()
+        {
+            "👋".TrimSkinToneVariants().Should().Be("👋");
+            "👋🏻".TrimSkinToneVariants().Should().Be("👋"); // light skin tone
+        }
     }
 }

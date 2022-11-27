@@ -137,5 +137,16 @@ namespace GEmojiSharp
 
             return Colon + alias.TrimAlias() + Colon;
         }
+
+        internal static string TrimSkinToneVariants(this string raw)
+        {
+            var result = raw;
+            foreach (var tone in SkinTones)
+            {
+                result = result.Replace(tone, string.Empty);
+            }
+
+            return result;
+        }
     }
 }
