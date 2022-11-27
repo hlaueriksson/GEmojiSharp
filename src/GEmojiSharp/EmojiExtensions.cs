@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,6 +10,15 @@ namespace GEmojiSharp
     public static class EmojiExtensions
     {
         private const char Colon = ':';
+
+        private static readonly string[] SkinTones = new[]
+        {
+            "🏻", // light skin tone
+            "🏼", // medium-light skin tone
+            "🏽", // medium skin tone
+            "🏾", // medium-dark skin tone
+            "🏿", // dark skin tone
+        };
 
         /// <summary>
         /// Gets the emoji associated with the alias, or <see cref="GEmoji.Empty"/> if the alias is not found.
@@ -88,6 +98,32 @@ namespace GEmojiSharp
         public static string Alias(this GEmoji emoji)
         {
             return emoji?.Aliases.FirstOrDefault().PadAlias() ?? string.Empty;
+        }
+
+        /// <summary>
+        /// Gets the raw Unicode <c>strings</c> of the emoji skin tone variants.
+        /// </summary>
+        /// <param name="emoji">The emoji.</param>
+        /// <returns>The raw Unicode <c>strings</c> of the skin tone variants.</returns>
+        public static IEnumerable<string> RawSkinToneVariants(this GEmoji emoji)
+        {
+            if (emoji == null || !emoji.HasSkinTones) yield break;
+
+            var rawNormalized = string.Concat(emoji.Raw.Where(x => x != '\ufe0f')); // strip VARIATION_SELECTOR_16
+            var idx = rawNormalized.IndexOf('\u200d'); // detect zero-width joiner
+
+            foreach (var modifier in SkinTones)
+            {
+                if (idx > 0)
+                {
+                    // insert modifier before zero-width joiner
+                    yield return rawNormalized.Substring(0, idx) + modifier + rawNormalized.Substring(idx);
+                }
+                else
+                {
+                    yield return rawNormalized + modifier;
+                }
+            }
         }
 
         internal static string TrimAlias(this string alias)
