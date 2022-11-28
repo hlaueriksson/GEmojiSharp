@@ -51,6 +51,12 @@ namespace GEmojiSharp.Tests.PowerToysRun
             subject.LoadContextMenus(result).Should()
                 .Contain(x => x.Title == "Copy raw emoji (Enter)")
                 .And.Contain(x => x.Title == "Copy emoji aliases (Ctrl+C)");
+
+            result = new Result { ContextData = Emoji.Get("wave") };
+            subject.LoadContextMenus(result).Should()
+                .Contain(x => x.Title == "Copy raw emoji (Enter)")
+                .And.Contain(x => x.Title == "Copy emoji aliases (Ctrl+C)")
+                .And.Contain(x => x.Title == "Copy raw emoji skin tone variants (Ctrl+Enter)");
         }
 
         [Test]
