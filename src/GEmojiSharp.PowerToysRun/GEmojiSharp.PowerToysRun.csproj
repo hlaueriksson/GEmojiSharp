@@ -51,10 +51,10 @@
   </ItemGroup>
   <Target Name="ILMerge">
     <Exec Command="$(ILMergeConsolePath) ^
-          /out:bin\Release\net6.0-windows\GEmojiSharp.PowerToysRun.dll ^
-          bin\Release\net6.0-windows\GEmojiSharp.PowerToysRun.dll ^
-          bin\Release\net6.0-windows\GEmojiSharp.dll ^
-          /lib:&quot;C:\Program Files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\6.0.11\ref\net6.0&quot;" />
+          /out:bin\Release\net7.0-windows\GEmojiSharp.PowerToysRun.dll ^
+          bin\Release\net7.0-windows\GEmojiSharp.PowerToysRun.dll ^
+          bin\Release\net7.0-windows\GEmojiSharp.dll ^
+          /lib:&quot;C:\Program Files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\7.0.1\ref\net7.0&quot;" />
   </Target>
 
 </Project>
