@@ -37,17 +37,17 @@ namespace GEmojiSharp.Tests
                 var e = emoji.Value<string>("emoji");
                 var d = emoji.Value<string>("description");
                 var c = emoji.Value<string>("category");
-                var a = emoji["aliases"].Values<string>();
-                var t = emoji["tags"].Values<string>();
+                var a = emoji["aliases"]!.Values<string>();
+                var t = emoji["tags"]!.Values<string>();
                 var uv = emoji.Value<string>("unicode_version");
                 var iv = emoji.Value<string>("ios_version");
                 var st = emoji.Value<bool?>("skin_tones");
 
-                a = a.Where(x => supportedEmojis[x] != null).ToList();
+                a = a.Where(x => supportedEmojis[x!] != null).ToList();
                 if (!a.Any()) continue;
 
-                var url = supportedEmojis[a.First()].Value<string>();
-                var filename = url
+                var url = supportedEmojis[a.First()!]!.Value<string>();
+                var filename = url!
                     .Replace("https://github.githubassets.com/images/icons/emoji/unicode/", string.Empty)
                     .Replace(".png?v8", string.Empty);
 
@@ -155,7 +155,7 @@ namespace GEmojiSharp.Tests
                 foreach (var alias in emoji.Aliases)
                 {
                     var token = json[alias];
-                    var filename = token.Value<string>()
+                    var filename = token!.Value<string>()!
                         .Replace("https://github.githubassets.com/images/icons/emoji/unicode/", string.Empty)
                         .Replace("https://github.githubassets.com/images/icons/emoji/", string.Empty)
                         .Replace(".png?v8", string.Empty);
