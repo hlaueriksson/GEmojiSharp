@@ -46,7 +46,7 @@ namespace GEmojiSharp.PowerToysRun
                 return Emoji.All.Select(GetResult).ToList();
             }
 
-            var emojis = Emoji.Find(value);
+            var emojis = (GEmoji[])Emoji.Find(value);
 
             if (emojis.Any())
             {
