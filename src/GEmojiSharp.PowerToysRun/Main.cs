@@ -46,7 +46,7 @@ namespace GEmojiSharp.PowerToysRun
                 return Emoji.All.Select(GetResult).ToList();
             }
 
-            var emojis = Emoji.Find(value);
+            var emojis = (GEmoji[])Emoji.Find(value);
 
             if (emojis.Any())
             {
@@ -97,7 +97,7 @@ namespace GEmojiSharp.PowerToysRun
                 IcoPath = IconPath,
                 Title = emoji.Raw,
                 SubTitle = string.Join(" ", emoji.Aliases.Select(x => x.PadAlias())),
-                ToolTipData = new ToolTipData("GEmoji", $"Description: {emoji.Description}\nCategory: {emoji.Category}\nTags: {string.Join(", ", emoji.Tags ?? Enumerable.Empty<string>())}\n"),
+                ToolTipData = new ToolTipData("GEmoji", $"Description: {emoji.Description}\nCategory: {emoji.Category}\nTags: {string.Join(", ", emoji.Tags ?? Enumerable.Empty<string>())}\nUnicodeVersion: {emoji.UnicodeVersion}\nHasSkinTones: {(emoji.HasSkinTones ? "Yes" : "No")}"),
                 Action = _ => CopyToClipboard(emoji.Raw),
                 ContextData = emoji,
             };
@@ -133,27 +133,49 @@ namespace GEmojiSharp.PowerToysRun
         {
             if (selectedResult?.ContextData is GEmoji emoji)
             {
+                var raw = new ContextMenuResult
+                {
+                    PluginName = Name,
+                    Title = "Copy raw emoji (Enter)",
+                    FontFamily = "Segoe MDL2 Assets",
+                    Glyph = "\xE8C8", // E8C8 => Symbol: Copy
+                    /*AcceleratorKey = Key.Enter,*/
+                    Action = _ => CopyToClipboard(emoji.Raw),
+                };
+                var alias = new ContextMenuResult
+                {
+                    PluginName = Name,
+                    Title = "Copy emoji aliases (Ctrl+C)",
+                    FontFamily = "Segoe MDL2 Assets",
+                    Glyph = "\xF413", // F413 => Symbol: CopyTo
+                    AcceleratorKey = Key.C,
+                    AcceleratorModifiers = ModifierKeys.Control,
+                    Action = _ => CopyToClipboard(string.Join(string.Empty, emoji.Aliases.Select(x => x.PadAlias()))),
+                };
+
+                if (emoji.HasSkinTones)
+                {
+                    return new List<ContextMenuResult>
+                    {
+                        raw,
+                        alias,
+                        new ContextMenuResult
+                        {
+                            PluginName = Name,
+                            Title = "Copy raw emoji skin tone variants (Ctrl+Enter)",
+                            FontFamily = "Segoe MDL2 Assets",
+                            Glyph = "\xE748", // E748 => Symbol: SwitchUser
+                            AcceleratorKey = Key.Enter,
+                            AcceleratorModifiers = ModifierKeys.Control,
+                            Action = _ => CopyToClipboard(emoji.Raw + string.Join(string.Empty, emoji.RawSkinToneVariants())),
+                        },
+                    };
+                }
+
                 return new List<ContextMenuResult>
                 {
-                    new ContextMenuResult
-                    {
-                        PluginName = Name,
-                        Title = "Copy raw emoji (Enter)",
-                        FontFamily = "Segoe MDL2 Assets",
-                        Glyph = "\xE8C8", // E8C8 => Symbol: Copy
-                        AcceleratorKey = Key.Enter,
-                        Action = _ => CopyToClipboard(emoji.Raw),
-                    },
-                    new ContextMenuResult
-                    {
-                        PluginName = Name,
-                        Title = "Copy emoji aliases (Ctrl+C)",
-                        FontFamily = "Segoe MDL2 Assets",
-                        Glyph = "\xF413", // F413 => Symbol: CopyTo
-                        AcceleratorKey = Key.C,
-                        AcceleratorModifiers = ModifierKeys.Control,
-                        Action = _ => CopyToClipboard(string.Join(string.Empty, emoji.Aliases.Select(x => x.PadAlias()))),
-                    },
+                    raw,
+                    alias,
                 };
             }
 
@@ -167,7 +189,7 @@ namespace GEmojiSharp.PowerToysRun
                         Title = "Copy emojified text (Enter)",
                         FontFamily = "Segoe MDL2 Assets",
                         Glyph = "\xE8C8", // E8C8 => Symbol: Copy
-                        AcceleratorKey = Key.Enter,
+                        /*AcceleratorKey = Key.Enter,*/
                         Action = _ => CopyToClipboard(emojified.Value),
                     },
                 };
@@ -183,7 +205,7 @@ namespace GEmojiSharp.PowerToysRun
                         Title = "Copy demojified text (Enter)",
                         FontFamily = "Segoe MDL2 Assets",
                         Glyph = "\xE8C8", // E8C8 => Symbol: Copy
-                        AcceleratorKey = Key.Enter,
+                        /*AcceleratorKey = Key.Enter,*/
                         Action = _ => CopyToClipboard(demojified.Value),
                     },
                 };

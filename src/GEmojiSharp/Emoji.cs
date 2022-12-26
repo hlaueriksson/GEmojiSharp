@@ -39,7 +39,7 @@ namespace GEmojiSharp
         {
             if (value is null) throw new ArgumentNullException(nameof(value));
 
-            var key = value.TrimAlias();
+            var key = value.TrimAlias().TrimSkinToneVariants();
 
             return
                 AliasToGEmoji.ContainsKey(key) ? AliasToGEmoji[key] :

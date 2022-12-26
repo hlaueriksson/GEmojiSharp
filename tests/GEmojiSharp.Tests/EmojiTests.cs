@@ -25,6 +25,9 @@ namespace GEmojiSharp.Tests
             Emoji.Get("字").Should().Be(GEmoji.Empty);
             Emoji.Get("😀").Should().Be(Emoji.Get(":grinning:"));
 
+            Emoji.Get("👋").Should().Be(Emoji.Get(":wave:"));
+            Emoji.Get("👋🏻").Should().Be(Emoji.Get(":wave:")); // light skin tone
+
             Action act = () => Emoji.Get(NullString);
             act.Should().Throw<ArgumentNullException>();
         }

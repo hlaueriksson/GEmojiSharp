@@ -81,6 +81,16 @@ namespace GEmojiSharp.Tests
         }
 
         [Test]
+        public void RawSkinToneVariants()
+        {
+            "✌️".GetEmoji().RawSkinToneVariants().Should().BeEquivalentTo(new[] { "✌🏻", "✌🏼", "✌🏽", "✌🏾", "✌🏿" });
+            "🧔‍♀️".GetEmoji().RawSkinToneVariants().Should().BeEquivalentTo(new[] { "🧔🏻‍♀", "🧔🏼‍♀", "🧔🏽‍♀", "🧔🏾‍♀", "🧔🏿‍♀" });
+            ":atom:".GetEmoji().RawSkinToneVariants().Should().BeEmpty();
+            GEmoji.Empty.RawSkinToneVariants().Should().BeEmpty();
+            NullGEmoji.RawSkinToneVariants().Should().BeEmpty();
+        }
+
+        [Test]
         public void TrimAlias()
         {
             ":foo:".TrimAlias().Should().Be("foo");
@@ -92,6 +102,13 @@ namespace GEmojiSharp.Tests
         {
             "foo".PadAlias().Should().Be(":foo:");
             ":bar:".PadAlias().Should().Be(":bar:");
+        }
+
+        [Test]
+        public void TrimSkinToneVariants()
+        {
+            "👋".TrimSkinToneVariants().Should().Be("👋");
+            "👋🏻".TrimSkinToneVariants().Should().Be("👋"); // light skin tone
         }
     }
 }

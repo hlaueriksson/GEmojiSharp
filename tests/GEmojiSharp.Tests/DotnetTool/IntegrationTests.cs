@@ -35,11 +35,14 @@ namespace GEmojiSharp.Tests.DotnetTool
             Run("r earth").ShouldHaveOutput($"🌍{NewLine}🌎{NewLine}🌏{NewLine}");
             Run("r globe showing").ShouldHaveOutput($"🌍{NewLine}🌎{NewLine}🌏{NewLine}");
             Run("r \"globe showing\"").ShouldHaveOutput($"🌍{NewLine}🌎{NewLine}🌏{NewLine}");
+            Run("r waving hand --skin-tones").ShouldHaveOutput($"👋{NewLine}👋🏻{NewLine}👋🏼{NewLine}👋🏽{NewLine}👋🏾{NewLine}👋🏿{NewLine}");
 
             Run("r earth --copy");
             ClipboardService.GetText().Should().Be("🌍🌎🌏");
             Run("r tada -c");
             ClipboardService.GetText().Should().Be("🎉");
+            Run("r waving hand -st -c");
+            ClipboardService.GetText().Should().Be("👋👋🏻👋🏼👋🏽👋🏾👋🏿");
 
             Run("r -h").StandardOutput.Should()
                 .Contain("Get raw emojis")

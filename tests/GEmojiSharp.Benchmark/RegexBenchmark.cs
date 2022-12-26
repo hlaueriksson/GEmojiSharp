@@ -5,8 +5,8 @@ namespace GEmojiSharp.Benchmark
 {
     public class RegexBenchmark
     {
-        private Regex _regex;
-        private string _value;
+        private Regex _regex = null!;
+        private string _value = null!;
 
         [GlobalSetup]
         public void GlobalSetup()
