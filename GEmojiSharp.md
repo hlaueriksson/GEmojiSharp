@@ -14,6 +14,7 @@ Emoji.Alias("🎉"); // :tada:
 Emoji.Emojify(":tada: initial commit"); // 🎉 initial commit
 Emoji.Demojify("🎉 initial commit"); // :tada: initial commit
 Emoji.Find("party popper").First().Raw; // 🎉
+Emoji.Get("✌️").RawSkinToneVariants(); // ✌🏻, ✌🏼, ✌🏽, ✌🏾, ✌🏿
 ```
 
 Extension methods:

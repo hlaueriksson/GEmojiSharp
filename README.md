@@ -1,4 +1,4 @@
-# GEmojiSharp<!-- omit in toc -->
+# GEmojiSharp :octocat:<!-- omit in toc -->
 
 [![Build status](https://github.com/hlaueriksson/GEmojiSharp/workflows/build/badge.svg)](https://github.com/hlaueriksson/GEmojiSharp/actions?query=workflow%3Abuild)
 [![CodeFactor](https://www.codefactor.io/repository/github/hlaueriksson/gemojisharp/badge)](https://www.codefactor.io/repository/github/hlaueriksson/gemojisharp)
@@ -8,7 +8,12 @@
 [![GEmojiSharp.Blazor](https://img.shields.io/nuget/v/GEmojiSharp.Blazor.svg?label=GEmojiSharp.Blazor)](https://www.nuget.org/packages/GEmojiSharp.Blazor)
 [![GEmojiSharp.DotnetTool](https://img.shields.io/nuget/v/GEmojiSharp.DotnetTool.svg?label=GEmojiSharp.DotnetTool)](https://www.nuget.org/packages/GEmojiSharp.DotnetTool)
 
-> GitHub Emoji for C#, ASP.NET Core and Blazor, dotnet tool for the terminal and PowerToys Run plugin
+> GitHub Emoji for C# and .NET:
+> - `netstandard2.0`
+> - ASP.NET Core
+> - Blazor
+> - `dotnet` tool
+> - PowerToys Run plugin
 
 ```txt
 🐙 :octopus:
@@ -21,15 +26,15 @@
 ## Content<!-- omit in toc -->
 
 - [Introduction](#introduction)
-- [`GEmojiSharp` 📦](#gemojisharp-)
-- [`GEmojiSharp.AspNetCore` 📦](#gemojisharpaspnetcore-)
+- [`GEmojiSharp`](#gemojisharp)
+- [`GEmojiSharp.AspNetCore`](#gemojisharpaspnetcore)
   - [TagHelpers](#taghelpers)
   - [HtmlHelpers](#htmlhelpers)
-- [`GEmojiSharp.Blazor` 📦](#gemojisharpblazor-)
-- [`GEmojiSharp.DotnetTool` 🧰](#gemojisharpdotnettool-)
+- [`GEmojiSharp.Blazor`](#gemojisharpblazor)
+- [`GEmojiSharp.DotnetTool`](#gemojisharpdotnettool)
   - [Installation](#installation)
   - [Usage](#usage)
-- [`GEmojiSharp.PowerToysRun` 🧰](#gemojisharppowertoysrun-)
+- [`GEmojiSharp.PowerToysRun`](#gemojisharppowertoysrun)
   - [Installation](#installation-1)
   - [Usage](#usage-1)
   - [Configuration](#configuration)
@@ -45,17 +50,18 @@
 
 :+1: This PR looks great - it's ready to merge! :shipit:
 
-`GEmojiSharp`, `GEmojiSharp.AspNetCore` and `GEmojiSharp.Blazor` are three libraries to make this possible in C#, Blazor and ASP.NET Core.
+`GEmojiSharp` make this possible in C#. The library contains a static array of all valid emoji in GitHub Flavored Markdown.
+That is the intersection of the [emoji.json](https://raw.githubusercontent.com/github/gemoji/master/db/emoji.json) database and the API with [available emojis](https://api.github.com/emojis).
 
-A list of all GitHub Emojis:
+A visual referense of all GitHub Emoji:
 
 - https://github.com/hlaueriksson/github-emoji
 
-## `GEmojiSharp` 📦
+## `GEmojiSharp`
 
 [![NuGet](https://buildstats.info/nuget/GEmojiSharp)](https://www.nuget.org/packages/GEmojiSharp/)
 
-> GitHub Emoji for C# and .NET
+> GitHub Emoji for C# and .NET 📦
 
 Static methods:
 
@@ -67,6 +73,7 @@ Emoji.Alias("🎉"); // :tada:
 Emoji.Emojify(":tada: initial commit"); // 🎉 initial commit
 Emoji.Demojify("🎉 initial commit"); // :tada: initial commit
 Emoji.Find("party popper").First().Raw; // 🎉
+Emoji.Get("✌️").RawSkinToneVariants(); // ✌🏻, ✌🏼, ✌🏽, ✌🏾, ✌🏿
 ```
 
 Extension methods:
@@ -92,11 +99,11 @@ string.Join(string.Empty, matches.Select(x => x.Value)); // 😂😂
 Regex.Replace(text, Emoji.RegexPattern, string.Empty); // Lorem  ipsum
 ```
 
-## `GEmojiSharp.AspNetCore` 📦
+## `GEmojiSharp.AspNetCore`
 
 [![NuGet](https://buildstats.info/nuget/GEmojiSharp.AspNetCore)](https://www.nuget.org/packages/GEmojiSharp.AspNetCore/)
 
-> GitHub Emoji for ASP.NET Core
+> GitHub Emoji for ASP.NET Core 📦
 
 The package includes:
 
@@ -241,11 +248,11 @@ Use the `Emoji` extension methods to render emojis:
 @Html.Emoji(x => x.Text)
 ```
 
-## `GEmojiSharp.Blazor` 📦
+## `GEmojiSharp.Blazor`
 
 [![NuGet](https://buildstats.info/nuget/GEmojiSharp.Blazor)](https://www.nuget.org/packages/GEmojiSharp.Blazor/)
 
-> GitHub Emoji for Blazor
+> GitHub Emoji for Blazor 📦
 
 The package is a Razor class library (RCL) with a Razor component.
 
@@ -273,11 +280,11 @@ Custom GitHub emojis are rendered as images:
 <img class="emoji" title=":octocat:" alt=":octocat:" src="https://github.githubassets.com/images/icons/emoji/octocat.png" height="20" width="20" align="absmiddle">
 ```
 
-## `GEmojiSharp.DotnetTool` 🧰
+## `GEmojiSharp.DotnetTool`
 
 [![NuGet](https://buildstats.info/nuget/GEmojiSharp.DotnetTool)](https://www.nuget.org/packages/GEmojiSharp.DotnetTool/)
 
-> GitHub Emoji dotnet tool
+> GitHub Emoji `dotnet` tool 🧰
 
 ![GEmojiSharp.DotnetTool](GEmojiSharp.DotnetTool.gif)
 
@@ -343,8 +350,9 @@ Arguments:
   <args>  Find emojis via description, category, alias or tag
 
 Options:
-  -c, --copy      Copy to clipboard
-  -?, -h, --help  Show help and usage information
+  -st, --skin-tones  Include skin tone variants
+  -c, --copy         Copy to clipboard
+  -?, -h, --help     Show help and usage information
 ```
 
 <details>
@@ -372,6 +380,22 @@ emoji r grinning cat -c
 
 ```txt
 😺😸
+```
+
+Skin tone variants:
+
+```cmd
+emoji raw "victory" --skin-tones
+emoji r victory -st
+```
+
+```txt
+✌️
+✌🏻
+✌🏼
+✌🏽
+✌🏾
+✌🏿
 ```
 
 </details>
@@ -597,17 +621,17 @@ emoji export "grinning cat" -c
 
 </details>
 
-## `GEmojiSharp.PowerToysRun` 🧰
+## `GEmojiSharp.PowerToysRun`
 
 [![GitHub](https://img.shields.io/github/downloads/hlaueriksson/GEmojiSharp/v1.0.0/GEmojiSharp.PowerToysRun.1.0.0.zip)](https://github.com/hlaueriksson/GEmojiSharp/releases/download/v1.0.0/GEmojiSharp.PowerToysRun.1.0.0.zip)
 
-> GitHub Emoji [PowerToys Run](https://docs.microsoft.com/en-us/windows/powertoys/run) plugin
+> GitHub Emoji [PowerToys Run](https://docs.microsoft.com/en-us/windows/powertoys/run) plugin 🗂️🔎🔌
 
 ![GEmojiSharp.PowerToysRun](GEmojiSharp.PowerToysRun.gif)
 
 ### Installation
 
-The plugin is developed and tested with `PowerToys` `v0.57.2`.
+The plugin is developed and tested with `PowerToys` `v0.65.0`.
 
 Install:
 
@@ -628,6 +652,8 @@ Install:
 4. Use ⬆️ and ⬇️ keys to select an emoji
 5. Press `Enter` to copy the selected raw emoji to clipboard
 6. Press `ctrl + c` to copy the selected emoji aliases to clipboard
+7. Press `ctrl + Enter` to copy the selected raw emoji skin tone variants to clipboard
+   - For emoji that supports skin tone modifiers
 
 Emojify:
 

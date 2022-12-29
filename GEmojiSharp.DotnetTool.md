@@ -2,7 +2,7 @@
 
 [![Build status](https://github.com/hlaueriksson/GEmojiSharp/workflows/build/badge.svg)](https://github.com/hlaueriksson/GEmojiSharp/actions?query=workflow%3Abuild) [![CodeFactor](https://www.codefactor.io/repository/github/hlaueriksson/gemojisharp/badge)](https://www.codefactor.io/repository/github/hlaueriksson/gemojisharp)
 
-> GitHub Emoji dotnet tool
+> GitHub Emoji `dotnet` tool
 
 ## Raw
 
@@ -30,6 +30,22 @@ emoji r grinning cat -c
 
 ```txt
 😺😸
+```
+
+Skin tone variants:
+
+```cmd
+emoji raw "victory" --skin-tones
+emoji r victory -st
+```
+
+```txt
+✌️
+✌🏻
+✌🏼
+✌🏽
+✌🏾
+✌🏿
 ```
 
 ## Alias
