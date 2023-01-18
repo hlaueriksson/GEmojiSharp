@@ -6,7 +6,7 @@
 
 ## Installation
 
-The plugin is developed and tested with `PowerToys` `v0.65.0`.
+The plugin is developed and tested with `PowerToys` `v0.66.0`.
 
 Install:
 
