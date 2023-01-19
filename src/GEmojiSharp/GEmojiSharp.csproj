@@ -2,15 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>2.0.0</Version>
+    <Version>3.0.0</Version>
     <PackageReleaseNotes>
-New:
-- Emoji.Alias("😀") // :grinning:
-- Emoji.Demojify("Hello, 🌍") // Hello, :earth_africa:
-- Emoji.RegexPattern // Regular expression pattern to match all supported emojis
-Updated:
-- Emoji.Get("😀") // By raw emoji
-- Emoji.Find(":grinning:") // Query for alias enclosed by colons
+- 👽 Update to https://github.com/github/gemoji/releases/tag/v4.0.0
+- GEmoji property HasSkinTones returns true when an emoji supports skin tone modifiers
+- GEmoji extension method RawSkinToneVariants generates a list of all 5 skin tone variants for an emoji
+- Emoji.Get now recognizes emoji sequences with skin tone modifiers
     </PackageReleaseNotes>
     <Authors>Henrik Lau Eriksson</Authors>
     <Description>GitHub Emoji for C# and .NET
