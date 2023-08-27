@@ -54,7 +54,7 @@
           /out:bin\Release\net7.0-windows\GEmojiSharp.PowerToysRun.dll ^
           bin\Release\net7.0-windows\GEmojiSharp.PowerToysRun.dll ^
           bin\Release\net7.0-windows\GEmojiSharp.dll ^
-          /lib:&quot;C:\Program Files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\7.0.2\ref\net7.0&quot;" />
+          /lib:&quot;C:\Program Files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\7.0.10\ref\net7.0&quot;" />
   </Target>
 
 </Project>
