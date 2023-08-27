@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using FluentAssertions;
+using Microsoft.Playwright;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 
@@ -150,6 +151,7 @@ namespace GEmojiSharp.Tests
                 var emoji = Emoji.Get(token.Path);
 
                 emoji.Should().NotBe(GEmoji.Empty, $":{token.Path}:");
+                //if (emoji == GEmoji.Empty) Console.WriteLine($":{token.Path}:");
             }
         }
 
@@ -180,22 +182,28 @@ namespace GEmojiSharp.Tests
         [Test, Category("Integration")]
         public async Task Raw_vs_Available()
         {
-            var client = new HttpClient();
-            var response = await client.GetAsync("https://github.com/hlaueriksson/github-emoji/blob/master/available.md");
-            var content = await response.Content.ReadAsStringAsync();
+            using var playwright = await Playwright.CreateAsync();
+            await using var browser = await playwright.Chromium.LaunchAsync();
+            var page = await browser.NewPageAsync();
+            await page.GotoAsync("https://github.com/hlaueriksson/github-emoji/blob/master/available.md");
+            var content = await page.ContentAsync();
 
             foreach (var emoji in Emoji.All.Where(x => !x.IsCustom))
             {
                 foreach (var alias in emoji.Aliases)
                 {
-                    var regex = new Regex($"<tr>\n<td><g-emoji.*>(.*)</g-emoji></td>\n<td><code>:{Regex.Escape(alias)}:</code></td>\n</tr>");
+                    var regex = new Regex($"<tr>\n<td>(.*)</td>\n<td><code>:{Regex.Escape(alias)}:</code></td>\n</tr>");
                     var match = regex.Match(content);
 
                     match.Success.Should().BeTrue($":{alias}:");
 
                     var raw = match.Groups[1].Value;
+                    //<g-emoji class="g-emoji" alias="relaxed">☺️</g-emoji>
+                    raw = Regex.Replace(raw, $"<g-emoji class=\"g-emoji\" alias=\".*\">", string.Empty);
+                    raw = raw.Replace("</g-emoji>", string.Empty);
 
                     emoji.Raw.Should().Be(raw, $":{alias}:");
+                    //if (emoji.Raw != raw) Console.WriteLine($":{alias}:");
                 }
             }
         }
