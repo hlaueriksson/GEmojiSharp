@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -15,8 +16,8 @@ namespace GEmojiSharp.Tests
     [Explicit]
     public class GenerateTests
     {
-        [Test]
-        public async Task Write()
+        [Test, Category("Generate")]
+        public async Task Generate_All()
         {
             var client = new HttpClient();
             var response = await client.GetAsync("https://raw.githubusercontent.com/github/gemoji/master/db/emoji.json");
@@ -65,11 +66,18 @@ namespace GEmojiSharp.Tests
                 result.AppendLine(" },");
             }
 
-            Console.WriteLine(result.ToString());
+            var path = Directory.GetCurrentDirectory() + @"..\..\..\..\..\..\src\GEmojiSharp\Emoji.g.All.cs";
+            var contents = File
+                .ReadAllLines(path)
+                .Where(x => !x.Contains("new GEmoji { Raw"))
+                .ToList();
+            var index = contents.FindIndex(x => x.Contains("new GEmoji { Aliases"));
+            contents.InsertRange(index, result.ToString().Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries));
+            File.WriteAllLines(path, contents);
         }
 
-        [Test]
-        public void Demojify()
+        [Test, Category("Generate")]
+        public void Generate_RegexPattern()
         {
             var codes = new List<string>();
 
@@ -90,7 +98,11 @@ namespace GEmojiSharp.Tests
             result.Insert(0, "(");
             result.Append(")");
 
-            Console.WriteLine(result.ToString());
+            var path = Directory.GetCurrentDirectory() + @"..\..\..\..\..\..\src\GEmojiSharp\Emoji.g.RegexPattern.cs";
+            var contents = File.ReadAllLines(path);
+            var index = Array.FindIndex(contents, x => x.Contains("public const string RegexPattern"));
+            contents[index] = $"        public const string RegexPattern = @\"{result}\";";
+            File.WriteAllLines(path, contents);
         }
 
         [Test]
