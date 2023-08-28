@@ -631,14 +631,14 @@ emoji export "grinning cat" -c
 
 ### Installation
 
-The plugin is developed and tested with `PowerToys` `v0.66.0`.
+The plugin is developed and tested with `PowerToys` `v0.72.0`.
 
 Install:
 
 0. [Install PowerToys](https://docs.microsoft.com/en-us/windows/powertoys/install)
 1. Exit PowerToys
 2. Download [GEmojiSharp.PowerToysRun.3.0.0.zip](https://github.com/hlaueriksson/GEmojiSharp/releases/download/v3.0.0/GEmojiSharp.PowerToysRun.3.0.0.zip) and extract it to:
-   - `%ProgramFiles%\PowerToys\modules\launcher\Plugins`
+   - `%LocalAppData%\Microsoft\PowerToys\PowerToys Run\Plugins`
 3. Start PowerToys
 
 ![GEmojiSharp.PowerToysRun](GEmojiSharp.PowerToysRun.png)
