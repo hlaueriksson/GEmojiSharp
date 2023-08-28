@@ -623,7 +623,7 @@ emoji export "grinning cat" -c
 
 ## `GEmojiSharp.PowerToysRun`
 
-[![GitHub](https://img.shields.io/github/downloads/hlaueriksson/GEmojiSharp/v3.0.0/GEmojiSharp.PowerToysRun.3.0.0.zip)](https://github.com/hlaueriksson/GEmojiSharp/releases/download/v3.0.0/GEmojiSharp.PowerToysRun.3.0.0.zip)
+[![GitHub](https://img.shields.io/github/downloads/hlaueriksson/GEmojiSharp/v3.1.0/GEmojiSharp.PowerToysRun.3.1.0.zip)](https://github.com/hlaueriksson/GEmojiSharp/releases/download/v3.1.0/GEmojiSharp.PowerToysRun.3.1.0.zip)
 
 > GitHub Emoji [PowerToys Run](https://docs.microsoft.com/en-us/windows/powertoys/run) plugin 🗂️🔎🔌
 
@@ -637,7 +637,7 @@ Install:
 
 0. [Install PowerToys](https://docs.microsoft.com/en-us/windows/powertoys/install)
 1. Exit PowerToys
-2. Download [GEmojiSharp.PowerToysRun.3.0.0.zip](https://github.com/hlaueriksson/GEmojiSharp/releases/download/v3.0.0/GEmojiSharp.PowerToysRun.3.0.0.zip) and extract it to:
+2. Download [GEmojiSharp.PowerToysRun.3.1.0.zip](https://github.com/hlaueriksson/GEmojiSharp/releases/download/v3.1.0/GEmojiSharp.PowerToysRun.3.1.0.zip) and extract it to:
    - `%LocalAppData%\Microsoft\PowerToys\PowerToys Run\Plugins`
 3. Start PowerToys
 
