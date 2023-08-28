@@ -6,10 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>emoji</ToolCommandName>
-    <Version>3.0.0</Version>
+    <Version>3.1.0</Version>
     <PackageReleaseNotes>
-- 👽 Update to https://github.com/github/gemoji/releases/tag/v4.0.0
-- raw command now supports the -st or --skin-tones option to includes skin tone variants
+- 👽 Update to https://github.com/github/gemoji/releases/tag/v4.1.0
     </PackageReleaseNotes>
     <Authors>Henrik Lau Eriksson</Authors>
     <Description>GitHub Emoji dotnet tool
