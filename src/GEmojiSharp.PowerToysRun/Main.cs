@@ -242,7 +242,7 @@ namespace GEmojiSharp.PowerToysRun
 
         private static bool CopyToClipboard(string value)
         {
-            Clipboard.SetText(value);
+            Clipboard.SetDataObject(value);
             return true;
         }
 
