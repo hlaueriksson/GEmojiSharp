@@ -150,7 +150,7 @@ namespace GEmojiSharp.PowerToysRun
                     Glyph = "\xF413", // F413 => Symbol: CopyTo
                     AcceleratorKey = Key.C,
                     AcceleratorModifiers = ModifierKeys.Control,
-                    Action = _ => CopyToClipboard(string.Join(string.Empty, emoji.Aliases.Select(x => x.PadAlias()))),
+                    Action = _ => CopyToClipboard(string.Concat(emoji.Aliases.Select(x => x.PadAlias()))),
                 };
 
                 if (emoji.HasSkinTones)
@@ -167,7 +167,7 @@ namespace GEmojiSharp.PowerToysRun
                             Glyph = "\xE748", // E748 => Symbol: SwitchUser
                             AcceleratorKey = Key.Enter,
                             AcceleratorModifiers = ModifierKeys.Control,
-                            Action = _ => CopyToClipboard(emoji.Raw + string.Join(string.Empty, emoji.RawSkinToneVariants())),
+                            Action = _ => CopyToClipboard(emoji.Raw + string.Concat(emoji.RawSkinToneVariants())),
                         },
                     };
                 }
@@ -232,7 +232,7 @@ namespace GEmojiSharp.PowerToysRun
                 return;
             }
 
-            if (Context != null && Context.API != null)
+            if (Context?.API != null)
             {
                 Context.API.ThemeChanged -= OnThemeChanged;
             }

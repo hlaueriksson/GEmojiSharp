@@ -16,8 +16,15 @@ namespace GEmojiSharp.AspNetCore
         /// <param name="htmlHelper">The <see cref="IHtmlHelper"/> instance this method extends.</param>
         /// <param name="content">The content.</param>
         /// <returns>A new <see cref="IHtmlContent"/> containing the created HTML.</returns>
-        public static IHtmlContent Emoji(this IHtmlHelper htmlHelper, string content) =>
-            new HtmlString(content.MarkupContent());
+        public static IHtmlContent Emoji(this IHtmlHelper htmlHelper, string content)
+        {
+            if (htmlHelper == null)
+            {
+                throw new ArgumentNullException(nameof(htmlHelper));
+            }
+
+            return new HtmlString(content.MarkupContent());
+        }
 
         /// <summary>
         /// Returns emojified HTML markup for the <paramref name="expression"/>.

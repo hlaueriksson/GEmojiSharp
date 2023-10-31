@@ -40,7 +40,7 @@ rawCommand.SetHandler(
         }
 
         if (copy)
-            ClipboardService.SetText(string.Join(string.Empty, emojis.Select(e => skinTones && e.HasSkinTones ? e.Raw + string.Join(string.Empty, e.RawSkinToneVariants()) : e.Raw)));
+            ClipboardService.SetText(string.Concat(emojis.Select(e => skinTones && e.HasSkinTones ? e.Raw + string.Concat(e.RawSkinToneVariants()) : e.Raw)));
     },
     argument,
     skinTonesOption,
@@ -70,7 +70,7 @@ aliasCommand.SetHandler(
         }
 
         if (copy)
-            ClipboardService.SetText(string.Join(string.Empty, emojis.SelectMany(x => x.Aliases).Select(x => x.PadAlias())));
+            ClipboardService.SetText(string.Concat(emojis.SelectMany(x => x.Aliases).Select(x => x.PadAlias())));
     },
     argument,
     copyOption);
@@ -140,19 +140,19 @@ exportCommand.SetHandler(
         var emojis = Emoji.Find(value);
         string result;
 
-        if (!string.IsNullOrEmpty(format) && format.ToUpperInvariant() == "YAML")
+        if (!string.IsNullOrEmpty(format) && string.Equals(format, "YAML", StringComparison.OrdinalIgnoreCase))
         {
             var serializer = new YamlDotNet.Serialization.SerializerBuilder().Build();
             result = serializer.Serialize(emojis);
         }
-        else if (!string.IsNullOrEmpty(format) && format.ToUpperInvariant() == "XML")
+        else if (!string.IsNullOrEmpty(format) && string.Equals(format, "XML", StringComparison.OrdinalIgnoreCase))
         {
             var serializer = new System.Xml.Serialization.XmlSerializer(emojis.GetType());
             var writer = new StringWriter();
             serializer.Serialize(System.Xml.XmlWriter.Create(writer, new System.Xml.XmlWriterSettings { Indent = true }), emojis);
             result = writer.ToString();
         }
-        else if (!string.IsNullOrEmpty(format) && format.ToUpperInvariant() == "TOML")
+        else if (!string.IsNullOrEmpty(format) && string.Equals(format, "TOML", StringComparison.OrdinalIgnoreCase))
         {
             result = Tomlyn.Toml.FromModel(emojis.ToDictionary(x => x.Alias()));
         }

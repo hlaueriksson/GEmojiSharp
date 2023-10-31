@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -107,7 +106,7 @@ namespace GEmojiSharp
         /// <returns>The raw Unicode <c>strings</c> of the skin tone variants.</returns>
         public static IEnumerable<string> RawSkinToneVariants(this GEmoji emoji)
         {
-            if (emoji == null || !emoji.HasSkinTones) yield break;
+            if (emoji?.HasSkinTones != true) yield break;
 
             var rawNormalized = string.Concat(emoji.Raw.Where(x => x != '\ufe0f')); // strip VARIATION_SELECTOR_16
             var idx = rawNormalized.IndexOf('\u200d'); // detect zero-width joiner
