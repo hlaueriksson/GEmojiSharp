@@ -7,7 +7,7 @@
     <Platforms>x64</Platforms>
     <PlatformTarget>x64</PlatformTarget>
     <IsPackable>false</IsPackable>
-    <Version>3.1.1</Version>
+    <Version>3.1.2</Version>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
