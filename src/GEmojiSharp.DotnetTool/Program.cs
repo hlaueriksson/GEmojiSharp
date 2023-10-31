@@ -40,7 +40,7 @@ rawCommand.SetHandler(
         }
 
         if (copy)
-            ClipboardService.SetText(string.Join(string.Empty, emojis.Select(e => skinTones && e.HasSkinTones ? e.Raw + string.Join(string.Empty, e.RawSkinToneVariants()) : e.Raw)));
+            ClipboardService.SetText(string.Concat(emojis.Select(e => skinTones && e.HasSkinTones ? e.Raw + string.Concat(e.RawSkinToneVariants()) : e.Raw)));
     },
     argument,
     skinTonesOption,
@@ -70,7 +70,7 @@ aliasCommand.SetHandler(
         }
 
         if (copy)
-            ClipboardService.SetText(string.Join(string.Empty, emojis.SelectMany(x => x.Aliases).Select(x => x.PadAlias())));
+            ClipboardService.SetText(string.Concat(emojis.SelectMany(x => x.Aliases).Select(x => x.PadAlias())));
     },
     argument,
     copyOption);

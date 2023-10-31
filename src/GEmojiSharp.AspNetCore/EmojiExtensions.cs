@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace GEmojiSharp.AspNetCore
@@ -72,7 +71,7 @@ namespace GEmojiSharp.AspNetCore
 
         private static string Alias(this GEmoji emoji)
         {
-            return emoji.Aliases.First();
+            return emoji.Aliases[0];
         }
     }
 }
