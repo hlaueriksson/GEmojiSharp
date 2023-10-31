@@ -12,6 +12,11 @@ namespace GEmojiSharp.PowerToysRun
     public class Main : IPlugin, IContextMenu, IDisposable
     {
         /// <summary>
+        /// ID of the plugin.
+        /// </summary>
+        public static string PluginID => "583D1696DC9B40C6BD7DCA116268630E";
+
+        /// <summary>
         /// Name of the plugin.
         /// </summary>
         public string Name => "GEmojiSharp";
