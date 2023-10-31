@@ -140,19 +140,19 @@ exportCommand.SetHandler(
         var emojis = Emoji.Find(value);
         string result;
 
-        if (!string.IsNullOrEmpty(format) && format.ToUpperInvariant() == "YAML")
+        if (!string.IsNullOrEmpty(format) && string.Equals(format, "YAML", StringComparison.OrdinalIgnoreCase))
         {
             var serializer = new YamlDotNet.Serialization.SerializerBuilder().Build();
             result = serializer.Serialize(emojis);
         }
-        else if (!string.IsNullOrEmpty(format) && format.ToUpperInvariant() == "XML")
+        else if (!string.IsNullOrEmpty(format) && string.Equals(format, "XML", StringComparison.OrdinalIgnoreCase))
         {
             var serializer = new System.Xml.Serialization.XmlSerializer(emojis.GetType());
             var writer = new StringWriter();
             serializer.Serialize(System.Xml.XmlWriter.Create(writer, new System.Xml.XmlWriterSettings { Indent = true }), emojis);
             result = writer.ToString();
         }
-        else if (!string.IsNullOrEmpty(format) && format.ToUpperInvariant() == "TOML")
+        else if (!string.IsNullOrEmpty(format) && string.Equals(format, "TOML", StringComparison.OrdinalIgnoreCase))
         {
             result = Tomlyn.Toml.FromModel(emojis.ToDictionary(x => x.Alias()));
         }
