@@ -53,7 +53,7 @@ namespace GEmojiSharp.PowerToysRun
 
             var emojis = (GEmoji[])Emoji.Find(value);
 
-            if (emojis.Any())
+            if (emojis.Length != 0)
             {
                 return emojis.Select(GetResult).ToList();
             }
@@ -160,8 +160,8 @@ namespace GEmojiSharp.PowerToysRun
 
                 if (emoji.HasSkinTones)
                 {
-                    return new List<ContextMenuResult>
-                    {
+                    return
+                    [
                         raw,
                         alias,
                         new ContextMenuResult
@@ -174,20 +174,20 @@ namespace GEmojiSharp.PowerToysRun
                             AcceleratorModifiers = ModifierKeys.Control,
                             Action = _ => CopyToClipboard(emoji.Raw + string.Concat(emoji.RawSkinToneVariants())),
                         },
-                    };
+                    ];
                 }
 
-                return new List<ContextMenuResult>
-                {
+                return
+                [
                     raw,
                     alias,
-                };
+                ];
             }
 
             if (selectedResult?.ContextData is EmojifiedString emojified)
             {
-                return new List<ContextMenuResult>
-                {
+                return
+                [
                     new ContextMenuResult
                     {
                         PluginName = Name,
@@ -197,13 +197,13 @@ namespace GEmojiSharp.PowerToysRun
                         /*AcceleratorKey = Key.Enter,*/
                         Action = _ => CopyToClipboard(emojified.Value),
                     },
-                };
+                ];
             }
 
             if (selectedResult?.ContextData is DemojifiedString demojified)
             {
-                return new List<ContextMenuResult>
-                {
+                return
+                [
                     new ContextMenuResult
                     {
                         PluginName = Name,
@@ -213,7 +213,7 @@ namespace GEmojiSharp.PowerToysRun
                         /*AcceleratorKey = Key.Enter,*/
                         Action = _ => CopyToClipboard(demojified.Value),
                     },
-                };
+                ];
             }
 
             return new List<ContextMenuResult>(0);
