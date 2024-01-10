@@ -1,8 +1,7 @@
 dotnet build -c Release /p:TF_BUILD=true
-dotnet msbuild /t:ILMerge
 
-xcopy /y .\bin\Release\net7.0-windows\Images\ .\bin\Release\GEmojiSharp\Images\
-xcopy /y .\bin\Release\net7.0-windows\GEmojiSharp.PowerToysRun.* .\bin\Release\GEmojiSharp\
-xcopy /y .\bin\Release\net7.0-windows\plugin.json .\bin\Release\GEmojiSharp\
+xcopy /y .\bin\Release\net8.0-windows\Images\ .\bin\Release\GEmojiSharp\Images\
+xcopy /y .\bin\Release\net8.0-windows\GEmojiSharp.* .\bin\Release\GEmojiSharp\
+xcopy /y .\bin\Release\net8.0-windows\plugin.json .\bin\Release\GEmojiSharp\
 
 :: Zip '.\bin\Release\GEmojiSharp\' into 'GEmojiSharp.PowerToysRun.3.1.2.zip'

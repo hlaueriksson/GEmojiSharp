@@ -631,7 +631,7 @@ emoji export "grinning cat" -c
 
 ### Installation
 
-The plugin is developed and tested with `PowerToys` `v0.75.1`.
+The plugin is developed and tested with `PowerToys` `v0.77.0`.
 
 Install:
 

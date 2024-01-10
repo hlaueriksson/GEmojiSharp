@@ -9,5 +9,6 @@
   "Website": "https://github.com/hlaueriksson/GEmojiSharp",
   "ExecuteFileName": "GEmojiSharp.PowerToysRun.dll",
   "IcoPathDark": "Images\\gemojisharp.dark.png",
-  "IcoPathLight": "Images\\gemojisharp.light.png"
+  "IcoPathLight": "Images\\gemojisharp.light.png",
+  "DynamicLoading": true
 }
