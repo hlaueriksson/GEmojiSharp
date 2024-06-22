@@ -2,7 +2,6 @@ using FluentAssertions;
 using GEmojiSharp.AspNetCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using NSubstitute;
-using NUnit.Framework;
 
 namespace GEmojiSharp.Tests.AspNetCore.HtmlHelpers
 {

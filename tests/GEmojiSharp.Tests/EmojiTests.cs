@@ -1,6 +1,4 @@
-using System;
 using FluentAssertions;
-using NUnit.Framework;
 using static GEmojiSharp.Emoji;
 
 namespace GEmojiSharp.Tests

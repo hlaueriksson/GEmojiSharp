@@ -1,6 +1,5 @@
 using FluentAssertions;
 using GEmojiSharp.AspNetCore;
-using NUnit.Framework;
 
 namespace GEmojiSharp.Tests.AspNetCore
 {

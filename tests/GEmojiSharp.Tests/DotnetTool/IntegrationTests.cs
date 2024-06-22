@@ -1,7 +1,6 @@
 using System.Diagnostics;
 using System.Text;
 using FluentAssertions;
-using NUnit.Framework;
 using TextCopy;
 using static System.Environment;
 

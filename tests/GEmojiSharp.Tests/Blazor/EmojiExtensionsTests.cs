@@ -1,6 +1,5 @@
 ﻿using FluentAssertions;
 using GEmojiSharp.Blazor;
-using NUnit.Framework;
 
 namespace GEmojiSharp.Tests.Blazor
 {

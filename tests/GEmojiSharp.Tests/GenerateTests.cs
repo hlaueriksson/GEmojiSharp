@@ -1,16 +1,9 @@
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.Playwright;
 using Newtonsoft.Json.Linq;
-using NUnit.Framework;
 
 namespace GEmojiSharp.Tests
 {

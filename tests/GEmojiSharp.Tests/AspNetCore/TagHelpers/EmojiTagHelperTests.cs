@@ -1,8 +1,6 @@
-using System.Threading.Tasks;
 using FluentAssertions;
 using GEmojiSharp.AspNetCore;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using NUnit.Framework;
 
 namespace GEmojiSharp.Tests.AspNetCore.TagHelpers
 {
