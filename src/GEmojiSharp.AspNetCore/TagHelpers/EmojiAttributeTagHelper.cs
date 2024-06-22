@@ -15,7 +15,7 @@ namespace GEmojiSharp.AspNetCore
         /// <param name="output">A stateful HTML element used to generate an HTML tag.</param>
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            if (output is null) throw new ArgumentNullException(nameof(output));
+            ArgumentNullException.ThrowIfNull(output);
 
             var alias = output.Attributes["emoji"]?.Value?.ToString();
 

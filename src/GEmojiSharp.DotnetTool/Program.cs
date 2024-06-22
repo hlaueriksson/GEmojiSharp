@@ -7,10 +7,10 @@ Console.OutputEncoding = Encoding.UTF8;
 
 var argument = new Argument<string[]>("args", "Find emojis via description, category, alias or tag");
 
-var copyOption = new Option<bool>(new[] { "-c", "--copy" }, "Copy to clipboard");
+var copyOption = new Option<bool>(["-c", "--copy"], "Copy to clipboard");
 
 // raw
-var skinTonesOption = new Option<bool>(new[] { "-st", "--skin-tones" }, "Include skin tone variants");
+var skinTonesOption = new Option<bool>(["-st", "--skin-tones"], "Include skin tone variants");
 
 var rawCommand = new Command("raw", "Get raw emojis")
 {
@@ -124,7 +124,7 @@ demojifyCommand.SetHandler(
     copyOption);
 
 // export
-var formatOption = new Option<string>(new[] { "-f", "--format" }, "Format the data as <json|toml|xml|yaml>");
+var formatOption = new Option<string>(["-f", "--format"], "Format the data as <json|toml|xml|yaml>");
 
 var exportCommand = new Command("export", "Export emoji data to <json|toml|xml|yaml>")
 {

@@ -15,7 +15,7 @@ namespace GEmojiSharp.AspNetCore
         /// <returns>A <see cref="Task"/> that on completion updates the <c>output</c>.</returns>
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
-            if (output is null) throw new ArgumentNullException(nameof(output));
+            ArgumentNullException.ThrowIfNull(output);
 
             var content = await output.GetChildContentAsync().ConfigureAwait(false);
 

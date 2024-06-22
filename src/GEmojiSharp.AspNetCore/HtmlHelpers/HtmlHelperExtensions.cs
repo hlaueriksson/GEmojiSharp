@@ -17,10 +17,7 @@ namespace GEmojiSharp.AspNetCore
         /// <returns>A new <see cref="IHtmlContent"/> containing the created HTML.</returns>
         public static IHtmlContent Emoji(this IHtmlHelper htmlHelper, string content)
         {
-            if (htmlHelper == null)
-            {
-                throw new ArgumentNullException(nameof(htmlHelper));
-            }
+            ArgumentNullException.ThrowIfNull(htmlHelper);
 
             return new HtmlString(content.MarkupContent());
         }
@@ -34,15 +31,8 @@ namespace GEmojiSharp.AspNetCore
         /// <returns>A new <see cref="IHtmlContent"/> containing the created HTML.</returns>
         public static IHtmlContent Emoji<TModel>(this IHtmlHelper<TModel> htmlHelper, Expression<Func<TModel, string>> expression)
         {
-            if (htmlHelper == null)
-            {
-                throw new ArgumentNullException(nameof(htmlHelper));
-            }
-
-            if (expression == null)
-            {
-                throw new ArgumentNullException(nameof(expression));
-            }
+            ArgumentNullException.ThrowIfNull(htmlHelper);
+            ArgumentNullException.ThrowIfNull(expression);
 
             Func<TModel, string> func = expression.Compile();
 
