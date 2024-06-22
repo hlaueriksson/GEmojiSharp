@@ -239,5 +239,36 @@ namespace GEmojiSharp.Tests
             var expected = string.Join(string.Empty, shuffledEmojis.Select(x => $":{x.Aliases.First()}:"));
             result.Should().Be(expected);
         }
+
+        [Test, Category("Integration")]
+        public async Task Verify_db()
+        {
+            var client = new HttpClient();
+            var response = await client.GetAsync("https://raw.githubusercontent.com/github/gemoji/master/db/emoji.json");
+            var json = await response.Content.ReadAsStringAsync();
+
+            await VerifyJson(json);
+        }
+
+        [Test, Category("Integration")]
+        public async Task Verify_api()
+        {
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "hlaueriksson");
+            var response = await client.GetAsync("https://api.github.com/emojis");
+            var json = await response.Content.ReadAsStringAsync();
+
+            await VerifyJson(json);
+        }
+
+        [Test, Category("Integration")]
+        public async Task Verify_versions()
+        {
+            var client = new HttpClient();
+            var response = await client.GetAsync("https://pages.github.com/versions.json");
+            var json = await response.Content.ReadAsStringAsync();
+
+            await VerifyJson(json);
+        }
     }
 }
