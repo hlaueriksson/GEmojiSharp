@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0-windows</TargetFramework>
-    <Platforms>x64</Platforms>
-    <PlatformTarget>x64</PlatformTarget>
+    <Platforms>x64;ARM64</Platforms>
+    <PlatformTarget>$(Platform)</PlatformTarget>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,10 +21,14 @@
     <ProjectReference Include="..\..\src\GEmojiSharp.PowerToysRun\GEmojiSharp.PowerToysRun.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="Wox.Plugin">
-      <HintPath>..\..\src\GEmojiSharp.PowerToysRun\libs\Wox.Plugin.dll</HintPath>
-    </Reference>
+  <ItemGroup Condition="'$(Platform)' == 'x64'">
+    <Reference Include="..\..\src\GEmojiSharp.PowerToysRun\libs\x64\Wox.Plugin.dll" />
+    <Reference Include="..\..\src\GEmojiSharp.PowerToysRun\libs\x64\PowerToys.Settings.UI.Lib.dll" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Platform)' == 'ARM64'">
+    <Reference Include="..\..\src\GEmojiSharp.PowerToysRun\libs\ARM64\Wox.Plugin.dll" />
+    <Reference Include="..\..\src\GEmojiSharp.PowerToysRun\libs\ARM64\PowerToys.Settings.UI.Lib.dll" />
   </ItemGroup>
 
 </Project>

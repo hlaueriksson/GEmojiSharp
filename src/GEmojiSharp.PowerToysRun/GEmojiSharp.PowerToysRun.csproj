@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>net8.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
-    <Platforms>x64</Platforms>
-    <PlatformTarget>x64</PlatformTarget>
+    <Platforms>x64;ARM64</Platforms>
+    <PlatformTarget>$(Platform)</PlatformTarget>
     <IsPackable>false</IsPackable>
     <Version>3.1.3</Version>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -16,26 +16,27 @@
     <ProjectReference Include="..\GEmojiSharp\GEmojiSharp.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="PowerToys.Common.UI">
-      <HintPath>libs\PowerToys.Common.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="PowerToys.ManagedCommon">
-      <HintPath>libs\PowerToys.ManagedCommon.dll</HintPath>
-    </Reference>
-    <Reference Include="Wox.Plugin">
-      <HintPath>libs\Wox.Plugin.dll</HintPath>
-    </Reference>
+  <ItemGroup Condition="'$(Platform)' == 'x64'">
+    <Reference Include="libs\x64\PowerToys.Common.UI.dll" />
+    <Reference Include="libs\x64\PowerToys.ManagedCommon.dll" />
+    <Reference Include="libs\x64\PowerToys.Settings.UI.Lib.dll" />
+    <Reference Include="libs\x64\Wox.Infrastructure.dll" />
+    <Reference Include="libs\x64\Wox.Plugin.dll" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Platform)' == 'ARM64'">
+    <Reference Include="libs\ARM64\PowerToys.Common.UI.dll" />
+    <Reference Include="libs\ARM64\PowerToys.ManagedCommon.dll" />
+    <Reference Include="libs\ARM64\PowerToys.Settings.UI.Lib.dll" />
+    <Reference Include="libs\ARM64\Wox.Infrastructure.dll" />
+    <Reference Include="libs\ARM64\Wox.Plugin.dll" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Images\gemojisharp.dark.png">
+    <None Include="plugin.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\gemojisharp.light.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="plugin.json">
+    <None Include="Images/*.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
