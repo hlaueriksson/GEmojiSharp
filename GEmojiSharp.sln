@@ -21,8 +21,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GEmojiSharp.Blazor", "src\G
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GEmojiSharp.Sample.BlazorWebAssembly", "samples\GEmojiSharp.Sample.BlazorWebAssembly\GEmojiSharp.Sample.BlazorWebAssembly.csproj", "{1BF0F93F-AEEC-4F49-84C8-CD88FA7E8239}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GEmojiSharp.Sample.BlazorServer", "samples\GEmojiSharp.Sample.BlazorServer\GEmojiSharp.Sample.BlazorServer.csproj", "{BD90A65E-9F61-48BF-8885-3505B8C0D299}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GEmojiSharp.DotnetTool", "src\GEmojiSharp.DotnetTool\GEmojiSharp.DotnetTool.csproj", "{D6294653-E1A0-4F02-B97D-9E3149D7A462}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GEmojiSharp.PowerToysRun", "src\GEmojiSharp.PowerToysRun\GEmojiSharp.PowerToysRun.csproj", "{F587ED51-27F6-47EE-AF43-70B82BC8D3ED}"
@@ -30,6 +28,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GEmojiSharp.PowerToysRun.Tests", "tests\GEmojiSharp.PowerToysRun.Tests\GEmojiSharp.PowerToysRun.Tests.csproj", "{F7B52BE0-D70B-4859-84C5-464E009C1799}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GEmojiSharp.Benchmark", "tests\GEmojiSharp.Benchmark\GEmojiSharp.Benchmark.csproj", "{FDED188E-B80B-475D-9ECA-09A8A2BE091F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GEmojiSharp.Sample.BlazorWeb", "samples\GEmojiSharp.Sample.BlazorWeb\GEmojiSharp.Sample.BlazorWeb.csproj", "{3389CA47-8F04-4666-84DD-FAE7A1E2A032}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,10 +61,6 @@ Global
 		{1BF0F93F-AEEC-4F49-84C8-CD88FA7E8239}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BF0F93F-AEEC-4F49-84C8-CD88FA7E8239}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BF0F93F-AEEC-4F49-84C8-CD88FA7E8239}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BD90A65E-9F61-48BF-8885-3505B8C0D299}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BD90A65E-9F61-48BF-8885-3505B8C0D299}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BD90A65E-9F61-48BF-8885-3505B8C0D299}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BD90A65E-9F61-48BF-8885-3505B8C0D299}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D6294653-E1A0-4F02-B97D-9E3149D7A462}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D6294653-E1A0-4F02-B97D-9E3149D7A462}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6294653-E1A0-4F02-B97D-9E3149D7A462}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -81,6 +77,10 @@ Global
 		{FDED188E-B80B-475D-9ECA-09A8A2BE091F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDED188E-B80B-475D-9ECA-09A8A2BE091F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDED188E-B80B-475D-9ECA-09A8A2BE091F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3389CA47-8F04-4666-84DD-FAE7A1E2A032}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3389CA47-8F04-4666-84DD-FAE7A1E2A032}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3389CA47-8F04-4666-84DD-FAE7A1E2A032}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3389CA47-8F04-4666-84DD-FAE7A1E2A032}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,11 +92,11 @@ Global
 		{FBC5D0FB-ECAE-471C-9447-91DB023D0B0E} = {6938AF53-C5C7-478A-9554-6E7A02509432}
 		{748078D9-2705-44E7-A6D9-30976F03D102} = {08210849-A04E-459A-907D-980E559710E6}
 		{1BF0F93F-AEEC-4F49-84C8-CD88FA7E8239} = {6938AF53-C5C7-478A-9554-6E7A02509432}
-		{BD90A65E-9F61-48BF-8885-3505B8C0D299} = {6938AF53-C5C7-478A-9554-6E7A02509432}
 		{D6294653-E1A0-4F02-B97D-9E3149D7A462} = {08210849-A04E-459A-907D-980E559710E6}
 		{F587ED51-27F6-47EE-AF43-70B82BC8D3ED} = {08210849-A04E-459A-907D-980E559710E6}
 		{F7B52BE0-D70B-4859-84C5-464E009C1799} = {01434E7A-C27D-4094-A3E9-0C322136EFF7}
 		{FDED188E-B80B-475D-9ECA-09A8A2BE091F} = {01434E7A-C27D-4094-A3E9-0C322136EFF7}
+		{3389CA47-8F04-4666-84DD-FAE7A1E2A032} = {6938AF53-C5C7-478A-9554-6E7A02509432}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4EE2F45B-9E7D-46BE-A6C1-A1ACC12A0DCA}

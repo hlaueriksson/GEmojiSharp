@@ -1,4 +1,4 @@
-using GEmojiSharp.Sample.BlazorServer.Components;
+using GEmojiSharp.Sample.BlazorWeb.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
