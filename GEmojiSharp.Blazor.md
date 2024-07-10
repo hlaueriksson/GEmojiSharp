@@ -12,6 +12,21 @@ Update the `_Imports.razor` file, to enable the component in all Razor views:
 @using GEmojiSharp.Blazor
 ```
 
+> [!NOTE]
+> In a Blazor Web App (.NET 8 or later), the component requires an interactive render mode applied either globally to the app or to the component definition.
+
+Set the global render mode in `App.razor`:
+
+```cshtml
+<Routes @rendermode="InteractiveServer" />
+```
+
+or per page/component:
+
+```cshtml
+@rendermode InteractiveServer
+```
+
 Use the `<Emoji>` component to render emojis:
 
 ```html

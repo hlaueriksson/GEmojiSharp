@@ -9,6 +9,7 @@
 [![GEmojiSharp.DotnetTool](https://img.shields.io/nuget/v/GEmojiSharp.DotnetTool.svg?label=GEmojiSharp.DotnetTool)](https://www.nuget.org/packages/GEmojiSharp.DotnetTool)
 
 > GitHub Emoji for C# and .NET:
+>
 > - `netstandard2.0`
 > - ASP.NET Core
 > - Blazor
@@ -39,12 +40,11 @@
   - [Usage](#usage-1)
   - [Configuration](#configuration)
 - [Samples](#samples)
-- [Upgrading](#upgrading)
 - [Attribution](#attribution)
 
 ## Introduction
 
-[Using emoji](https://help.github.com/en/articles/basic-writing-and-formatting-syntax#using-emoji) on GitHub is accomplish with emoji aliases enclosed by colons:
+[Using emojis](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#using-emojis) on GitHub is accomplish with emoji aliases enclosed by colons:
 
 `:+1: This PR looks great - it's ready to merge! :shipit:`
 
@@ -704,45 +704,6 @@ The Blazor WebAssembly app is showcased here:
 - https://purple-mushroom-05c6bad10.azurestaticapps.net (Azure Static Web Apps)
 
 [![GEmojiSharp.Sample.BlazorWebAssembly](GEmojiSharp.Sample.BlazorWebAssembly.png)](https://hlaueriksson.github.io/GEmojiSharp/)
-
-## Upgrading
-
-> ⬆️ Upgrading from version `1.5.0` to `2.0.0`
-
-Upgrade `GEmojiSharp.TagHelpers`:
-
-- Uninstall `GEmojiSharp.TagHelpers`
-- Install `GEmojiSharp.AspNetCore`
-- Replace references to ~~`GEmojiSharp.TagHelpers`~~ with `GEmojiSharp.AspNetCore`:
-
-  ```diff
-  - @addTagHelper *, GEmojiSharp.TagHelpers
-  + @addTagHelper *, GEmojiSharp.AspNetCore
-  ```
-
-  ```diff
-  - @using GEmojiSharp.TagHelpers
-  + @using GEmojiSharp.AspNetCore
-  ```
-
-  ```diff
-  - using GEmojiSharp.TagHelpers;
-  + using GEmojiSharp.AspNetCore;
-  ```
-
-Upgrade `GEmojiSharp.Blazor`:
-
-- Remove reference to the `css` file:
-
-  ```diff
-  - <link href="_content/GEmojiSharp.Blazor/style.css" rel="stylesheet" />
-  ```
-
-- Remove reference to the `js` file:
-
-  ```diff
-  - <script src="_content/GEmojiSharp.Blazor/script.js"></script>
-  ```
 
 ## Attribution
 
