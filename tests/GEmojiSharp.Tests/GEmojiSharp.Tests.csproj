@@ -7,14 +7,14 @@
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="6.12.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
-    <PackageReference Include="Microsoft.Playwright.NUnit" Version="1.44.0" />
+    <PackageReference Include="Microsoft.Playwright.NUnit" Version="1.45.0" />
     <PackageReference Include="NSubstitute" Version="5.1.0" />
     <PackageReference Include="NUnit" Version="4.1.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.5.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Verify.NUnit" Version="25.0.3" />
+    <PackageReference Include="Verify.NUnit" Version="25.3.0" />
   </ItemGroup>
 
   <ItemGroup>
