@@ -323,6 +323,16 @@ Uninstall:
 dotnet tool uninstall -g GEmojiSharp.DotnetTool
 ```
 
+Enable emoji in the terminal:
+
+- Open Settings / Time & Language / Language / Administrative Language Settings / Change system locale...
+- Check "Beta: Use Unicode UTF-8 for worldwide language support" and click OK
+- Reboot the PC for the change to take effect
+
+![Beta: Use Unicode UTF-8 for worldwide language support](Unicode.png)
+
+- [Set a process code page to UTF-8](https://learn.microsoft.com/en-us/windows/apps/design/globalizing/use-utf8-code-page#set-a-process-code-page-to-utf-8)
+
 ### Usage
 
 ```cmd
