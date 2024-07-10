@@ -39,7 +39,7 @@ $platforms = "$($props.Project.PropertyGroup.Platforms)".Trim() -split ";"
 $result = "release-$version.md"
 
 $projectUri = "https://github.com/hlaueriksson/GEmojiSharp"
-$name = ((Split-Path -Path $PWD -Leaf).Split(".")[0]) # -1 last
+$name = Split-Path -Path $PWD -Leaf
 $files = Get-ChildItem -Path . -File -Include "$name-$version*.zip" -Recurse
 
 function Write-Line {
@@ -79,7 +79,7 @@ foreach ($file in $files) {
 }
 Write-Line ""
 
-Write-Line "## Installer Hashes"
+Write-Line "### Installer Hashes"
 Write-Line ""
 Write-Line "| Filename | SHA256 Hash"
 Write-Line "| --- | ---"

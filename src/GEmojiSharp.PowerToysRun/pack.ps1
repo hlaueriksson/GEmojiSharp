@@ -55,12 +55,13 @@ foreach ($platform in $platforms)
         Exit $LastExitCode
     }
 
-    $name = ((Split-Path -Path $PWD -Leaf).Split(".")[0]) # -1 last
+    $name = Split-Path -Path $PWD -Leaf
+    $folder = $name.Split(".")[0] # -1 last
 
     Write-Output "Pack: $name"
 
     $output = ".\bin\$platform\Release\net8.0-windows\"
-    $destination = ".\bin\$platform\$name"
+    $destination = ".\bin\$platform\$folder"
     $zip = ".\bin\$platform\$name-$version-$($platform.ToLower()).zip"
 
     Copy-Item -Path $output -Destination $destination -Recurse -Exclude $libs
