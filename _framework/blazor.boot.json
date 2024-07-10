@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "GEmojiSharp.Sample.BlazorWebAssembly",
   "resources": {
-    "hash": "sha256-uCmU94UyRH3DdMSAiL9zCwGt+kHmbG96kQUbIGK3ZOo=",
+    "hash": "sha256-bK8rqXa8dArj3EMuIvEHIAWLbtKiB82NzuWJDQO5x0o=",
     "jsModuleNative": {
       "dotnet.native.8.0.7.pvkr2na9g4.js": "sha256-tFsxPBbhkdn6GKNBKvCRLzrfAHdyM86odYTe0MtrwMk="
     },
@@ -18,7 +18,7 @@
     },
     "assembly": {
       "GEmojiSharp.Blazor.wasm": "sha256-p8TtkuNGoiLPnAcGB5SZz+jVGAll8tlLi3TQl6uBNPM=",
-      "GEmojiSharp.Sample.BlazorWebAssembly.wasm": "sha256-5+nyEll8SX4dFSRGarLUgLVA2m3UAGNBT0Sf+HsoH/4=",
+      "GEmojiSharp.Sample.BlazorWebAssembly.wasm": "sha256-/uSBewOT7nfUUCUHXtbsNUSBp1PAVeYObrbbnhYV2jg=",
       "GEmojiSharp.wasm": "sha256-ahsIZOElcdzTJM1FRQqlBcL8Gc/ZFY3iD06bCaKDm+4=",
       "Microsoft.AspNetCore.Components.wasm": "sha256-cmOJu5sAi0X5HWM8nHk+sQitC0tf0lOp2VHSCxkqg4o=",
       "Microsoft.AspNetCore.Components.Web.wasm": "sha256-2Nc52xPm6AAtLy8IOvelSz2P5TBQN5mNmSng7M/1YBE=",
