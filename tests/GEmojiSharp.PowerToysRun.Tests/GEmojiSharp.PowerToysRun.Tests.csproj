@@ -21,14 +21,4 @@
     <ProjectReference Include="..\..\src\GEmojiSharp.PowerToysRun\GEmojiSharp.PowerToysRun.csproj" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(Platform)' == 'x64'">
-    <Reference Include="..\..\src\GEmojiSharp.PowerToysRun\libs\x64\Wox.Plugin.dll" />
-    <Reference Include="..\..\src\GEmojiSharp.PowerToysRun\libs\x64\PowerToys.Settings.UI.Lib.dll" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(Platform)' == 'ARM64'">
-    <Reference Include="..\..\src\GEmojiSharp.PowerToysRun\libs\ARM64\Wox.Plugin.dll" />
-    <Reference Include="..\..\src\GEmojiSharp.PowerToysRun\libs\ARM64\PowerToys.Settings.UI.Lib.dll" />
-  </ItemGroup>
-
 </Project>
