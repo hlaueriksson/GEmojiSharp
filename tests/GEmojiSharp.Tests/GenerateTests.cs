@@ -51,8 +51,8 @@ namespace GEmojiSharp.Tests
                 result.Append($"Raw = \"{e}\"");
                 if (d != null) result.Append($", Description = \"{d}\"");
                 if (c != null) result.Append($", Category = \"{c}\"");
-                if (a.Any()) result.Append($", Aliases = new[] {{ {string.Join(", ", a.Select(x => "\"" + x + "\""))} }}");
-                if (t.Any()) result.Append($", Tags = new[] {{ {string.Join(", ", t.Select(x => "\"" + x + "\""))} }}");
+                if (a.Any()) result.Append($", Aliases = [{string.Join(", ", a.Select(x => "\"" + x + "\""))}]");
+                if (t.Any()) result.Append($", Tags = [{string.Join(", ", t.Select(x => "\"" + x + "\""))}]");
                 if (!string.IsNullOrEmpty(uv)) result.Append($", UnicodeVersion = \"{uv}\"");
                 if (iv != null) result.Append($", IosVersion = \"{iv}\"");
                 if (st == true) result.Append($", HasSkinTones = true");
