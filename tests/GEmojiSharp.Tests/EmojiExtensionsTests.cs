@@ -81,8 +81,8 @@ namespace GEmojiSharp.Tests
         [Test]
         public void RawSkinToneVariants()
         {
-            "✌️".GetEmoji().RawSkinToneVariants().Should().BeEquivalentTo(new[] { "✌🏻", "✌🏼", "✌🏽", "✌🏾", "✌🏿" });
-            "🧔‍♀️".GetEmoji().RawSkinToneVariants().Should().BeEquivalentTo(new[] { "🧔🏻‍♀", "🧔🏼‍♀", "🧔🏽‍♀", "🧔🏾‍♀", "🧔🏿‍♀" });
+            "✌️".GetEmoji().RawSkinToneVariants().Should().BeEquivalentTo(["✌🏻", "✌🏼", "✌🏽", "✌🏾", "✌🏿"]);
+            "🧔‍♀️".GetEmoji().RawSkinToneVariants().Should().BeEquivalentTo(["🧔🏻‍♀", "🧔🏼‍♀", "🧔🏽‍♀", "🧔🏾‍♀", "🧔🏿‍♀"]);
             ":atom:".GetEmoji().RawSkinToneVariants().Should().BeEmpty();
             GEmoji.Empty.RawSkinToneVariants().Should().BeEmpty();
             NullGEmoji.RawSkinToneVariants().Should().BeEmpty();

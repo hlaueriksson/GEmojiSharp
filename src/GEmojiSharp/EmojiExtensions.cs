@@ -7,14 +7,14 @@ namespace GEmojiSharp
     {
         private const char Colon = ':';
 
-        private static readonly string[] SkinTones = new[]
-        {
+        private static readonly string[] SkinTones =
+        [
             "🏻", // light skin tone
             "🏼", // medium-light skin tone
             "🏽", // medium skin tone
             "🏾", // medium-dark skin tone
             "🏿", // dark skin tone
-        };
+        ];
 
         /// <summary>
         /// Gets the emoji associated with the alias, or <see cref="GEmoji.Empty"/> if the alias is not found.

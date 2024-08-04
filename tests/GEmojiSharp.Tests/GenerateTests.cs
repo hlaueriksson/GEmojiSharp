@@ -86,11 +86,11 @@ namespace GEmojiSharp.Tests
 
             foreach (var code in codes.OrderByDescending(x => x.Length))
             {
-                if (result.Length > 0) result.Append("|");
+                if (result.Length > 0) result.Append('|');
                 result.Append(code);
             }
-            result.Insert(0, "(");
-            result.Append(")");
+            result.Insert(0, '(');
+            result.Append(')');
 
             var path = Directory.GetCurrentDirectory() + @"..\..\..\..\..\..\src\GEmojiSharp\Emoji.g.RegexPattern.cs";
             var contents = File.ReadAllLines(path);

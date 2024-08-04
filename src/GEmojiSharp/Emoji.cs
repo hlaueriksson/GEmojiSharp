@@ -7,8 +7,8 @@ namespace GEmojiSharp
     /// </summary>
     public static partial class Emoji
     {
-        private static readonly Dictionary<string, GEmoji> AliasToGEmoji = new();
-        private static readonly Dictionary<string, GEmoji> RawToGEmoji = new();
+        private static readonly Dictionary<string, GEmoji> AliasToGEmoji = [];
+        private static readonly Dictionary<string, GEmoji> RawToGEmoji = [];
 
         static Emoji()
         {

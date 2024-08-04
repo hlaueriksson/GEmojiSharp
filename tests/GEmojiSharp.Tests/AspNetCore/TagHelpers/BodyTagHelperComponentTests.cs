@@ -21,7 +21,7 @@ namespace GEmojiSharp.Tests.AspNetCore.TagHelpers
 
             TagHelperOutput GetTagHelperOutput(string content)
             {
-                return new TagHelperOutput("body", new TagHelperAttributeList(), (flag, encoder) =>
+                return new TagHelperOutput("body", [], (flag, encoder) =>
                 {
                     var tagHelperContent = new DefaultTagHelperContent();
                     tagHelperContent.SetContent(content);

@@ -18,7 +18,7 @@ namespace GEmojiSharp
         public string? Category { get; set; }
 
         /// <summary>A list of names uniquely referring to the emoji.</summary>
-        public string[] Aliases { get; set; } = System.Array.Empty<string>();
+        public string[] Aliases { get; set; } = [];
 
         /// <summary>A list of tags associated with the emoji. Multiple emojis can share the same tags.</summary>
         public string[]? Tags { get; set; }
