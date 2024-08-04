@@ -41,7 +41,7 @@ Write-Output "Version: $version"
 # Platforms
 $platforms = "$($props.Project.PropertyGroup.Platforms)".Trim() -split ";"
 
-$libs = Get-ChildItem -Path .\libs -File -Recurse
+$dependencies = @("PowerToys.Common.UI.dll", "PowerToys.ManagedCommon.dll", "PowerToys.Settings.UI.Lib.dll", "Wox.Infrastructure.dll", "Wox.Plugin.dll")
 
 foreach ($platform in $platforms)
 {
@@ -64,6 +64,6 @@ foreach ($platform in $platforms)
     $destination = ".\bin\$platform\$folder"
     $zip = ".\bin\$platform\$name-$version-$($platform.ToLower()).zip"
 
-    Copy-Item -Path $output -Destination $destination -Recurse -Exclude $libs
+    Copy-Item -Path $output -Destination $destination -Recurse -Exclude $dependencies
     Compress-Archive -Path $destination -DestinationPath $zip
 }

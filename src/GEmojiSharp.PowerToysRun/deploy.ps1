@@ -44,14 +44,14 @@ dotnet build -c Release /p:TF_BUILD=true /p:Platform=$platform
 
 Write-Output "Platform: $platform"
 
-$libs = Get-ChildItem -Path .\libs -File -Recurse
+$dependencies = @("PowerToys.Common.UI.dll", "PowerToys.ManagedCommon.dll", "PowerToys.Settings.UI.Lib.dll", "Wox.Infrastructure.dll", "Wox.Plugin.dll")
 
 $name = ((Split-Path -Path $PWD -Leaf).Split(".")[0]) # -1 last
 
 Write-Output "Deploy: $name"
 
 Remove-Item -LiteralPath "$env:LOCALAPPDATA\Microsoft\PowerToys\PowerToys Run\Plugins\$name" -Recurse -Force -ErrorAction SilentlyContinue
-Copy-Item -Path ".\bin\$platform\Release\net8.0-windows" -Destination "$env:LOCALAPPDATA\Microsoft\PowerToys\PowerToys Run\Plugins\$name" -Recurse -Force -Exclude $libs
+Copy-Item -Path ".\bin\$platform\Release\net8.0-windows" -Destination "$env:LOCALAPPDATA\Microsoft\PowerToys\PowerToys Run\Plugins\$name" -Recurse -Force -Exclude $dependencies
 
 $machinePath = "C:\Program Files\PowerToys\PowerToys.exe"
 $userPath = "$env:LOCALAPPDATA\PowerToys\PowerToys.exe"
