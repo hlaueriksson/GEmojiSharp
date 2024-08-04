@@ -7,53 +7,53 @@ namespace GEmojiSharp.Tests.PowerToysRun
 {
     public class MainTests
     {
+        private Main _subject = null!;
+
+        [SetUp]
+        public void SetUp()
+        {
+            _subject = new Main(new GEmojiSharpSettings());
+        }
+
         [Test]
         public void Query_emojis()
         {
-            var subject = new Main();
+            _subject.Query(null!).Should().BeEmpty();
 
-            subject.Query(null!).Should().BeEmpty();
+            _subject.Query(new Query("")).Should().NotBeEmpty();
 
-            subject.Query(new Query("")).Should().NotBeEmpty();
-
-            subject.Query(new Query("globe showing")).Should()
+            _subject.Query(new Query("globe showing")).Should()
                 .Contain(x => x.Title == "🌍")
                 .And.Contain(x => x.Title == "🌎")
                 .And.Contain(x => x.Title == "🌏");
 
-            subject.Query(new Query("tada")).Should().ContainSingle(x => x.Title == "🎉");
+            _subject.Query(new Query("tada")).Should().ContainSingle(x => x.Title == "🎉");
         }
 
         [Test]
         public void Query_Emojify()
         {
-            var subject = new Main();
-
-            subject.Query(new Query("Hello, :earth_africa:")).Should().ContainSingle(x => x.Title == "Hello, 🌍");
+            _subject.Query(new Query("Hello, :earth_africa:")).Should().ContainSingle(x => x.Title == "Hello, 🌍");
         }
 
         [Test]
         public void Query_Demojify()
         {
-            var subject = new Main();
-
-            subject.Query(new Query("Hello, 🌍")).Should().ContainSingle(x => x.Title == "Hello, :earth_africa:");
+            _subject.Query(new Query("Hello, 🌍")).Should().ContainSingle(x => x.Title == "Hello, :earth_africa:");
         }
 
         [Test]
         public void LoadContextMenus_GEmoji()
         {
-            var subject = new Main();
-
-            subject.LoadContextMenus(new Result()).Should().BeEmpty();
+            _subject.LoadContextMenus(new Result()).Should().BeEmpty();
 
             var result = new Result { ContextData = Emoji.Get("tada") };
-            subject.LoadContextMenus(result).Should()
+            _subject.LoadContextMenus(result).Should()
                 .Contain(x => x.Title == "Copy raw emoji (Enter)")
                 .And.Contain(x => x.Title == "Copy emoji aliases (Ctrl+C)");
 
             result = new Result { ContextData = Emoji.Get("wave") };
-            subject.LoadContextMenus(result).Should()
+            _subject.LoadContextMenus(result).Should()
                 .Contain(x => x.Title == "Copy raw emoji (Enter)")
                 .And.Contain(x => x.Title == "Copy emoji aliases (Ctrl+C)")
                 .And.Contain(x => x.Title == "Copy raw emoji skin tone variants (Ctrl+Enter)");
@@ -62,19 +62,15 @@ namespace GEmojiSharp.Tests.PowerToysRun
         [Test]
         public void LoadContextMenus_EmojifiedString()
         {
-            var subject = new Main();
             var result = new Result { ContextData = new EmojifiedString("Hello, 🌍") };
-
-            subject.LoadContextMenus(result).Should().Contain(x => x.Title == "Copy emojified text (Enter)");
+            _subject.LoadContextMenus(result).Should().Contain(x => x.Title == "Copy emojified text (Enter)");
         }
 
         [Test]
         public void LoadContextMenus_DemojifiedString()
         {
-            var subject = new Main();
             var result = new Result { ContextData = new DemojifiedString("Hello, :earth_africa:") };
-
-            subject.LoadContextMenus(result).Should().Contain(x => x.Title == "Copy demojified text (Enter)");
+            _subject.LoadContextMenus(result).Should().Contain(x => x.Title == "Copy demojified text (Enter)");
         }
     }
 }

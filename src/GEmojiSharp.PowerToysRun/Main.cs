@@ -1,16 +1,44 @@
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
+using Community.PowerToys.Run.Plugin.Update;
 using ManagedCommon;
+using Microsoft.PowerToys.Settings.UI.Library;
+using Wox.Infrastructure.Storage;
 using Wox.Plugin;
+using Wox.Plugin.Logger;
 
 namespace GEmojiSharp.PowerToysRun
 {
     /// <summary>
     /// Main class of this plugin that implement all used interfaces.
     /// </summary>
-    public class Main : IPlugin, IContextMenu, IDisposable
+    public class Main : IPlugin, IContextMenu, ISettingProvider, ISavable, IDisposable
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Main"/> class.
+        /// </summary>
+        public Main()
+        {
+            Storage = new PluginJsonStorage<GEmojiSharpSettings>();
+            Settings = Storage.Load();
+            Updater = new PluginUpdateHandler(Settings.Update);
+            Updater.UpdateInstalling += OnUpdateInstalling;
+            Updater.UpdateInstalled += OnUpdateInstalled;
+            Updater.UpdateSkipped += OnUpdateSkipped;
+        }
+
+        internal Main(GEmojiSharpSettings settings)
+        {
+            Storage = new PluginJsonStorage<GEmojiSharpSettings>();
+            Settings = settings;
+            Updater = new PluginUpdateHandler(Settings.Update);
+            Updater.UpdateInstalling += OnUpdateInstalling;
+            Updater.UpdateInstalled += OnUpdateInstalled;
+            Updater.UpdateSkipped += OnUpdateSkipped;
+        }
+
         /// <summary>
         /// ID of the plugin.
         /// </summary>
@@ -26,6 +54,17 @@ namespace GEmojiSharp.PowerToysRun
         /// </summary>
         public string Description => "GitHub Emoji PowerToys Run plugin";
 
+        /// <summary>
+        /// Additional options for the plugin.
+        /// </summary>
+        public IEnumerable<PluginAdditionalOption> AdditionalOptions => Settings.GetAdditionalOptions();
+
+        private PluginJsonStorage<GEmojiSharpSettings> Storage { get; }
+
+        private GEmojiSharpSettings Settings { get; }
+
+        private PluginUpdateHandler Updater { get; }
+
         private PluginInitContext? Context { get; set; }
 
         private string? IconPath { get; set; }
@@ -39,26 +78,33 @@ namespace GEmojiSharp.PowerToysRun
         /// <returns>A filtered list, can be empty when nothing was found.</returns>
         public List<Result> Query(Query query)
         {
+            var results = new List<Result>();
+
+            if (Updater.IsUpdateAvailable())
+            {
+                results.AddRange(Updater.GetResults());
+            }
+
             if (query?.Search is null)
             {
-                return new List<Result>(0);
+                return results;
             }
 
             var value = query.Search;
 
             if (string.IsNullOrEmpty(value))
             {
-                return Emoji.All.Select(GetResult).ToList();
+                results.AddRange(Emoji.All.Select(GetResult));
+                return results;
             }
 
             var emojis = (GEmoji[])Emoji.Find(value);
 
             if (emojis.Length != 0)
             {
-                return emojis.Select(GetResult).ToList();
+                results.AddRange(emojis.Select(GetResult));
+                return results;
             }
-
-            var results = new List<Result>();
 
             if (HasAlias(value))
             {
@@ -127,6 +173,8 @@ namespace GEmojiSharp.PowerToysRun
             Context = context ?? throw new ArgumentNullException(nameof(context));
             Context.API.ThemeChanged += OnThemeChanged;
             UpdateIconPath(Context.API.GetCurrentTheme());
+
+            Updater.Init(Context);
         }
 
         /// <summary>
@@ -136,6 +184,12 @@ namespace GEmojiSharp.PowerToysRun
         /// <returns>A list context menu entries.</returns>
         public List<ContextMenuResult> LoadContextMenus(Result selectedResult)
         {
+            var results = Updater.GetContextMenuResults(selectedResult);
+            if (results.Count != 0)
+            {
+                return results;
+            }
+
             if (selectedResult?.ContextData is GEmoji emoji)
             {
                 var raw = new ContextMenuResult
@@ -216,8 +270,32 @@ namespace GEmojiSharp.PowerToysRun
                 ];
             }
 
-            return new List<ContextMenuResult>(0);
+            return [];
         }
+
+        /// <summary>
+        /// Creates setting panel.
+        /// </summary>
+        /// <returns>The control.</returns>
+        /// <exception cref="NotImplementedException">method is not implemented.</exception>
+        public Control CreateSettingPanel() => throw new NotImplementedException();
+
+        /// <summary>
+        /// Updates settings.
+        /// </summary>
+        /// <param name="settings">The plugin settings.</param>
+        public void UpdateSettings(PowerLauncherPluginSettings settings)
+        {
+            ArgumentNullException.ThrowIfNull(settings);
+
+            Settings.SetAdditionalOptions(settings.AdditionalOptions);
+            Save();
+        }
+
+        /// <summary>
+        /// Saves settings.
+        /// </summary>
+        public void Save() => Storage.Save();
 
         /// <inheritdoc/>
         public void Dispose()
@@ -242,6 +320,8 @@ namespace GEmojiSharp.PowerToysRun
                 Context.API.ThemeChanged -= OnThemeChanged;
             }
 
+            Updater.Dispose();
+
             Disposed = true;
         }
 
@@ -254,6 +334,24 @@ namespace GEmojiSharp.PowerToysRun
         private void UpdateIconPath(Theme theme) => IconPath = theme == Theme.Light || theme == Theme.HighContrastWhite ? "Images/gemojisharp.light.png" : "Images/gemojisharp.dark.png";
 
         private void OnThemeChanged(Theme currentTheme, Theme newTheme) => UpdateIconPath(newTheme);
+
+        private void OnUpdateInstalling(object? sender, PluginUpdateEventArgs e)
+        {
+            Log.Info("UpdateInstalling: " + e.Version, GetType());
+        }
+
+        private void OnUpdateInstalled(object? sender, PluginUpdateEventArgs e)
+        {
+            Log.Info("UpdateInstalled: " + e.Version, GetType());
+            Context!.API.ShowNotification($"{Name} {e.Version}", "Update installed");
+        }
+
+        private void OnUpdateSkipped(object? sender, PluginUpdateEventArgs e)
+        {
+            Log.Info("UpdateSkipped: " + e.Version, GetType());
+            Save();
+            Context?.API.ChangeQuery(Context.CurrentPluginMetadata.ActionKeyword, true);
+        }
     }
 
     internal record EmojifiedString(string Value);
