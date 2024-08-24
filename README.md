@@ -160,7 +160,7 @@ Add a [`libman.json`](https://docs.microsoft.com/en-us/aspnet/core/client-side/l
   "libraries": [
     {
       "provider": "unpkg",
-      "library": "@github/g-emoji-element@1.1.5",
+      "library": "@github/g-emoji-element@1.2.0",
       "destination": "wwwroot/lib/g-emoji-element/"
     }
   ]
