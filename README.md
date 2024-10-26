@@ -649,6 +649,7 @@ emoji export "grinning cat" -c
 ## `GEmojiSharp.PowerToysRun`
 
 [![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/hlaueriksson/GEmojiSharp/total)](https://github.com/hlaueriksson/GEmojiSharp/releases/latest)
+[![Mentioned in Awesome PowerToys Run Plugins](https://awesome.re/mentioned-badge.svg)](https://github.com/hlaueriksson/awesome-powertoys-run-plugins)
 
 > GitHub Emoji [PowerToys Run](https://docs.microsoft.com/en-us/windows/powertoys/run) plugin 🗂️🔎🔌
 
