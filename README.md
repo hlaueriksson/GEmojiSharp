@@ -1,5 +1,31 @@
 # GEmojiSharp :octocat:<!-- omit in toc -->
 
+plugin
+ supported emoji on windows
+  https://learn.microsoft.com/en-us/typography/font-list/segoe-ui-emoji
+ type instead of copy, default och context
+ copy data, json format
+
+Versions
+    3.0
+    3.2
+    4.0
+    4.1
+    5.1
+    5.2
+    6.0
+    6.1
+    7.0
+    8.0
+    9.0
+    11.0
+    12.0
+    12.1
+    13.0
+    13.1
+    14.0
+    15.0
+
 [![Build status](https://github.com/hlaueriksson/GEmojiSharp/workflows/build/badge.svg)](https://github.com/hlaueriksson/GEmojiSharp/actions?query=workflow%3Abuild)
 [![CodeFactor](https://www.codefactor.io/repository/github/hlaueriksson/gemojisharp/badge)](https://www.codefactor.io/repository/github/hlaueriksson/gemojisharp)
 

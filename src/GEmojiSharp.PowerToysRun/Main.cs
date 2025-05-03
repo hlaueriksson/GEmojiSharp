@@ -2,12 +2,12 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Community.PowerToys.Run.Plugin.Abstractions;
 using Community.PowerToys.Run.Plugin.Update;
 using ManagedCommon;
 using Microsoft.PowerToys.Settings.UI.Library;
 using Wox.Infrastructure.Storage;
 using Wox.Plugin;
-using Wox.Plugin.Logger;
 
 namespace GEmojiSharp.PowerToysRun
 {
@@ -23,16 +23,20 @@ namespace GEmojiSharp.PowerToysRun
         {
             Storage = new PluginJsonStorage<GEmojiSharpSettings>();
             Settings = Storage.Load();
+            Log = new LogWrapper();
+
             Updater = new PluginUpdateHandler(Settings.Update);
             Updater.UpdateInstalling += OnUpdateInstalling;
             Updater.UpdateInstalled += OnUpdateInstalled;
             Updater.UpdateSkipped += OnUpdateSkipped;
         }
 
-        internal Main(GEmojiSharpSettings settings)
+        internal Main(GEmojiSharpSettings settings, ILog log)
         {
             Storage = new PluginJsonStorage<GEmojiSharpSettings>();
             Settings = settings;
+            Log = log;
+
             Updater = new PluginUpdateHandler(Settings.Update);
             Updater.UpdateInstalling += OnUpdateInstalling;
             Updater.UpdateInstalled += OnUpdateInstalled;
@@ -62,6 +66,8 @@ namespace GEmojiSharp.PowerToysRun
         private PluginJsonStorage<GEmojiSharpSettings> Storage { get; }
 
         private GEmojiSharpSettings Settings { get; }
+
+        private ILog Log { get; }
 
         private PluginUpdateHandler Updater { get; }
 

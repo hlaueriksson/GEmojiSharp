@@ -1,5 +1,7 @@
+using Community.PowerToys.Run.Plugin.Abstractions;
 using FluentAssertions;
 using GEmojiSharp.PowerToysRun;
+using NSubstitute;
 using NUnit.Framework;
 using Wox.Plugin;
 
@@ -12,7 +14,7 @@ namespace GEmojiSharp.Tests.PowerToysRun
         [SetUp]
         public void SetUp()
         {
-            _subject = new Main(new GEmojiSharpSettings());
+            _subject = new Main(new GEmojiSharpSettings(), Substitute.For<ILog>());
         }
 
         [Test]
