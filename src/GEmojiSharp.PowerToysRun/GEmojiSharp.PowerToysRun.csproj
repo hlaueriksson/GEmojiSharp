@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFramework>net9.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <Platforms>x64;ARM64</Platforms>
     <PlatformTarget>$(Platform)</PlatformTarget>
@@ -13,7 +13,7 @@
   <Import Project="../../Analyzers.props" />
 
   <ItemGroup>
-    <PackageReference Include="Community.PowerToys.Run.Plugin.Update" Version="0.1.0" />
+    <PackageReference Include="Community.PowerToys.Run.Plugin.Update" Version="0.4.0" />
   </ItemGroup>
 
   <ItemGroup>

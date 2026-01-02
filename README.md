@@ -711,8 +711,7 @@ The [`samples`](/samples) folder contains...
 
 The Blazor WebAssembly app is showcased here:
 
-- https://hlaueriksson.github.io/GEmojiSharp/ (GitHub Pages)
-- https://purple-mushroom-05c6bad10.azurestaticapps.net (Azure Static Web Apps)
+- https://hlaueriksson.github.io/GEmojiSharp/
 
 [![GEmojiSharp.Sample.BlazorWebAssembly](GEmojiSharp.Sample.BlazorWebAssembly.png)](https://hlaueriksson.github.io/GEmojiSharp/)
 

@@ -1,14 +1,12 @@
 {
   "version": "1.0",
-  "defaultProvider": "cdnjs",
+  "defaultProvider": "jsdelivr",
   "libraries": [
     {
-      "provider": "unpkg",
-      "library": "bootstrap@5.3.3",
+      "library": "bootstrap@5.3.8",
       "destination": "wwwroot/lib/bootstrap/"
     },
     {
-      "provider": "unpkg",
       "library": "@github/g-emoji-element@1.2.0",
       "destination": "wwwroot/lib/g-emoji-element/"
     }
