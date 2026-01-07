@@ -16,9 +16,9 @@
     <Authors>Henrik Lau Eriksson</Authors>
     <Description>GitHub Emoji MCP Server
 
+🤖 All GitHub Emoji available via MCP protocol
+💬 Get emojis via chat
 🔎 Find emojis via description, category, alias or tag
-🍣 Get raw emojis
-🏷️ Get emoji aliases
 🔀 Replace aliases in text with raw emojis
 🔀 Replace raw emojis in text with aliases
 
