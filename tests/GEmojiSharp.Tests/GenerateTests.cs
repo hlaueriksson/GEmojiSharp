@@ -144,7 +144,7 @@ namespace GEmojiSharp.Tests
                 var emoji = Emoji.Get(token.Path);
 
                 emoji.Should().NotBe(GEmoji.Empty, $":{token.Path}:");
-                //if (emoji == GEmoji.Empty) Console.WriteLine($":{token.Path}:");
+                if (emoji == GEmoji.Empty) Console.WriteLine($":{token.Path}:");
             }
         }
 
@@ -196,7 +196,7 @@ namespace GEmojiSharp.Tests
                     raw = raw.Replace("</g-emoji>", string.Empty);
 
                     emoji.Raw.Should().Be(raw, $":{alias}:");
-                    //if (emoji.Raw != raw) Console.WriteLine($":{alias}:");
+                    if (emoji.Raw != raw) Console.WriteLine($":{alias}:");
                 }
             }
         }
