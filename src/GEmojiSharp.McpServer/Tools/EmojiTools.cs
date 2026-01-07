@@ -5,13 +5,13 @@ using ModelContextProtocol.Server;
 internal class EmojiTools
 {
     [McpServerTool(UseStructuredContent = true)]
-    [Description("Gets all emojis.")]
-    public GEmojiResult[] GetAllEmojis() =>
+    [Description("Returns all emojis.")]
+    public GEmojiResult[] All() =>
         [.. Emoji.All.Select(x => x.ToResult())];
 
     [McpServerTool(UseStructuredContent = true)]
     [Description("Gets the emoji associated with the alias or raw Unicode string.")]
-    public GEmojiResult GetEmoji([Description("The emoji alias or raw Unicode string.")] string value) =>
+    public GEmojiResult Get([Description("The emoji alias or raw Unicode string.")] string value) =>
         Emoji.Get(value).ToResult();
 
     [McpServerTool(UseStructuredContent = true)]
