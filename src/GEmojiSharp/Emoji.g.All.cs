@@ -1884,6 +1884,7 @@ namespace GEmojiSharp
             new GEmoji { Aliases = ["basecamp"], Filename = "basecamp" },
             new GEmoji { Aliases = ["basecampy"], Filename = "basecampy" },
             new GEmoji { Aliases = ["bowtie"], Filename = "bowtie" },
+            new GEmoji { Aliases = ["copilot"], Filename = "copilot" },
             new GEmoji { Aliases = ["electron"], Filename = "electron" },
             new GEmoji { Aliases = ["feelsgood"], Filename = "feelsgood" },
             new GEmoji { Aliases = ["finnadie"], Filename = "finnadie" },
