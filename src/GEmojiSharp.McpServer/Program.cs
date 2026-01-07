@@ -11,6 +11,6 @@ builder.Logging.AddConsole(o => o.LogToStandardErrorThreshold = LogLevel.Trace);
 builder.Services
     .AddMcpServer()
     .WithStdioServerTransport()
-    .WithTools<RandomNumberTools>();
+    .WithTools<EmojiTools>();
 
 await builder.Build().RunAsync();
