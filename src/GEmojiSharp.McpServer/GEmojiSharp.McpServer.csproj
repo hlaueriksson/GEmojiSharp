@@ -52,4 +52,8 @@
     <ProjectReference Include="..\GEmojiSharp\GEmojiSharp.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="GEmojiSharp.Tests" />
+  </ItemGroup>
+
 </Project>

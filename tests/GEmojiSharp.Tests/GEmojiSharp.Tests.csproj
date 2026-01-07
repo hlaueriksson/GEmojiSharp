@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\GEmojiSharp.McpServer\GEmojiSharp.McpServer.csproj" />
     <ProjectReference Include="..\..\src\GEmojiSharp\GEmojiSharp.csproj" />
     <ProjectReference Include="..\..\src\GEmojiSharp.AspNetCore\GEmojiSharp.AspNetCore.csproj" />
     <ProjectReference Include="..\..\src\GEmojiSharp.Blazor\GEmojiSharp.Blazor.csproj" />
