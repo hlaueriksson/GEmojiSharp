@@ -49,10 +49,6 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\GEmojiSharp\GEmojiSharp.csproj" />
-  </ItemGroup>
-
   <!--
     Defining the "HasPackageAndPublishMenuAddedByProject" property here allows the Solution
     Explorer "Package and Publish" context menu entry to be enabled for this project even if
@@ -81,7 +77,7 @@
          AOT warnings are enabled. This gives debug builds a tighter inner loop,
          while at least warning about future trim violations -->
     <PublishTrimmed>false</PublishTrimmed>
-    
+
     <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
     <EnableSingleFileAnalyzer>true</EnableSingleFileAnalyzer>
     <EnableAotAnalyzer>true</EnableAotAnalyzer>
@@ -96,5 +92,12 @@
     <ILLinkTreatWarningsAsErrors>false</ILLinkTreatWarningsAsErrors>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\GEmojiSharp\GEmojiSharp.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="GEmojiSharpExtension.Tests" />
+  </ItemGroup>
 
 </Project>
