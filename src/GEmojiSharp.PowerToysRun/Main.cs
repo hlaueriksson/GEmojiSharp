@@ -98,7 +98,7 @@ namespace GEmojiSharp.PowerToysRun
                 return results;
             }
 
-            var emojis = (GEmoji[])Emoji.Find(value);
+            var emojis = Emoji.Find(value).ToArray();
 
             if (emojis.Length != 0)
             {
