@@ -16,7 +16,7 @@ public partial class GEmojiSharpExtensionCommandsProvider : CommandProvider
         DisplayName = "GitHub Emoji";
         Icon = IconHelpers.FromRelativePath("Assets\\StoreLogo.png");
         _commands = [
-            new CommandItem(new GEmojiSharpExtensionPage()) { Title = DisplayName },
+            new CommandItem(new MainPage()) { Title = DisplayName },
         ];
     }
 
