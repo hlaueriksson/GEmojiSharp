@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "GEmojiSharpExtension (Package)": {
+      "commandName": "MsixPackage",
+      "doNotLaunchApp": true
+    },
+    "GEmojiSharpExtension (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
