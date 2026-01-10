@@ -1,0 +1,59 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <RuntimeIdentifiers>win-x64;win-arm64;osx-arm64;linux-x64;linux-arm64;linux-musl-x64</RuntimeIdentifiers>
+    <PackAsTool>true</PackAsTool>
+    <PackageType>McpServer</PackageType>
+    <SelfContained>true</SelfContained>
+    <PublishSelfContained>true</PublishSelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <Version>0.1.0</Version>
+    <PackageReleaseNotes>
+- Initial release
+    </PackageReleaseNotes>
+    <Authors>Henrik Lau Eriksson</Authors>
+    <Description>GitHub Emoji MCP Server
+
+🤖 All GitHub Emoji available via MCP protocol
+💬 Get emojis via chat
+🔎 Find emojis via description, category, alias or tag
+🔀 Replace aliases in text with raw emojis
+🔀 Replace raw emojis in text with aliases
+
+🐙 :octopus:
+➕ :heavy_plus_sign:
+🐈 :cat2:
+⩵
+❤️ :heart:
+    </Description>
+    <PackageId>GEmojiSharp.McpServer</PackageId>
+    <PackageProjectUrl>https://github.com/hlaueriksson/GEmojiSharp</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>GEmojiSharp.McpServer.md</PackageReadmeFile>
+    <PackageTags>emoji;gemoji;mcp</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include=".mcp\server.json" Pack="true" PackagePath="/.mcp/" />
+    <None Include="..\..\icon.png" Link="icon.png" Pack="true" PackagePath="\" />
+    <None Include="..\..\GEmojiSharp.McpServer.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.1" />
+    <PackageReference Include="ModelContextProtocol" Version="0.5.0-preview.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GEmojiSharp\GEmojiSharp.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="GEmojiSharp.Tests" />
+  </ItemGroup>
+
+</Project>
