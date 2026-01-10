@@ -144,5 +144,10 @@ namespace GEmojiSharp
 
             return result;
         }
+
+        internal static bool Matches(this string? value, string text)
+        {
+            return value?.IndexOf(text, StringComparison.OrdinalIgnoreCase) >= 0;
+        }
     }
 }

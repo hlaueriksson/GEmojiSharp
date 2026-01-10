@@ -391,6 +391,7 @@
   cookie: https://github.githubassets.com/images/icons/emoji/unicode/1f36a.png?v8,
   cool: https://github.githubassets.com/images/icons/emoji/unicode/1f192.png?v8,
   cop: https://github.githubassets.com/images/icons/emoji/unicode/1f46e.png?v8,
+  copilot: https://github.githubassets.com/images/icons/emoji/copilot.png?v8,
   copyright: https://github.githubassets.com/images/icons/emoji/unicode/00a9.png?v8,
   coral: https://github.githubassets.com/images/icons/emoji/unicode/1fab8.png?v8,
   corn: https://github.githubassets.com/images/icons/emoji/unicode/1f33d.png?v8,

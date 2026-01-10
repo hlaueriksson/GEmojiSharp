@@ -123,10 +123,11 @@ namespace GEmojiSharp
 
             var text = value.TrimAlias();
 
-            return All.Where(emoji => emoji.Description?.Contains(text) == true ||
-                                      emoji.Category?.Contains(text) == true ||
-                                      emoji.Aliases?.Any(x => x.Contains(text)) == true ||
-                                      emoji.Tags?.Any(x => x.Contains(text)) == true).ToArray();
+            return [.. All.Where(emoji =>
+                emoji.Description.Matches(text) ||
+                emoji.Category.Matches(text) ||
+                emoji.Aliases.Any(x => x.Matches(text)) ||
+                emoji.Tags?.Any(x => x.Matches(text)) == true)];
         }
     }
 }

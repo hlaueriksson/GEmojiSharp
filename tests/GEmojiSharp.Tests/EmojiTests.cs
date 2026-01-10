@@ -86,6 +86,7 @@ namespace GEmojiSharp.Tests
             Emoji.Find(":grinning:").Should().NotBeEmpty();
             Emoji.Find("man: red hair").Should().NotBeEmpty();
             Emoji.Find("face").Should().NotBeEmpty();
+            Emoji.Find("body").Should().NotBeEmpty();
             Emoji.Find("fail").Should().BeEmpty();
 
             Action act = () => Emoji.Find(NullString);
