@@ -28,7 +28,7 @@ internal sealed partial class MainPage : ListPage//DynamicListPage
 
     private IEnumerable<IListItem> GetAllCategories()
     {
-        var categories = Emoji.All.GroupBy(x => x.Category!).ToArray();
+        var categories = Emoji.All.GroupBy(x => x.Category).ToArray();
 
         foreach (var category in categories)
         {

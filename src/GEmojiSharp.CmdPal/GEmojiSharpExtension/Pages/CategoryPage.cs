@@ -9,10 +9,12 @@ public sealed partial class CategoryPage : ListPage
 {
     private IListItem[] Emojis { get; }
 
-    public CategoryPage(IGrouping<string, GEmoji> category)
+    public CategoryPage(IGrouping<string?, GEmoji> category)
     {
-        Name = category.Key;
-        Title = $"{category.Key}: {category.Count()} emojis";
+        var name = category.Key ?? "Custom";
+
+        Name = name;
+        Title = $"{name}: {category.Count()} emojis";
 
         Emojis = [.. category.Select(x => new EmojiListItem(x))];
     }

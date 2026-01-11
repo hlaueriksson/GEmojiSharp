@@ -6,10 +6,12 @@ namespace GEmojiSharpExtension;
 
 public sealed partial class CategoryListItem : ListItem
 {
-    public CategoryListItem(IGrouping<string, GEmoji> category)
+    public CategoryListItem(IGrouping<string?, GEmoji> category)
     {
-        Icon = new IconInfo(category.First().Raw);
-        Title = category.Key;
+        var emoji = category.First();
+
+        Icon = emoji.IsCustom ? IconHelpers.FromRelativePath($"Assets/Custom/{emoji.Filename}.png") : new IconInfo(emoji.Raw);
+        Title = category.Key ?? "Custom";
         Subtitle = $"{category.Count()} emojis";
         Command = new CategoryPage(category);
     }
