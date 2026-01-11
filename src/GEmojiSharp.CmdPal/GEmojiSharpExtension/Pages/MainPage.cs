@@ -1,19 +1,23 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Text.RegularExpressions;
 using GEmojiSharp;
 using Microsoft.CommandPalette.Extensions;
 using Microsoft.CommandPalette.Extensions.Toolkit;
 
 namespace GEmojiSharpExtension;
 
-internal sealed partial class MainPage : ListPage//DynamicListPage
+internal sealed partial class MainPage : DynamicListPage
 {
     private IListItem[] AllEmojis { get; }
     private IListItem[] AllCategories { get; }
-    //private List<IListItem> Query { get; } = [];
+    private List<IListItem> Results { get; } = [];
 
     public MainPage()
     {
+        Debug.WriteLine($"MainPage");
+
         Icon = IconHelpers.FromRelativePath("Assets\\StoreLogo.png");
         Title = "GitHub Emoji";
         Name = "Open";
@@ -26,7 +30,66 @@ internal sealed partial class MainPage : ListPage//DynamicListPage
         AllCategories = [.. GetAllCategories()];
     }
 
-    private IEnumerable<IListItem> GetAllCategories()
+    public override IListItem[] GetItems()
+    {
+        Debug.WriteLine($"GetItems");
+
+        if (!string.IsNullOrEmpty(SearchText)) return [.. Results];
+
+        var currentFilterId = Filters?.CurrentFilterId.ToSearchType();
+
+        Debug.WriteLine($"currentFilterId: {currentFilterId}");
+
+        return currentFilterId switch
+        {
+            SearchType.Emoji => AllEmojis,
+            SearchType.Category => AllCategories,
+            SearchType.Transform => [],
+            _ => AllEmojis,
+        };
+    }
+
+    public override void UpdateSearchText(string oldSearch, string newSearch)
+    {
+        Debug.WriteLine($"UpdateSearchText: {oldSearch} => {newSearch}");
+
+        Results.Clear();
+
+        IsLoading = true;
+
+        var currentFilterId = Filters?.CurrentFilterId.ToSearchType();
+
+        switch (currentFilterId)
+        {
+            case SearchType.Emoji:
+                {
+                    SearchEmojis(newSearch);
+                    break;
+                }
+            case SearchType.Category:
+                {
+                    SearchCategories(newSearch);
+                    break;
+                }
+            case SearchType.Transform:
+                {
+                    Transform(newSearch);
+                    break;
+                }
+        }
+
+        IsLoading = false;
+        RaiseItemsChanged(Results.Count);
+    }
+
+    private void Filters_PropChanged(object sender, IPropChangedEventArgs args)
+    {
+        Debug.WriteLine($"Filters_PropChanged: {args.PropertyName}");
+        UpdateSearchText(string.Empty, SearchText);
+        RaiseItemsChanged();
+    }
+
+    private static IEnumerable<IListItem> GetAllCategories()
     {
         var categories = Emoji.All.GroupBy(x => x.Category).ToArray();
 
@@ -36,80 +99,58 @@ internal sealed partial class MainPage : ListPage//DynamicListPage
         }
     }
 
-    public override IListItem[] GetItems()
+    private void SearchEmojis(string newSearch)
     {
-        var currentFilterId = Filters?.CurrentFilterId.ToSearchType();
-
-        return /*Query.Count > 0 ? [.. Query] :*/ currentFilterId == SearchType.Category ? AllCategories : AllEmojis;
+        Debug.WriteLine($"SearchEmojis: {newSearch}");
+        var emojis = Emoji.Find(newSearch).ToArray();
+        Results.AddRange(emojis.Select(x => new EmojiListItem(x)));
     }
 
-    //public override void UpdateSearchText(string oldSearch, string newSearch)
-    //{
-    //    if (oldSearch == newSearch)
-    //    {
-    //        return;
-    //    }
-
-    //    Query.Clear();
-
-    //    if (string.IsNullOrEmpty(newSearch))
-    //    {
-    //        return;
-    //    }
-
-    //    IsLoading = true;
-
-    //    var emojis = Emoji.Find(newSearch).ToArray();
-
-    //    if (emojis.Length != 0)
-    //    {
-    //        Query.AddRange(emojis.Select(x => new EmojiListItem(x)));
-    //    }
-
-    //    if (HasAlias(newSearch))
-    //    {
-    //        var result = Emoji.Emojify(newSearch);
-
-    //        Query.Add(
-    //            new ListItem
-    //            {
-    //                Title = result,
-    //                Subtitle = "Replace aliases in text with raw emojis",
-    //                Command = new CopyTextCommand(result),
-    //            });
-    //    }
-
-    //    if (HasEmoji(newSearch))
-    //    {
-    //        var result = Emoji.Demojify(newSearch);
-
-    //        Query.Add(
-    //            new ListItem
-    //            {
-    //                Title = result,
-    //                Subtitle = "Replace raw emojis in text with aliases",
-    //                Command = new CopyTextCommand(result),
-    //            });
-    //    }
-
-    //    IsLoading = false;
-    //    RaiseItemsChanged(Query.Count);
-
-    //    bool HasAlias(string value)
-    //    {
-    //        return Regex.IsMatch(value, @":([\w+-]+):", RegexOptions.Compiled);
-    //    }
-
-    //    bool HasEmoji(string value)
-    //    {
-    //        return Regex.IsMatch(value, Emoji.RegexPattern, RegexOptions.Compiled);
-    //    }
-    //}
-
-    private void Filters_PropChanged(object sender, IPropChangedEventArgs args)
+    private void SearchCategories(string newSearch)
     {
-        //UpdateSearchText(SearchText, SearchText);
+        Debug.WriteLine($"SearchCategories: {newSearch}");
+        var categories = Emoji.All
+            .Where(x => x.Category != null && x.Category.Contains(newSearch, System.StringComparison.OrdinalIgnoreCase))
+            .GroupBy(x => x.Category)
+            .ToArray();
+        Results.AddRange(categories.Select(x => new CategoryListItem(x)));
+    }
 
-        RaiseItemsChanged();
+    private void Transform(string newSearch)
+    {
+        Debug.WriteLine($"Transform: {newSearch}");
+
+        if (HasAlias(newSearch))
+        {
+            var result = Emoji.Emojify(newSearch);
+            Results.Add(
+                new ListItem
+                {
+                    Title = result,
+                    Subtitle = "Replace aliases in text with raw emojis",
+                    Command = new CopyTextCommand(result),
+                });
+        }
+        if (HasEmoji(newSearch))
+        {
+            var result = Emoji.Demojify(newSearch);
+            Results.Add(
+                new ListItem
+                {
+                    Title = result,
+                    Subtitle = "Replace raw emojis in text with aliases",
+                    Command = new CopyTextCommand(result),
+                });
+        }
+
+        bool HasAlias(string value)
+        {
+            return Regex.IsMatch(value, @":([\w+-]+):", RegexOptions.Compiled);
+        }
+
+        bool HasEmoji(string value)
+        {
+            return Regex.IsMatch(value, Emoji.RegexPattern, RegexOptions.Compiled);
+        }
     }
 }
