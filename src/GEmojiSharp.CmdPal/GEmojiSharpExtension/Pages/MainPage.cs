@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -15,6 +16,9 @@ internal sealed partial class MainPage : DynamicListPage
     private IListItem[] AllCategories { get; }
     private IListItem[] TransformHelp { get; }
     private List<IListItem> Results { get; } = [];
+
+    private const int PageSize = 20;
+    private int CurrentPage { get; set; }
 
     public MainPage()
     {
@@ -45,59 +49,89 @@ internal sealed partial class MainPage : DynamicListPage
     {
         Debug.WriteLine($"GetItems");
 
-        if (!string.IsNullOrEmpty(SearchText)) return [.. Results];
-
-        var currentFilterId = Filters?.CurrentFilterId.ToSearchType();
-
-        Debug.WriteLine($"currentFilterId: {currentFilterId}");
-
-        return currentFilterId switch
+        if (CurrentPage == 0)
         {
-            SearchType.Emoji => AllEmojis,
-            SearchType.Category => AllCategories,
-            SearchType.Transform => TransformHelp,
-            _ => AllEmojis,
-        };
+            LoadMore();
+        }
+
+        return [.. Results.Take(PageSize * CurrentPage)];
+    }
+
+    public override void LoadMore()
+    {
+        Debug.WriteLine($"LoadMore");
+
+        IsLoading = true;
+
+        // Init
+        if (CurrentPage == 0 && string.IsNullOrEmpty(SearchText))
+        {
+            Results.Clear();
+
+            var currentFilterId = Filters?.CurrentFilterId.ToSearchType();
+
+            Debug.WriteLine($"currentFilterId: {currentFilterId}");
+
+            switch (currentFilterId)
+            {
+                case SearchType.Emoji:
+                    Results.AddRange(AllEmojis);
+                    break;
+                case SearchType.Category:
+                    Results.AddRange(AllCategories);
+                    break;
+                case SearchType.Transform:
+                    Results.AddRange(TransformHelp);
+                    break;
+            }
+        }
+
+        CurrentPage++;
+        HasMoreItems = Results.Count > PageSize * CurrentPage;
+        IsLoading = false;
+        RaiseItemsChanged(Math.Min(PageSize * CurrentPage, Results.Count));
     }
 
     public override void UpdateSearchText(string oldSearch, string newSearch)
     {
-        Debug.WriteLine($"UpdateSearchText: {oldSearch} => {newSearch}");
+        Debug.WriteLine($"UpdateSearchText: {newSearch}");
 
+        // Clear
         Results.Clear();
+        CurrentPage = 0;
 
-        IsLoading = true;
-
-        var currentFilterId = Filters?.CurrentFilterId.ToSearchType();
-
-        switch (currentFilterId)
+        // Search
+        if (!string.IsNullOrEmpty(SearchText))
         {
-            case SearchType.Emoji:
-                {
-                    SearchEmojis(newSearch);
-                    break;
-                }
-            case SearchType.Category:
-                {
-                    SearchCategories(newSearch);
-                    break;
-                }
-            case SearchType.Transform:
-                {
-                    Transform(newSearch);
-                    break;
-                }
+            var currentFilterId = Filters?.CurrentFilterId.ToSearchType();
+
+            switch (currentFilterId)
+            {
+                case SearchType.Emoji:
+                    {
+                        SearchEmojis(newSearch);
+                        break;
+                    }
+                case SearchType.Category:
+                    {
+                        SearchCategories(newSearch);
+                        break;
+                    }
+                case SearchType.Transform:
+                    {
+                        Transform(newSearch);
+                        break;
+                    }
+            }
         }
 
-        IsLoading = false;
-        RaiseItemsChanged(Results.Count);
+        LoadMore();
     }
 
     private void Filters_PropChanged(object sender, IPropChangedEventArgs args)
     {
         Debug.WriteLine($"Filters_PropChanged: {args.PropertyName}");
         UpdateSearchText(string.Empty, SearchText);
-        RaiseItemsChanged();
     }
 
     private static IEnumerable<IListItem> GetAllCategories()
