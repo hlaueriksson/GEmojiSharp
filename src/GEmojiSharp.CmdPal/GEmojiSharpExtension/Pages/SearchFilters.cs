@@ -27,9 +27,9 @@ internal sealed partial class SearchFilters : Filters
     public override IFilterItem[] GetFilters()
     {
         return [
-            new Filter() { Id = SearchType.Emoji.ToString(), Name = "Emojis", Icon = new IconInfo("\uE76E") }, // Emoji2
-            new Filter() { Id = SearchType.Category.ToString(), Name = "Categories", Icon = new IconInfo("\uF168") }, // GroupList
-            new Filter() { Id = SearchType.Transform.ToString(), Name = "Transform", Icon = new IconInfo("\uE8B1") }, // Shuffle
+            new Filter() { Id = SearchType.Emoji.ToString(), Name = "Emojis", Icon = Icons.Emojis },
+            new Filter() { Id = SearchType.Category.ToString(), Name = "Categories", Icon = Icons.Categories },
+            new Filter() { Id = SearchType.Transform.ToString(), Name = "Transform", Icon = Icons.Transform },
         ];
     }
 }

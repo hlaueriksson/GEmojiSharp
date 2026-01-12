@@ -19,7 +19,7 @@ internal sealed partial class MainPage : DynamicListPage
     {
         Debug.WriteLine($"MainPage");
 
-        Icon = IconHelpers.FromRelativePath("Assets\\StoreLogo.png");
+        Icon = Icons.Icon;
         Title = "GitHub Emoji";
         Name = "Open";
 
@@ -32,7 +32,7 @@ internal sealed partial class MainPage : DynamicListPage
         TransformHelp = [
             new ListItem
             {
-                Icon = new IconInfo("\uE8B1"),
+                Icon = Icons.Transform,
                 Title = "Paste text in the search field",
                 Subtitle = "Emojify: Aliases will be replaced with raw emojis\nDemojify: Raw emojis will be replaced with aliases",
                 Command = new NoOpCommand(),
@@ -136,7 +136,7 @@ internal sealed partial class MainPage : DynamicListPage
             Results.Add(
                 new ListItem
                 {
-                    Icon = new IconInfo("\uE8B1"),
+                    Icon = Icons.Transform,
                     Title = result,
                     Subtitle = "Emojify: Replace aliases with raw emojis",
                     Command = new CopyTextCommand(result),
@@ -148,7 +148,7 @@ internal sealed partial class MainPage : DynamicListPage
             Results.Add(
                 new ListItem
                 {
-                    Icon = new IconInfo("\uE8B1"),
+                    Icon = Icons.Transform,
                     Title = result,
                     Subtitle = "Demojify: Replace raw emojis with aliases",
                     Command = new CopyTextCommand(result),
