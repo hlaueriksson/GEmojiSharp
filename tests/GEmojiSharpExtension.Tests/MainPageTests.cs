@@ -2,6 +2,8 @@ using FluentAssertions;
 using GEmojiSharpExtension.Models;
 using GEmojiSharpExtension.Pages;
 
+[assembly: DoNotParallelize]
+
 namespace GEmojiSharpExtension.Tests;
 
 [TestClass]
@@ -33,7 +35,7 @@ public class MainPageTests
     [TestMethod]
     public void GetItems_Category()
     {
-        _subject.Filters.CurrentFilterId = SearchType.Category.ToString();
+        _subject.Filters!.CurrentFilterId = SearchType.Category.ToString();
         _subject.GetItems().Should().NotBeEmpty();
 
         _subject.SearchText = "body";
@@ -44,7 +46,7 @@ public class MainPageTests
     [TestMethod]
     public void GetItems_Transform()
     {
-        _subject.Filters.CurrentFilterId = SearchType.Transform.ToString();
+        _subject.Filters!.CurrentFilterId = SearchType.Transform.ToString();
         _subject.GetItems().Should().NotBeEmpty();
 
         _subject.SearchText = "Hello, :earth_africa:";
