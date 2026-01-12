@@ -1,3 +1,5 @@
+using System.Text.RegularExpressions;
+
 namespace GEmojiSharp
 {
     /// <summary>
@@ -15,6 +17,9 @@ namespace GEmojiSharp
             "🏾", // medium-dark skin tone
             "🏿", // dark skin tone
         ];
+
+        private static readonly Regex AliasRegex = new(@":([\w+-]+):", RegexOptions.Compiled);
+        private static readonly Regex EmojiRegex = new(Emoji.RegexPattern, RegexOptions.Compiled);
 
         /// <summary>
         /// Gets the emoji associated with the alias, or <see cref="GEmoji.Empty"/> if the alias is not found.
@@ -148,6 +153,16 @@ namespace GEmojiSharp
         internal static bool Matches(this string? value, string text)
         {
             return value?.IndexOf(text, StringComparison.OrdinalIgnoreCase) >= 0;
+        }
+
+        internal static bool HasAlias(this string text)
+        {
+            return AliasRegex.IsMatch(text);
+        }
+
+        internal static bool HasEmoji(this string text)
+        {
+            return EmojiRegex.IsMatch(text);
         }
     }
 }

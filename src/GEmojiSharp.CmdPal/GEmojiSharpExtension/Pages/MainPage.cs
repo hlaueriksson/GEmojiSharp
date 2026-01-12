@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text.RegularExpressions;
 using GEmojiSharp;
 using GEmojiSharpExtension.Models;
 using Microsoft.CommandPalette.Extensions;
@@ -29,11 +28,11 @@ internal sealed partial class MainPage : DynamicListPage
         Name = "Open";
 
         var filters = new SearchFilters();
-        filters.PropChanged += Filters_PropChanged;
+        filters.PropChanged += SearchFiltersChanged;
         Filters = filters;
 
         AllEmojis = [.. Emoji.All.Select(x => new EmojiListItem(x))];
-        AllCategories = [.. GetAllCategories()];
+        AllCategories = [.. Emoji.All.GroupBy(x => x.Category).Select(x => new CategoryListItem(x))];
         TransformHelp = [
             new ListItem
             {
@@ -49,6 +48,7 @@ internal sealed partial class MainPage : DynamicListPage
     {
         Debug.WriteLine($"GetItems");
 
+        // First
         if (CurrentPage == 0)
         {
             LoadMore();
@@ -64,7 +64,7 @@ internal sealed partial class MainPage : DynamicListPage
         IsLoading = true;
 
         // Init
-        if (CurrentPage == 0 && string.IsNullOrEmpty(SearchText))
+        if (CurrentPage == 0 && SearchText == string.Empty)
         {
             Results.Clear();
 
@@ -100,8 +100,7 @@ internal sealed partial class MainPage : DynamicListPage
         Results.Clear();
         CurrentPage = 0;
 
-        // Search
-        if (!string.IsNullOrEmpty(SearchText))
+        if (SearchText != string.Empty)
         {
             var currentFilterId = Filters?.CurrentFilterId.ToSearchType();
 
@@ -128,20 +127,10 @@ internal sealed partial class MainPage : DynamicListPage
         LoadMore();
     }
 
-    private void Filters_PropChanged(object sender, IPropChangedEventArgs args)
+    private void SearchFiltersChanged(object sender, IPropChangedEventArgs args)
     {
-        Debug.WriteLine($"Filters_PropChanged: {args.PropertyName}");
+        Debug.WriteLine($"SearchFiltersChanged: {args.PropertyName}");
         UpdateSearchText(string.Empty, SearchText);
-    }
-
-    private static IEnumerable<IListItem> GetAllCategories()
-    {
-        var categories = Emoji.All.GroupBy(x => x.Category).ToArray();
-
-        foreach (var category in categories)
-        {
-            yield return new CategoryListItem(category);
-        }
     }
 
     private void SearchEmojis(string newSearch)
@@ -154,18 +143,15 @@ internal sealed partial class MainPage : DynamicListPage
     private void SearchCategories(string newSearch)
     {
         Debug.WriteLine($"SearchCategories: {newSearch}");
-        var categories = Emoji.All
-            .Where(x => x.Category != null && x.Category.Contains(newSearch, System.StringComparison.OrdinalIgnoreCase))
-            .GroupBy(x => x.Category)
-            .ToArray();
-        Results.AddRange(categories.Select(x => new CategoryListItem(x)));
+        var categories = AllCategories.Where(x => x.Title.Contains(newSearch, StringComparison.OrdinalIgnoreCase));
+        Results.AddRange(categories);
     }
 
     private void Transform(string newSearch)
     {
         Debug.WriteLine($"Transform: {newSearch}");
 
-        if (HasAlias(newSearch))
+        if (newSearch.HasAlias())
         {
             var result = Emoji.Emojify(newSearch);
             Results.Add(
@@ -177,7 +163,8 @@ internal sealed partial class MainPage : DynamicListPage
                     Command = new CopyTextCommand(result),
                 });
         }
-        if (HasEmoji(newSearch))
+
+        if (newSearch.HasEmoji())
         {
             var result = Emoji.Demojify(newSearch);
             Results.Add(
@@ -188,16 +175,6 @@ internal sealed partial class MainPage : DynamicListPage
                     Subtitle = "Demojify: Replace raw emojis with aliases",
                     Command = new CopyTextCommand(result),
                 });
-        }
-
-        bool HasAlias(string value)
-        {
-            return Regex.IsMatch(value, @":([\w+-]+):", RegexOptions.Compiled);
-        }
-
-        bool HasEmoji(string value)
-        {
-            return Regex.IsMatch(value, Emoji.RegexPattern, RegexOptions.Compiled);
         }
     }
 }
