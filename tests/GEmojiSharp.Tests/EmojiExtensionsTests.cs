@@ -108,5 +108,28 @@ namespace GEmojiSharp.Tests
             "👋".TrimSkinToneVariants().Should().Be("👋");
             "👋🏻".TrimSkinToneVariants().Should().Be("👋"); // light skin tone
         }
+
+        [Test]
+        public void Matches()
+        {
+            "foobar".Matches("foo").Should().BeTrue();
+            "foobar".Matches("ob").Should().BeTrue();
+            "foobar".Matches("bar").Should().BeTrue();
+            "foobar".Matches("fubar").Should().BeFalse();
+        }
+
+        [Test]
+        public void HasAlias()
+        {
+            ":tada:".HasAlias().Should().BeTrue();
+            "tada".HasAlias().Should().BeFalse();
+        }
+
+        [Test]
+        public void HasEmoji()
+        {
+            "🎉".HasEmoji().Should().BeTrue();
+            "<3".HasEmoji().Should().BeFalse();
+        }
     }
 }
