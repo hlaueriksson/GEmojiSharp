@@ -1,4 +1,3 @@
-using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -106,7 +105,7 @@ namespace GEmojiSharp.PowerToysRun
                 return results;
             }
 
-            if (HasAlias(value))
+            if (value.HasAlias())
             {
                 var result = Emoji.Emojify(value);
 
@@ -123,7 +122,7 @@ namespace GEmojiSharp.PowerToysRun
                     });
             }
 
-            if (HasEmoji(value))
+            if (value.HasEmoji())
             {
                 var result = Emoji.Demojify(value);
 
@@ -152,16 +151,6 @@ namespace GEmojiSharp.PowerToysRun
                 Action = _ => CopyToClipboard(emoji.Raw),
                 ContextData = emoji,
             };
-
-            bool HasAlias(string value)
-            {
-                return Regex.IsMatch(value, @":([\w+-]+):", RegexOptions.Compiled);
-            }
-
-            bool HasEmoji(string value)
-            {
-                return Regex.IsMatch(value, Emoji.RegexPattern, RegexOptions.Compiled);
-            }
         }
 
         /// <summary>
