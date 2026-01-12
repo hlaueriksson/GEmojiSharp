@@ -14,7 +14,7 @@ public partial class GEmojiSharpExtensionCommandsProvider : CommandProvider
         DisplayName = "GitHub Emoji";
         Icon = Icons.Icon;
         _commands = [
-            new CommandItem(new MainPage()) { Title = DisplayName },
+            new CommandItem(new MainPage()) { Title = DisplayName, Subtitle = "Find and copy GitHub flavored Emoji" },
         ];
     }
 
