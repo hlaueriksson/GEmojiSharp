@@ -3,10 +3,11 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
 using GEmojiSharp;
+using GEmojiSharpExtension.Models;
 using Microsoft.CommandPalette.Extensions;
 using Microsoft.CommandPalette.Extensions.Toolkit;
 
-namespace GEmojiSharpExtension;
+namespace GEmojiSharpExtension.Pages;
 
 internal sealed partial class MainPage : DynamicListPage
 {

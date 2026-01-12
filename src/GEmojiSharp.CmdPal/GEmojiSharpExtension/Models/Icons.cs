@@ -1,6 +1,6 @@
 using Microsoft.CommandPalette.Extensions.Toolkit;
 
-namespace GEmojiSharpExtension;
+namespace GEmojiSharpExtension.Models;
 
 internal static class Icons
 {

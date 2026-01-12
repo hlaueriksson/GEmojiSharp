@@ -1,8 +1,9 @@
 using System.Linq;
 using GEmojiSharp;
+using GEmojiSharpExtension.Pages;
 using Microsoft.CommandPalette.Extensions.Toolkit;
 
-namespace GEmojiSharpExtension;
+namespace GEmojiSharpExtension.Models;
 
 public sealed partial class CategoryListItem : ListItem
 {

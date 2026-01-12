@@ -1,3 +1,5 @@
+using GEmojiSharpExtension.Models;
+using GEmojiSharpExtension.Pages;
 using Microsoft.CommandPalette.Extensions;
 using Microsoft.CommandPalette.Extensions.Toolkit;
 

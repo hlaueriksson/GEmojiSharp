@@ -1,9 +1,10 @@
 using System.Linq;
 using GEmojiSharp;
+using GEmojiSharpExtension.Models;
 using Microsoft.CommandPalette.Extensions;
 using Microsoft.CommandPalette.Extensions.Toolkit;
 
-namespace GEmojiSharpExtension;
+namespace GEmojiSharpExtension.Pages;
 
 public sealed partial class CategoryPage : ListPage
 {

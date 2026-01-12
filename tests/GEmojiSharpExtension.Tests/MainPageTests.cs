@@ -1,4 +1,6 @@
 using FluentAssertions;
+using GEmojiSharpExtension.Models;
+using GEmojiSharpExtension.Pages;
 
 namespace GEmojiSharpExtension.Tests;
 

@@ -2,7 +2,7 @@ using System;
 using Microsoft.CommandPalette.Extensions;
 using Microsoft.CommandPalette.Extensions.Toolkit;
 
-namespace GEmojiSharpExtension;
+namespace GEmojiSharpExtension.Models;
 
 public enum SearchType
 {

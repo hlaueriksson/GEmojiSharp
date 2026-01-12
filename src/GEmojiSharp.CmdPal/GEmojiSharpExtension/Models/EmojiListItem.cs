@@ -4,7 +4,7 @@ using GEmojiSharp;
 using Microsoft.CommandPalette.Extensions;
 using Microsoft.CommandPalette.Extensions.Toolkit;
 
-namespace GEmojiSharpExtension;
+namespace GEmojiSharpExtension.Models;
 
 public sealed partial class EmojiListItem : ListItem
 {
