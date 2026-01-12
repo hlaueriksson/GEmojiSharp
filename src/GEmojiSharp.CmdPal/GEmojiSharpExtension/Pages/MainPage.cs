@@ -12,6 +12,7 @@ internal sealed partial class MainPage : DynamicListPage
 {
     private IListItem[] AllEmojis { get; }
     private IListItem[] AllCategories { get; }
+    private IListItem[] TransformHelp { get; }
     private List<IListItem> Results { get; } = [];
 
     public MainPage()
@@ -28,6 +29,15 @@ internal sealed partial class MainPage : DynamicListPage
 
         AllEmojis = [.. Emoji.All.Select(x => new EmojiListItem(x))];
         AllCategories = [.. GetAllCategories()];
+        TransformHelp = [
+            new ListItem
+            {
+                Icon = new IconInfo("\uE8B1"),
+                Title = "Paste text in the search field",
+                Subtitle = "Emojify: Aliases will be replaced with raw emojis\nDemojify: Raw emojis will be replaced with aliases",
+                Command = new NoOpCommand(),
+            }
+        ];
     }
 
     public override IListItem[] GetItems()
@@ -44,7 +54,7 @@ internal sealed partial class MainPage : DynamicListPage
         {
             SearchType.Emoji => AllEmojis,
             SearchType.Category => AllCategories,
-            SearchType.Transform => [],
+            SearchType.Transform => TransformHelp,
             _ => AllEmojis,
         };
     }
@@ -126,8 +136,9 @@ internal sealed partial class MainPage : DynamicListPage
             Results.Add(
                 new ListItem
                 {
+                    Icon = new IconInfo("\uE8B1"),
                     Title = result,
-                    Subtitle = "Replace aliases in text with raw emojis",
+                    Subtitle = "Emojify: Replace aliases with raw emojis",
                     Command = new CopyTextCommand(result),
                 });
         }
@@ -137,8 +148,9 @@ internal sealed partial class MainPage : DynamicListPage
             Results.Add(
                 new ListItem
                 {
+                    Icon = new IconInfo("\uE8B1"),
                     Title = result,
-                    Subtitle = "Replace raw emojis in text with aliases",
+                    Subtitle = "Demojify: Replace raw emojis with aliases",
                     Command = new CopyTextCommand(result),
                 });
         }

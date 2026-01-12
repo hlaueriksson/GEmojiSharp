@@ -43,7 +43,7 @@ public class MainPageTests
     public void GetItems_Transform()
     {
         _subject.Filters.CurrentFilterId = SearchType.Transform.ToString();
-        _subject.GetItems().Should().BeEmpty();
+        _subject.GetItems().Should().NotBeEmpty();
 
         _subject.SearchText = "Hello, :earth_africa:";
         _subject.GetItems().Should().HaveCount(1)
