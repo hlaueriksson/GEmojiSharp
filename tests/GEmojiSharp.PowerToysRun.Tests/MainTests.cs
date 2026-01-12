@@ -1,21 +1,22 @@
 using FluentAssertions;
 using GEmojiSharp.PowerToysRun;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Wox.Plugin;
 
 namespace GEmojiSharp.Tests.PowerToysRun
 {
+    [TestClass]
     public class MainTests
     {
         private Main _subject = null!;
 
-        [SetUp]
+        [TestInitialize]
         public void SetUp()
         {
             _subject = new Main(new GEmojiSharpSettings());
         }
 
-        [Test]
+        [TestMethod]
         public void Query_emojis()
         {
             _subject.Query(null!).Should().BeEmpty();
@@ -30,19 +31,19 @@ namespace GEmojiSharp.Tests.PowerToysRun
             _subject.Query(new Query("tada")).Should().ContainSingle(x => x.Title == "🎉");
         }
 
-        [Test]
+        [TestMethod]
         public void Query_Emojify()
         {
             _subject.Query(new Query("Hello, :earth_africa:")).Should().ContainSingle(x => x.Title == "Hello, 🌍");
         }
 
-        [Test]
+        [TestMethod]
         public void Query_Demojify()
         {
             _subject.Query(new Query("Hello, 🌍")).Should().ContainSingle(x => x.Title == "Hello, :earth_africa:");
         }
 
-        [Test]
+        [TestMethod]
         public void LoadContextMenus_GEmoji()
         {
             _subject.LoadContextMenus(new Result()).Should().BeEmpty();
@@ -59,14 +60,14 @@ namespace GEmojiSharp.Tests.PowerToysRun
                 .And.Contain(x => x.Title == "Copy raw emoji skin tone variants (Ctrl+Enter)");
         }
 
-        [Test]
+        [TestMethod]
         public void LoadContextMenus_EmojifiedString()
         {
             var result = new Result { ContextData = new EmojifiedString("Hello, 🌍") };
             _subject.LoadContextMenus(result).Should().Contain(x => x.Title == "Copy emojified text (Enter)");
         }
 
-        [Test]
+        [TestMethod]
         public void LoadContextMenus_DemojifiedString()
         {
             var result = new Result { ContextData = new DemojifiedString("Hello, :earth_africa:") };
