@@ -196,8 +196,8 @@ namespace GEmojiSharp.PowerToysRun
                 {
                     PluginName = Name,
                     Title = "Copy raw emoji (Enter)",
-                    FontFamily = "Segoe MDL2 Assets",
                     Glyph = "\xE8C8", // E8C8 => Symbol: Copy
+                    FontFamily = "Segoe Fluent Icons,Segoe MDL2 Assets",
                     /*AcceleratorKey = Key.Enter,*/
                     Action = _ => CopyToClipboard(emoji.Raw),
                 };
@@ -205,8 +205,8 @@ namespace GEmojiSharp.PowerToysRun
                 {
                     PluginName = Name,
                     Title = "Copy emoji aliases (Ctrl+C)",
-                    FontFamily = "Segoe MDL2 Assets",
                     Glyph = "\xF413", // F413 => Symbol: CopyTo
+                    FontFamily = "Segoe Fluent Icons,Segoe MDL2 Assets",
                     AcceleratorKey = Key.C,
                     AcceleratorModifiers = ModifierKeys.Control,
                     Action = _ => CopyToClipboard(string.Concat(emoji.Aliases.Select(x => x.PadAlias()))),
@@ -222,8 +222,8 @@ namespace GEmojiSharp.PowerToysRun
                         {
                             PluginName = Name,
                             Title = "Copy raw emoji skin tone variants (Ctrl+Enter)",
-                            FontFamily = "Segoe MDL2 Assets",
                             Glyph = "\xE748", // E748 => Symbol: SwitchUser
+                            FontFamily = "Segoe Fluent Icons,Segoe MDL2 Assets",
                             AcceleratorKey = Key.Enter,
                             AcceleratorModifiers = ModifierKeys.Control,
                             Action = _ => CopyToClipboard(emoji.Raw + string.Concat(emoji.RawSkinToneVariants())),
@@ -246,8 +246,8 @@ namespace GEmojiSharp.PowerToysRun
                     {
                         PluginName = Name,
                         Title = "Copy emojified text (Enter)",
-                        FontFamily = "Segoe MDL2 Assets",
                         Glyph = "\xE8C8", // E8C8 => Symbol: Copy
+                        FontFamily = "Segoe Fluent Icons,Segoe MDL2 Assets",
                         /*AcceleratorKey = Key.Enter,*/
                         Action = _ => CopyToClipboard(emojified.Value),
                     },
@@ -262,8 +262,8 @@ namespace GEmojiSharp.PowerToysRun
                     {
                         PluginName = Name,
                         Title = "Copy demojified text (Enter)",
-                        FontFamily = "Segoe MDL2 Assets",
                         Glyph = "\xE8C8", // E8C8 => Symbol: Copy
+                        FontFamily = "Segoe Fluent Icons,Segoe MDL2 Assets",
                         /*AcceleratorKey = Key.Enter,*/
                         Action = _ => CopyToClipboard(demojified.Value),
                     },
