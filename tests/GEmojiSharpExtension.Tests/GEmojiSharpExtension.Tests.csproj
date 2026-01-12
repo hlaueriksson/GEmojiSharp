@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <WindowsSdkPackageVersion>10.0.26100.68-preview</WindowsSdkPackageVersion>
     <TargetFramework>net9.0-windows10.0.26100.0</TargetFramework>
   </PropertyGroup>
 
