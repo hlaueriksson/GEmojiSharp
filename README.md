@@ -7,6 +7,7 @@
 [![GEmojiSharp.AspNetCore](https://img.shields.io/nuget/v/GEmojiSharp.AspNetCore.svg?label=GEmojiSharp.AspNetCore)](https://www.nuget.org/packages/GEmojiSharp.AspNetCore)
 [![GEmojiSharp.Blazor](https://img.shields.io/nuget/v/GEmojiSharp.Blazor.svg?label=GEmojiSharp.Blazor)](https://www.nuget.org/packages/GEmojiSharp.Blazor)
 [![GEmojiSharp.DotnetTool](https://img.shields.io/nuget/v/GEmojiSharp.DotnetTool.svg?label=GEmojiSharp.DotnetTool)](https://www.nuget.org/packages/GEmojiSharp.DotnetTool)
+[![GEmojiSharp.McpServer](https://img.shields.io/nuget/v/GEmojiSharp.McpServer.svg?label=GEmojiSharp.McpServer)](https://www.nuget.org/packages/GEmojiSharp.McpServer)
 
 > GitHub Emoji for C# and .NET:
 >
@@ -15,6 +16,8 @@
 > - Blazor
 > - `dotnet` tool
 > - PowerToys Run plugin
+> - PowerToys Command Palette extension
+> - MCP Server
 
 ```txt
 🐙 :octopus:
@@ -29,16 +32,10 @@
 - [Introduction](#introduction)
 - [`GEmojiSharp`](#gemojisharp)
 - [`GEmojiSharp.AspNetCore`](#gemojisharpaspnetcore)
-  - [TagHelpers](#taghelpers)
-  - [HtmlHelpers](#htmlhelpers)
 - [`GEmojiSharp.Blazor`](#gemojisharpblazor)
 - [`GEmojiSharp.DotnetTool`](#gemojisharpdotnettool)
-  - [Installation](#installation)
-  - [Usage](#usage)
 - [`GEmojiSharp.PowerToysRun`](#gemojisharppowertoysrun)
-  - [Installation](#installation-1)
-  - [Usage](#usage-1)
-  - [Configuration](#configuration)
+- [`GEmojiSharp.McpServer`](#gemojisharpmcpserver)
 - [Samples](#samples)
 - [Attribution](#attribution)
 
@@ -59,7 +56,7 @@ A visual referense of all GitHub Emoji:
 
 ## `GEmojiSharp`
 
-[![NuGet](https://buildstats.info/nuget/GEmojiSharp)](https://www.nuget.org/packages/GEmojiSharp/)
+[![NuGet](https://img.shields.io/nuget/dt/GEmojiSharp)](https://www.nuget.org/packages/GEmojiSharp/)
 
 > GitHub Emoji for C# and .NET 📦
 
@@ -101,7 +98,7 @@ Regex.Replace(text, Emoji.RegexPattern, string.Empty); // Lorem  ipsum
 
 ## `GEmojiSharp.AspNetCore`
 
-[![NuGet](https://buildstats.info/nuget/GEmojiSharp.AspNetCore)](https://www.nuget.org/packages/GEmojiSharp.AspNetCore/)
+[![NuGet](https://img.shields.io/nuget/dt/GEmojiSharp.AspNetCore)](https://www.nuget.org/packages/GEmojiSharp.AspNetCore/)
 
 > GitHub Emoji for ASP.NET Core 📦
 
@@ -110,7 +107,7 @@ The package includes:
 - TagHelpers
 - HtmlHelpers
 
-### TagHelpers
+### TagHelpers<!-- omit in toc -->
 
 Update the `_ViewImports.cshtml` file, to enable tag helpers in all Razor views:
 
@@ -233,7 +230,7 @@ namespace GEmojiSharp.Sample.Web.Pages
 }
 ```
 
-### HtmlHelpers
+### HtmlHelpers<!-- omit in toc -->
 
 Update the `_ViewImports.cshtml` file, to enable HTML helpers in all Razor views:
 
@@ -250,7 +247,7 @@ Use the `Emoji` extension methods to render emojis:
 
 ## `GEmojiSharp.Blazor`
 
-[![NuGet](https://buildstats.info/nuget/GEmojiSharp.Blazor)](https://www.nuget.org/packages/GEmojiSharp.Blazor/)
+[![NuGet](https://img.shields.io/nuget/dt/GEmojiSharp.Blazor)](https://www.nuget.org/packages/GEmojiSharp.Blazor/)
 
 > GitHub Emoji for Blazor 📦
 
@@ -297,13 +294,13 @@ Custom GitHub emojis are rendered as images:
 
 ## `GEmojiSharp.DotnetTool`
 
-[![NuGet](https://buildstats.info/nuget/GEmojiSharp.DotnetTool)](https://www.nuget.org/packages/GEmojiSharp.DotnetTool/)
+[![NuGet](https://img.shields.io/nuget/dt/GEmojiSharp.DotnetTool)](https://www.nuget.org/packages/GEmojiSharp.DotnetTool/)
 
 > GitHub Emoji `dotnet` tool 🧰
 
 ![GEmojiSharp.DotnetTool](GEmojiSharp.DotnetTool.gif)
 
-### Installation
+### Installation<!-- omit in toc -->
 
 Install:
 
@@ -333,7 +330,7 @@ Enable emoji in the terminal:
 
 - [Set a process code page to UTF-8](https://learn.microsoft.com/en-us/windows/apps/design/globalizing/use-utf8-code-page#set-a-process-code-page-to-utf-8)
 
-### Usage
+### Usage<!-- omit in toc -->
 
 ```cmd
 emoji --help
@@ -655,7 +652,7 @@ emoji export "grinning cat" -c
 
 ![GEmojiSharp.PowerToysRun](GEmojiSharp.PowerToysRun.gif)
 
-### Installation
+### Installation<!-- omit in toc -->
 
 The plugin is developed and tested with `PowerToys` `v0.83.0`.
 
@@ -669,7 +666,7 @@ Install:
 
 ![GEmojiSharp.PowerToysRun](GEmojiSharp.PowerToysRun.png)
 
-### Usage
+### Usage<!-- omit in toc -->
 
 1. Open PowerToys Run with `alt + space`
 2. Type `emoji`
@@ -689,7 +686,7 @@ Demojify:
 
 - You can paste a text containing raw emojis to replace them with aliases
 
-### Configuration
+### Configuration<!-- omit in toc -->
 
 Change action keyword:
 
@@ -700,6 +697,42 @@ Change action keyword:
 5. Change *Direct activation command*
 
 ![GEmojiSharp.PowerToysRun](GEmojiSharp.PowerToysRun-Configuration.png)
+
+## `GEmojiSharp.McpServer`
+
+[![NuGet](https://img.shields.io/nuget/dt/GEmojiSharp.McpServer)](https://www.nuget.org/packages/GEmojiSharp.McpServer/)
+
+> GitHub Emoji MCP Server 🤖
+
+### all<!-- omit in toc -->
+
+> Returns all emojis.
+
+![GEmojiSharp.McpServer - all](GEmojiSharp.McpServer-all.png)
+
+### get<!-- omit in toc -->
+
+> Gets the emoji associated with the alias or raw Unicode string.
+
+![GEmojiSharp.McpServer - get](GEmojiSharp.McpServer-get.png)
+
+### find<!-- omit in toc -->
+
+> Returns emojis that match the Description, Category, Aliases or Tags.
+
+![GEmojiSharp.McpServer - find](GEmojiSharp.McpServer-find.png)
+
+### emojify<!-- omit in toc -->
+
+> Replaces emoji aliases with raw Unicode strings.
+
+![GEmojiSharp.McpServer - emojify](GEmojiSharp.McpServer-emojify.png)
+
+### demojify<!-- omit in toc -->
+
+> Replaces raw Unicode strings with emoji aliases.
+
+![GEmojiSharp.McpServer - demojify](GEmojiSharp.McpServer-demojify.png)
 
 ## Samples
 
