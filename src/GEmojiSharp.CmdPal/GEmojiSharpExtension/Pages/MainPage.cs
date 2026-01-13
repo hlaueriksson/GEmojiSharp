@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using GEmojiSharp;
 using GEmojiSharpExtension.Models;
 using Microsoft.CommandPalette.Extensions;
@@ -14,8 +15,9 @@ internal sealed partial class MainPage : DynamicListPage
     private IListItem[] AllEmojis { get; }
     private IListItem[] AllCategories { get; }
     private IListItem[] TransformHelp { get; }
-    private List<IListItem> Results { get; } = [];
 
+    private readonly Lock ResultsLock = new();
+    private List<IListItem> Results { get; } = [];
     private const int PageSize = 20;
     private int CurrentPage { get; set; }
 
@@ -54,7 +56,10 @@ internal sealed partial class MainPage : DynamicListPage
             LoadMore();
         }
 
-        return [.. Results.Take(PageSize * CurrentPage)];
+        lock (ResultsLock)
+        {
+            return [.. Results.Take(PageSize * CurrentPage)];
+        }
     }
 
     public override void LoadMore()
@@ -66,30 +71,38 @@ internal sealed partial class MainPage : DynamicListPage
         // Init
         if (CurrentPage == 0 && SearchText == string.Empty)
         {
-            Results.Clear();
-
-            var currentFilterId = Filters?.CurrentFilterId.ToSearchType();
-
-            Debug.WriteLine($"currentFilterId: {currentFilterId}");
-
-            switch (currentFilterId)
+            lock (ResultsLock)
             {
-                case SearchType.Emoji:
-                    Results.AddRange(AllEmojis);
-                    break;
-                case SearchType.Category:
-                    Results.AddRange(AllCategories);
-                    break;
-                case SearchType.Transform:
-                    Results.AddRange(TransformHelp);
-                    break;
+                Results.Clear();
+
+                var currentFilterId = Filters?.CurrentFilterId.ToSearchType();
+
+                Debug.WriteLine($"currentFilterId: {currentFilterId}");
+
+                switch (currentFilterId)
+                {
+                    case SearchType.Emoji:
+                        Results.AddRange(AllEmojis);
+                        break;
+                    case SearchType.Category:
+                        Results.AddRange(AllCategories);
+                        break;
+                    case SearchType.Transform:
+                        Results.AddRange(TransformHelp);
+                        break;
+                }
             }
         }
 
         CurrentPage++;
-        HasMoreItems = Results.Count > PageSize * CurrentPage;
+        int resultsCount;
+        lock (ResultsLock)
+        {
+            resultsCount = Results.Count;
+        }
+        HasMoreItems = resultsCount > PageSize * CurrentPage;
         IsLoading = false;
-        RaiseItemsChanged(Math.Min(PageSize * CurrentPage, Results.Count));
+        RaiseItemsChanged(Math.Min(PageSize * CurrentPage, resultsCount));
     }
 
     public override void UpdateSearchText(string oldSearch, string newSearch)
@@ -97,7 +110,10 @@ internal sealed partial class MainPage : DynamicListPage
         Debug.WriteLine($"UpdateSearchText: {newSearch}");
 
         // Clear
-        Results.Clear();
+        lock (ResultsLock)
+        {
+            Results.Clear();
+        }
         CurrentPage = 0;
 
         if (SearchText != string.Empty)
@@ -137,14 +153,20 @@ internal sealed partial class MainPage : DynamicListPage
     {
         Debug.WriteLine($"SearchEmojis: {newSearch}");
         var emojis = Emoji.Find(newSearch).ToArray();
-        Results.AddRange(emojis.Select(x => new EmojiListItem(x)));
+        lock (ResultsLock)
+        {
+            Results.AddRange(emojis.Select(x => new EmojiListItem(x)));
+        }
     }
 
     private void SearchCategories(string newSearch)
     {
         Debug.WriteLine($"SearchCategories: {newSearch}");
         var categories = AllCategories.Where(x => x.Title.Contains(newSearch, StringComparison.OrdinalIgnoreCase));
-        Results.AddRange(categories);
+        lock (ResultsLock)
+        {
+            Results.AddRange(categories);
+        }
     }
 
     private void Transform(string newSearch)
@@ -154,27 +176,33 @@ internal sealed partial class MainPage : DynamicListPage
         if (newSearch.HasAlias())
         {
             var result = Emoji.Emojify(newSearch);
-            Results.Add(
-                new ListItem
-                {
-                    Icon = Icons.Transform,
-                    Title = result,
-                    Subtitle = "Emojify: Replace aliases with raw emojis",
-                    Command = new CopyTextCommand(result),
-                });
+            lock (ResultsLock)
+            {
+                Results.Add(
+                    new ListItem
+                    {
+                        Icon = Icons.Transform,
+                        Title = result,
+                        Subtitle = "Emojify: Replace aliases with raw emojis",
+                        Command = new CopyTextCommand(result),
+                    });
+            }
         }
 
         if (newSearch.HasEmoji())
         {
             var result = Emoji.Demojify(newSearch);
-            Results.Add(
-                new ListItem
-                {
-                    Icon = Icons.Transform,
-                    Title = result,
-                    Subtitle = "Demojify: Replace raw emojis with aliases",
-                    Command = new CopyTextCommand(result),
-                });
+            lock (ResultsLock)
+            {
+                Results.Add(
+                    new ListItem
+                    {
+                        Icon = Icons.Transform,
+                        Title = result,
+                        Subtitle = "Demojify: Replace raw emojis with aliases",
+                        Command = new CopyTextCommand(result),
+                    });
+            }
         }
     }
 }

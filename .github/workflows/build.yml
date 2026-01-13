@@ -9,6 +9,10 @@ on:
 jobs:
   build:
 
+    strategy:
+      matrix:
+        platform: [x64, ARM64]
+
     runs-on: windows-latest
 
     steps:
@@ -26,7 +30,8 @@ jobs:
       run: dotnet restore
 
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --no-restore /p:Platform=${{matrix.platform}}
 
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      if: ${{matrix.platform == 'x64'}}
+      run: dotnet test --no-build --verbosity normal /p:Platform=${{matrix.platform}}
