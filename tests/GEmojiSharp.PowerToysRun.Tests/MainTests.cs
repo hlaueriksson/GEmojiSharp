@@ -1,7 +1,8 @@
 using FluentAssertions;
 using GEmojiSharp.PowerToysRun;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Wox.Plugin;
+
+[assembly: DoNotParallelize]
 
 namespace GEmojiSharp.Tests.PowerToysRun
 {
