@@ -33,6 +33,8 @@
 # Clean
 Get-ChildItem -Path "." -Directory -Include "bin", "obj" -Recurse | Remove-Item -Recurse -Force
 
+$dependencies = @("PowerToys.Common.UI.*", "PowerToys.ManagedCommon.*", "PowerToys.Settings.UI.Lib.*", "Wox.Infrastructure.*", "Wox.Plugin.*")
+
 # Version
 [xml]$props = Get-Content -Path "*.csproj"
 $version = "$($props.Project.PropertyGroup.Version)".Trim()
@@ -41,7 +43,8 @@ Write-Output "Version: $version"
 # Platforms
 $platforms = "$($props.Project.PropertyGroup.Platforms)".Trim() -split ";"
 
-$dependencies = @("PowerToys.Common.UI.dll", "PowerToys.ManagedCommon.dll", "PowerToys.Settings.UI.Lib.dll", "Wox.Infrastructure.dll", "Wox.Plugin.dll")
+# TargetFramework
+$targetFramework = $props.Project.PropertyGroup.TargetFramework
 
 foreach ($platform in $platforms)
 {
@@ -60,7 +63,7 @@ foreach ($platform in $platforms)
 
     Write-Output "Pack: $name"
 
-    $output = ".\bin\$platform\Release\net8.0-windows\"
+    $output = ".\bin\$platform\Release\$targetFramework\"
     $destination = ".\bin\$platform\$folder"
     $zip = ".\bin\$platform\$name-$version-$($platform.ToLower()).zip"
 
