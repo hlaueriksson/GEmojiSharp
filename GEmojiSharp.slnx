@@ -1,0 +1,36 @@
+<Solution>
+  <Configurations>
+    <Platform Name="ARM64" />
+    <Platform Name="x64" />
+  </Configurations>
+  <Folder Name="/samples/">
+    <Project Path="samples/GEmojiSharp.Sample.BlazorWeb/GEmojiSharp.Sample.BlazorWeb.csproj" />
+    <Project Path="samples/GEmojiSharp.Sample.BlazorWebAssembly/GEmojiSharp.Sample.BlazorWebAssembly.csproj" />
+    <Project Path="samples/GEmojiSharp.Sample.Web/GEmojiSharp.Sample.Web.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/GEmojiSharp.AspNetCore/GEmojiSharp.AspNetCore.csproj" />
+    <Project Path="src/GEmojiSharp.Blazor/GEmojiSharp.Blazor.csproj" />
+    <Project Path="src/GEmojiSharp.CmdPal/GEmojiSharpExtension/GEmojiSharpExtension.csproj">
+      <Platform Solution="*|ARM64" Project="ARM64" />
+      <Platform Solution="*|x64" Project="x64" />
+      <Deploy />
+    </Project>
+    <Project Path="src/GEmojiSharp.DotnetTool/GEmojiSharp.DotnetTool.csproj" />
+    <Project Path="src/GEmojiSharp.McpServer/GEmojiSharp.McpServer.csproj" />
+    <Project Path="src/GEmojiSharp.PowerToysRun/GEmojiSharp.PowerToysRun.csproj">
+      <Platform Solution="*|ARM64" Project="ARM64" />
+      <Platform Solution="*|x64" Project="x64" />
+    </Project>
+    <Project Path="src/GEmojiSharp/GEmojiSharp.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/GEmojiSharp.Benchmark/GEmojiSharp.Benchmark.csproj" />
+    <Project Path="tests/GEmojiSharp.PowerToysRun.Tests/GEmojiSharp.PowerToysRun.Tests.csproj">
+      <Platform Solution="*|ARM64" Project="ARM64" />
+      <Platform Solution="*|x64" Project="x64" />
+    </Project>
+    <Project Path="tests/GEmojiSharp.Tests/GEmojiSharp.Tests.csproj" />
+    <Project Path="tests/GEmojiSharpExtension.Tests/GEmojiSharpExtension.Tests.csproj" />
+  </Folder>
+</Solution>
