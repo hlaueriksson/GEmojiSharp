@@ -10,10 +10,13 @@
     <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
     <RuntimeIdentifiers>win-x64;win-arm64</RuntimeIdentifiers>
 
-    <PublishProfile>win-$(Platform).pubxml</PublishProfile>
+    <!--<PublishProfile>win-$(Platform).pubxml</PublishProfile>-->
+    <WindowsPackageType>None</WindowsPackageType>
     <EnableMsixTooling>true</EnableMsixTooling>
     <Nullable>enable</Nullable>
+
     <DefaultLanguage>en-US</DefaultLanguage>
+    <Version>0.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
