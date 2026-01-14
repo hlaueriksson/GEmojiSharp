@@ -9,14 +9,12 @@
   IgnorableNamespaces="uap uap3 rescap">
 
   <Identity
-    Name="GEmojiSharpExtension"
-    Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US"
+    Name="HenrikLauEriksson.GitHubEmojiforCommandPalette"
+    Publisher="CN=84BAEC32-D09C-4250-ABD5-09873295F878"
     Version="0.0.1.0" />
-  <!-- When you're ready to publish your extension, you'll need to change the
-       Publisher= to match your own identity -->
 
   <Properties>
-    <DisplayName>GitHub Emoji</DisplayName>
+    <DisplayName>GitHub Emoji for Command Palette</DisplayName>
     <PublisherDisplayName>Henrik Lau Eriksson</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -35,8 +33,8 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="GitHub Emoji"
-        Description="GitHub Emoji"
+        DisplayName="GitHub Emoji for Command Palette"
+        Description="Find and copy GitHub flavored Emoji"
         BackgroundColor="transparent"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png">
@@ -55,8 +53,8 @@
           <uap3:AppExtension Name="com.microsoft.commandpalette"
             Id="ID"
             PublicFolder="Public"
-            DisplayName="GitHub Emoji"
-            Description="GitHub Emoji">
+            DisplayName="GitHub Emoji for Command Palette"
+            Description="Find and copy GitHub flavored Emoji">
             <uap3:Properties>
               <CmdPalProvider>
                 <Activation>

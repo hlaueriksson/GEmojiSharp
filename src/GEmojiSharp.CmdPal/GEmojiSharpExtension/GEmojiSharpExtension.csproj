@@ -13,12 +13,16 @@
     <PublishProfile>win-$(Platform).pubxml</PublishProfile>
     <EnableMsixTooling>true</EnableMsixTooling>
     <Nullable>enable</Nullable>
+
     <DefaultLanguage>en-US</DefaultLanguage>
+
+    <AppxPackageIdentityName>HenrikLauEriksson.GitHubEmojiforCommandPalette</AppxPackageIdentityName>
+    <AppxPackagePublisher>CN=84BAEC32-D09C-4250-ABD5-09873295F878</AppxPackagePublisher>
+    <AppxPackageVersion>0.0.1.0</AppxPackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Assets\**" />
-    <Content Include="Assets\Custom\**" />
+    <Content Include="Assets\**\*.png" />
   </ItemGroup>
 
   <ItemGroup>

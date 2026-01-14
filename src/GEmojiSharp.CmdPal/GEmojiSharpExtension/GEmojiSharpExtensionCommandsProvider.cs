@@ -14,12 +14,13 @@ public partial class GEmojiSharpExtensionCommandsProvider : CommandProvider
         DisplayName = "GitHub Emoji";
         Icon = Icons.Icon;
         _commands = [
-            new CommandItem(new MainPage()) { Title = DisplayName, Subtitle = "Find and copy GitHub flavored Emoji" },
+            new CommandItem(new MainPage())
+            {
+                Title = DisplayName,
+                Subtitle = "Find and copy GitHub flavored Emoji"
+            },
         ];
     }
 
-    public override ICommandItem[] TopLevelCommands()
-    {
-        return _commands;
-    }
+    public override ICommandItem[] TopLevelCommands() => _commands;
 }

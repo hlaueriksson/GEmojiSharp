@@ -1,2 +1,4 @@
 !**/Properties/launchSettings.json
 !*.pubxml
+
+*.msixbundle
